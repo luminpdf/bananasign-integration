@@ -5,7 +5,7 @@ import '@styles/styles.scss';
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import Button from '@components/Button';
+const Button = React.lazy(() => import('@components/Button'));
 
 ReactDom.render(
   <>
