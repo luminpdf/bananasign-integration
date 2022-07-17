@@ -4,7 +4,7 @@ import {rootDir} from './utils/env';
 
 export default {
   main: [
-    join(rootDir, '/src/index.tsx'),
+    join(rootDir, '/src/app.tsx'),
     join(__dirname, './utils/cleanConsoleOnHMR.js'),
   ],
 };

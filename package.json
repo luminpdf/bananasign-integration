@@ -1,6 +1,6 @@
 {
   "name": "bananasign-integration",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "",
   "keywords": [],
   "repository": {
@@ -16,9 +16,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
-    "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./build/profile.json && webpack-bundle-analyzer ./build/profile.json",
+    "build": "rollup -c",
     "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
+    "dev": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
+    "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./build/profile.json && webpack-bundle-analyzer ./build/profile.json",
     "release": "npm version patch"
   },
   "dependencies": {
@@ -28,8 +29,8 @@
     "@types/react-dom": "^17.0.11",
     "classnames": "^2.3.1",
     "normalize.css": "^8.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.6",
@@ -50,8 +51,10 @@
     "@typescript-eslint/eslint-plugin": "~5.9.0",
     "@typescript-eslint/parser": "~5.9.0",
     "autoprefixer": "~10.4.2",
+    "babel-core": "^6.26.3",
     "babel-eslint": "~10.1.0",
     "babel-loader": "~8.2.3",
+    "babel-runtime": "^6.26.0",
     "clean-webpack-plugin": "~4.0.0",
     "copy-webpack-plugin": "~10.2.0",
     "core-js": "~3.20.2",
@@ -86,6 +89,9 @@
     "react-refresh": "~0.11.0",
     "regenerator-runtime": "~0.13.9",
     "resolve-url-loader": "~4.0.0",
+    "rollup": "^2.76.0",
+    "rollup-plugin-sass": "^1.2.12",
+    "rollup-plugin-typescript2": "^0.32.1",
     "sass": "~1.47.0",
     "sass-loader": "~12.4.0",
     "sass-resources-loader": "~2.2.4",
@@ -93,7 +99,7 @@
     "svg-url-loader": "~7.1.1",
     "terser-webpack-plugin": "~5.3.0",
     "ts-loader": "~9.2.6",
-    "typescript": "~4.5.4",
+    "typescript": "^4.7.4",
     "url-loader": "~4.1.1",
     "webpack": "~5.65.0",
     "webpack-bundle-analyzer": "~4.5.0",
