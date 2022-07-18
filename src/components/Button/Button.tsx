@@ -4,9 +4,9 @@ import React from 'react';
 
 import {useRippleButton} from '@src/hooks/useRippleButton';
 
-import {ButtonProps} from './Button.interface';
+import {IButtonProps} from './Button.interface';
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button: React.FC<IButtonProps> = (props) => {
   const {
     className,
     title,

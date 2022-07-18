@@ -4,7 +4,7 @@ import React from 'react';
 
 import Avatar from '@src/components/Avatar';
 
-const AssignerItem = () => {
+const AssignerItem: React.FC = () => {
   const user = {
     name: 'Ha Thuy',
   };

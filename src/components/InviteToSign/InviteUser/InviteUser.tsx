@@ -8,7 +8,7 @@ import Button from '@components/Button';
 
 import AssignerItem from './AssignerItem';
 
-const InviteUser = () => {
+const InviteUser: React.FC = () => {
   const signers = [1, 2];
   return (
     <div className="InviteUser__container">
@@ -19,7 +19,7 @@ const InviteUser = () => {
         </h2>
         <div className="InviteUser__wrapper-add-user">
           <div className="InviteUser__wrapper-user-list">
-            {signers.map((signer) => (
+            {signers.map((_signer) => (
               <AssignerItem />
             ))}
           </div>
@@ -35,7 +35,7 @@ const InviteUser = () => {
         </h2>
         <div className="InviteUser__wrapper-add-user">
           <div className="InviteUser__wrapper-user-list">
-            {signers.map((signer) => (
+            {signers.map((_signer) => (
               <AssignerItem />
             ))}
           </div>

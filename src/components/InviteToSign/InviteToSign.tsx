@@ -9,7 +9,7 @@ import Footer from './Footer';
 import Header from './Header';
 import InviteUser from './InviteUser';
 
-const InviteToSign = () => {
+const InviteToSign: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {

@@ -6,7 +6,7 @@ import React, {useMemo} from 'react';
 import {Images} from '@src/assets';
 import common from '@src/utils/common';
 
-import {AvatarProps} from './Avatar.interface';
+import {IAvatarProps} from './Avatar.interface';
 
 const GUEST_USER = 'Guest User';
 const USER_DELETED = 'Deleted';
@@ -20,7 +20,7 @@ const defaultProps = {
   style: {},
 };
 
-const Avatar: React.FC<AvatarProps> = ({className, user, style}) => {
+const Avatar: React.FC<IAvatarProps> = ({className, user, style}) => {
   const guestUser = GUEST_USER === user.name;
   const userDeleted = USER_DELETED === user.name;
 

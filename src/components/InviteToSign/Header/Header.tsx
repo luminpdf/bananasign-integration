@@ -11,7 +11,7 @@ const PROGRESS_BAR_LIST_ITEM = [
   {value: 'REVIEW', className: ''},
 ];
 
-const Header = () => {
+const Header: React.FC = () => {
   const renderProgressBar = () => (
     <div className="Header__progressBar-container">
       <ul className="Header__progressBar-list">

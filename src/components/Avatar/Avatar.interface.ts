@@ -1,12 +1,12 @@
 import React from 'react';
 
-export interface AvatarProps {
+export interface IAvatarProps {
   className?: string;
-  user: UserProps;
+  user: IUserProps;
   style?: React.CSSProperties;
 }
 
-interface UserProps {
+type IUserProps = {
   name?: string;
   url?: string;
-}
+};
