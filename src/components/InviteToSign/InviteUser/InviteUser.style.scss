@@ -7,6 +7,24 @@
     border-radius: 8px;
     padding: 40px 24px;
     margin: 0 auto;
+
+    .InviteUser__wrapper-add-button {
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: none;
+      color: var(--color-neutral-100);
+      border-radius: 8px;
+      border: 1.5px solid var(--color-neutral-100);
+      background: var(--color-neutral-0);
+      padding: 5px 30px;
+
+      span {
+        margin-left: 8px;
+      }
+    }
   }
 
   &__title {
@@ -62,24 +80,6 @@
       max-height: 250px;
       border-bottom: solid 1px var(--color-other-6);
       margin-bottom: 12px;
-    }
-
-    &-add-button {
-      font-family: var(--font-primary);
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 24px;
-      text-transform: none;
-      color: var(--color-neutral-100);
-      border-radius: 8px;
-      border: 1.5px solid var(--color-neutral-100);
-      background: var(--color-neutral-0);
-      padding: 5px 30px;
-
-      span {
-        margin-left: 8px;
-      }
     }
   }
 

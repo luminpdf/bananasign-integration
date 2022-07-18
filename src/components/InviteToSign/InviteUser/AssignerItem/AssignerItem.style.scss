@@ -5,7 +5,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 9px 12px;
-    width: 100%;
   }
 
   &__wrapper {
@@ -41,5 +40,30 @@
   }
 
   &__delete-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+      background: var(--color-primary-350);
+    }
+
+    .AssignerItem__tooltip {
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-neutral-100);
+      font-size: 14px;
+      line-height: 20px;
+      font-style: normal;
+      font-weight: 500;
+      font-family: var(--font-primary);
+      color: white;
+      border: none;
+    }
   }
 }
