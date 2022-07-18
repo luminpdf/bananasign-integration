@@ -21,7 +21,7 @@ const Button: React.FC<IButtonProps> = (props) => {
 
   return (
     <button
-      className={`Button__Container ${className}`}
+      className={`${className} Button__Container`}
       onClick={(e) => {
         if (isRippleEffect) {
           const node = e.target as HTMLElement;

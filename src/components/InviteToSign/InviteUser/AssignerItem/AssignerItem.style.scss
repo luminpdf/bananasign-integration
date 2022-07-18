@@ -10,9 +10,12 @@
 
   &__wrapper {
     display: flex;
+    align-items: center;
 
-    .Avatar__wrapper .AssignerItem_wrapper-avatar {
-      
+    .Avatar__wrapper .AssignerItem__wrapper-avatar {
+      width: 32px;
+      height: 32px;
+      border: 1.6px solid var(--color-primary-350);
     }
 
     &-name {

@@ -1,35 +1,25 @@
 import './InviteToSign.style.scss';
 
-import Dialog from '@mui/material/Dialog';
-import React, {useEffect, useState} from 'react';
-
-import {Colors} from '@src/constants/styles/Colors';
+import classNames from 'classnames';
+import React from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
 import InviteUser from './InviteUser';
 
 const InviteToSign: React.FC = () => {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setOpen(true);
-    }, 3000);
-  }, []);
+  const [open, _setOpen] = React.useState(true);
 
   return (
-    <Dialog
-      fullScreen
-      open={open}
-      maxWidth={false}
-      disableEscapeKeyDown
-      BackdropProps={{style: {backgroundColor: Colors.DOCUMENT_OVERLAY}}}
+    <div
+      className={classNames('InviteToSign__container', {
+        open: open,
+      })}
     >
       <Header />
       <InviteUser />
       <Footer />
-    </Dialog>
+    </div>
   );
 };
 

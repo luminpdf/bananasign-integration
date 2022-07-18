@@ -24,9 +24,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/material": "^5.9.0",
     "@types/classnames": "^2.3.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
