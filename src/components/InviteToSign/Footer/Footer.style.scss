@@ -1,0 +1,19 @@
+.Footer {
+  &__container {
+    display: inline-flex;
+    height: auto;
+    width: auto;
+    position: fixed;
+    bottom: 32px;
+    right: 36px;
+
+    h6 {
+      font-family: var(--font-primary);
+      color: var(--color-neutral-100);
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      margin: 0;
+    }
+  }
+}

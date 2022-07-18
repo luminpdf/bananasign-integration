@@ -1,0 +1,10 @@
+@import '../../constants/styles/variables.scss';
+
+.MuiDialog-paper {
+  background-color: var(--color-soft-white) !important;
+}
+
+.InviteToSign__container {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,106 @@
+.InviteUser {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: auto;
+    border-radius: 8px;
+    padding: 40px 24px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: var(--color-neutral-100);
+    margin: 0;
+  }
+
+  &__wrapper {
+    background: white;
+    display: grid;
+    grid-template-columns: auto 2fr;
+    gap: 32px 24px;
+    height: auto;
+    border-radius: 8px;
+    padding: 24px 24px 24px 80px;
+    margin-top: 16px;
+    animation: zoom-out 0.5s ease;
+    @keyframes zoom-out {
+      0% {
+        transform: scale(0, 0);
+      }
+      100% {
+        transform: scale(1, 1);
+      }
+    }
+
+    &-title {
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      color: var(--color-neutral-100);
+      font-size: 16px;
+      margin: 0;
+
+      span {
+        color: red;
+      }
+    }
+
+    &-add-user {
+      width: 80%;
+    }
+
+    &-user-list {
+      overflow: scroll;
+      max-height: 250px;
+      border-bottom: solid 1px var(--color-other-6);
+      margin-bottom: 12px;
+    }
+
+    &-add-button {
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: none;
+      color: var(--color-neutral-100);
+      border-radius: 8px;
+      border: 1.5px solid var(--color-neutral-100);
+      background: var(--color-neutral-0);
+      padding: 5px 30px;
+
+      span {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  &__next-button {
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: none;
+    color: var(--color-neutral-100);
+    border-radius: 8px;
+    background: var(--color-warning-40);
+    text-align: center;
+    height: 48px;
+    width: 200px;
+    grid-column: 2;
+    margin-left: auto;
+    float: right;
+    right: 5px;
+
+    &:hover {
+      background: var(--color-warning-40);
+      opacity: 0.8;
+    }
+  }
+}

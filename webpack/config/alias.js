@@ -7,7 +7,8 @@ export const aliasItems = {
   '@images': join(rootDir, '/src/images'),
   '@styles': join(rootDir, '/src/styles'),
   '@components': join(rootDir, '/src/components'),
-  '@hook': join(rootDir, '/src/hook'),
+  '@hooks': join(rootDir, '/src/hooks'),
   '@utils': join(rootDir, '/src/utils'),
   '@constants': join(rootDir, '/src/constants'),
+  '@assets': join(rootDir, '/src/assets'),
 };

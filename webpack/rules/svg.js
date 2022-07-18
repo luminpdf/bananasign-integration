@@ -29,4 +29,16 @@ export const svgRule = {
   type: 'asset/inline',
 };
 
-export const svgRules = [svgReactComponentRule, svgRule];
+export const svgReactRule = {
+  test: /\.(png|jp(e*)g|svg|gif)$/,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: 'images/[hash]-[name].[ext]',
+      },
+    },
+  ],
+};
+
+export const svgRules = [svgReactRule];

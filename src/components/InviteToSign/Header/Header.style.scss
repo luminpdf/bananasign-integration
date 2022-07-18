@@ -1,0 +1,125 @@
+.Header {
+  &__container {
+    position: relative;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    height: 72px;
+    background-color: white;
+  }
+
+  &__left {
+    margin-left: 24px;
+    cursor: pointer;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    margin-right: 22px;
+  }
+
+  &__progressBar-container {
+    width: 60%;
+    z-index: 15;
+  }
+
+  &__progressBar-list {
+    margin: 0;
+
+    li {
+      // content
+      list-style-type: none;
+      float: left;
+      width: 25%;
+      position: relative;
+      text-align: center;
+      font-family: var(--font-primary);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 16px;
+      color: var(--color-other-11);
+
+      &::before {
+        content: ' ';
+        line-height: 30px;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px;
+        background: var(--color-blue);
+      }
+
+      // 2 lines
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background: var(--color-other-10);
+        top: 4px;
+        left: -50%;
+        z-index: -1;
+      }
+
+      &:first-child::after {
+        content: none;
+      }
+
+      // active content
+      &.active {
+        color: var(--color-neutral-100);
+
+        span {
+          position: absolute;
+          top: 25px;
+          left: 0;
+          right: 0;
+        }
+      }
+
+      &:not(:first-child) span {
+        position: absolute;
+        top: 25px;
+        text-align: center;
+        left: 0;
+        right: 0;
+      }
+
+      // active circle
+      &.active::before {
+        border: 9px solid var(--color-blue);
+        background: var(--color-neutral-0);
+        margin-top: -10px;
+        transform: scale(1);
+        animation: ani-bounce 2s infinite;
+        box-shadow: 0 0 0 0 var(--color-blue);
+        animation-delay: 0s, 1.5s;
+      }
+
+      &.active::after {
+        background: var(--color-other-10);
+      }
+    }
+  }
+}
+
+@keyframes ani-bounce {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgb(49 128 241 / 70%);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgb(49 128 241 / 0%);
+  }
+
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgb(49 128 241 / 0%);
+  }
+}
