@@ -5,15 +5,33 @@
   --font-primary-bold: 'MarkPro-Bold', arial, sans-serif;
 
   // color
-  --color-other-11: #8e979f;
   --color-blue: #3180f1;
-  --color-other-10: #eaf3ff;
-  --color-neutral-100: #0c395b;
-  --color-neutral-70: rgba(12, 57, 91, 0.7);
+  --color-blue-120: #bdd8ff;
+  --color-blue-160: #1f67cf;
+  --color-blue-170: #1051ad;
+  --color-red: #f04a4a;
   --color-neutral-0: #fff;
-  --color-other-1: #50677A;
-  --color-other-6: #e1e1e1;
+  --color-neutral-40: #d2d6d9;
+  --color-neutral-70: rgba(12, 57, 91, 0.7);
+  --color-neutral-100: #0c395b;
+  --color-other-1: #50677a;
+  --color-other-11: #8e979f;
   --color-soft-white: #f7f6ec;
   --color-warning-40: #fae200;
-  --color-primary-350: #F7F6EC;
+  --color-yellow: #fae200;
+  --color-yellow-10: #fff8b7;
+  --color-yellow-60: #e6d000;
+  --color-yellow-70: #d0bd07;
+  --color-primary-160: #eaf3ff;
+  --color-primary-220: #F4F4F4;
+  --color-primary-230: #e1e1e1;
+  --color-primary-240: #C6C8C9;
+  --color-primary-260: #8E979F;
+  --color-primary-350: #f7f6ec;
+  --color-secondary: #8093a7;
+
+  // Shadow
+  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),
+    0 3px 14px 2px rgba(128, 147, 167, 0.12),
+    0 8px 10px 1px rgba(128, 147, 167, 0.14);
 }

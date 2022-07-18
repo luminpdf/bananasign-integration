@@ -16,12 +16,13 @@ const Button: React.FC<IButtonProps> = (props) => {
     onClick,
     style,
     isRippleEffect,
+    buttonType,
   } = props;
   const ripple = useRippleButton(isRippleEffect || true);
 
   return (
     <button
-      className={`${className} Button__Container`}
+      className={`${className} Button__Container ${buttonType}`}
       onClick={(e) => {
         if (isRippleEffect) {
           const node = e.target as HTMLElement;

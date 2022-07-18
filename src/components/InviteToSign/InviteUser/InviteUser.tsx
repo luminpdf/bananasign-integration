@@ -40,9 +40,7 @@ const InviteUser: React.FC = () => {
             icon={Images.icon_sign}
           />
         </div>
-        <h2 className="InviteUser__wrapper-title">
-          Who needs to Sign?<span> *</span>
-        </h2>
+        <h2 className="InviteUser__wrapper-title">Who needs to View?</h2>
         <div className="InviteUser__wrapper-add-user">
           <div className="InviteUser__wrapper-user-list">
             {signers.map((_signer) => (

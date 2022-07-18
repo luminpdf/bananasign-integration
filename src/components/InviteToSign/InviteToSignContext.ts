@@ -7,15 +7,24 @@ interface ContextType {
   dispatch: React.Dispatch<{type: string}>;
 }
 
+export interface IAssignerProps {
+  email?: string;
+  name?: string;
+  url?: string;
+  type?: string;
+}
+
 export interface IState {
   loading: boolean;
   isOpenAddAssignerModal: boolean;
+  signers: IAssignerProps[];
+  viewers: IAssignerProps[];
+  type: string;
 }
 
 const InviteToSignContext = React.createContext<ContextType>({
   state: initialState,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  dispatch: () => {},
+  dispatch: () => undefined,
 });
 
 export default InviteToSignContext;

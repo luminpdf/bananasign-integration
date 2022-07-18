@@ -25,6 +25,59 @@
     opacity: 0.4;
     cursor: not-allowed;
   }
+
+  &.primary-blue {
+    background: var(--color-blue);
+    color: white;
+
+    &:hover {
+      background: var(--color-blue-160);
+    }
+
+    &.button-disabled {
+      background: var(--color-blue-120);
+    }
+  }
+  
+  &.primary-yellow {
+    background: var(--color-yellow);
+
+    &:hover {
+      background: var(--color-yellow-60);
+
+    }
+
+    &.button-disabled {
+      background: var(--color-yellow-10);
+      color: var(--color-primary-260);
+    }
+  }
+
+  &.secondary {
+    background: white;
+    border: 1.5px solid var(--color-neutral-100);
+
+    &:hover {
+      background: var(--color-primary-350);
+    }
+
+    &.button-disabled {
+      border: 1.5px solid var(--color-primary-240);
+      color: var(--color-primary-240);
+    }
+  }
+
+  &.tertiary {
+    background: var(--color-primary-220);
+
+    &:hover {
+      background: var(--color-primary-230);
+    }
+
+    &.button-disabled {
+      color: var(--color-primary-240);
+    }
+  }
 }
 
 .Button__Icon {

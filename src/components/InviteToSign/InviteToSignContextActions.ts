@@ -8,10 +8,21 @@ export const InviteToSignContextActions = {
     };
   },
   SET_OPEN_ADD_ASSIGNER_MODAL: (isOpen: boolean) => {
-    console.log({isOpen});
     return {
       type: INVITE_TO_SIGN_ACTION_TYPE.SET_OPEN_ADD_ASSIGNER_MODAL,
       payload: isOpen,
+    };
+  },
+  REMOVE_SIGNER: (email: string) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPE.REMOVE_SIGNER,
+      payload: email,
+    };
+  },
+  REMOVE_VIEWER: (email: string) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPE.REMOVE_VIEWER,
+      payload: email,
     };
   },
 };

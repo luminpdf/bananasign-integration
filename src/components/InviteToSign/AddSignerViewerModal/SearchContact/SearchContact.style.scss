@@ -1,0 +1,46 @@
+.SearchContact__container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  border: 1px solid var(--color-primary-230);
+  box-sizing: border-box;
+  box-shadow: var(--container-shadow);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.8);
+  z-index: -1;
+  transition: scale .3s ease, visibility 0s linear 0.33s, opacity 0.3s linear, transform 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+    transform: translateY(0) scale(1);;
+    transition-delay: 0s;
+  }
+}
+
+.SearchContact__list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 8px;
+
+//   .UserItem__container {
+//     width: 100%;
+//     box-sizing: border-box;
+//     padding: 9px 16px 9px 16px;
+//   }
+}
+

@@ -1,15 +1,15 @@
-import './Modal.style.scss';
+import './CustomModal.style.scss';
 
 import React from 'react';
 import ReactModal from 'react-modal';
 
 import {Images} from '@src/assets';
 
-import {IModalProps} from './Modal.interface';
+import {ICustomModalProps} from './CustomModal.interface';
 
 ReactModal.setAppElement('#root');
 
-const Modal: React.FC<IModalProps> = (props) => {
+const CustomModal: React.FC<ICustomModalProps> = (props) => {
   const {
     children,
     isOpen,
@@ -31,7 +31,7 @@ const Modal: React.FC<IModalProps> = (props) => {
     >
       {isShowCloseButton && (
         <div className="ReactModal__ButtonClose" onClick={closeModal}>
-          <img src={Images.icon_cancel_button} alt="icons_close" />
+          <img src={Images.icon_cancel_button} alt="icon close" />
         </div>
       )}
 
@@ -40,7 +40,7 @@ const Modal: React.FC<IModalProps> = (props) => {
   );
 };
 
-Modal.defaultProps = {
+CustomModal.defaultProps = {
   children: null,
   isOpen: false,
   shouldCloseOnOverlayClick: true,
@@ -49,4 +49,4 @@ Modal.defaultProps = {
   className: '',
 };
 
-export default Modal;
+export default CustomModal;

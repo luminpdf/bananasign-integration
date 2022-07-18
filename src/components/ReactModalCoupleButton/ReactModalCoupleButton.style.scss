@@ -1,0 +1,21 @@
+@import '../../constants/styles/variables.scss';
+
+.ReactModalCoupleButton__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ReactModal__Button {
+  font-family: var(--font-primary-bold);
+  font-size: 16px;
+  min-width: 127px;
+  background: var(--color-primary-220);
+  line-height: 1.5;
+  color: var(--color-neutral-100);
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - 8px);
+}

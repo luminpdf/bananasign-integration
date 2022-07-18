@@ -9,6 +9,13 @@ const getAvatarName = (name: string) => {
   return words;
 };
 
+const capitalizeLetter = (string: string) =>
+  string
+    .toLowerCase()
+    .replace('_', ' ')
+    .replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
+
 export default {
   getAvatarName,
+  capitalizeLetter,
 };

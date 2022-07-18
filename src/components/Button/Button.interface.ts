@@ -7,4 +7,5 @@ export interface IButtonProps {
   style?: object;
   disabled?: boolean;
   isRippleEffect?: boolean;
+  buttonType?: string;
 }

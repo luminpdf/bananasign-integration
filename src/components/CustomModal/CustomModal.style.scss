@@ -43,7 +43,7 @@
   text-align: left;
   vertical-align: middle;
   background: white;
-  //   box-shadow: $container-shadow;
+    box-shadow: var(--container-shadow);
   border-radius: 8px;
   padding: 24px 16px 24px 16px;
   max-width: 368px;

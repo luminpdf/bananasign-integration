@@ -1,0 +1,121 @@
+@import '../../../../styles/styles.scss';
+
+.InputAssigner__container {
+  margin-top: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  border: 2px solid var(--color-neutral-40);
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  &.isOpenSearch {
+    border: 2px solid var(--color-neutral-100);
+  }
+
+  &.EmptyAssignUsers {
+    border: none;
+    margin-top: 0px;
+
+    .AssignerListInput__container {
+      padding: 0;
+    }
+
+    .InputAssigner__input {
+      border: 2px solid var(--color-neutral-40);
+      border-radius: 8px;
+    }
+  }
+}
+
+.EmptyAssignUsers .InputAssigner__input {
+  &.CustomInput__input--focus {
+    &:focus {
+      border: 2px solid var(--color-neutral-100);
+    }
+  }
+}
+
+.InputAssigner__input {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: unset;
+  border-top: 1px solid var(--color-primary-230);
+
+  &.CustomInput__input--focus {
+    &:focus {
+      border: unset;
+      border-top: 1px solid var(--color-primary-230);
+    }
+  }
+}
+
+.AssignerListInput__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-height: 150px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow: overlay;
+  padding-top: 8px;
+  @include custom-scrollbar;
+}
+
+.AssignerListInput__row-email {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: var(--color-primary-160);
+  margin: 0px 0px 8px 8px;
+  border-radius: 4px;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.AssignerListInput__email {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-blue);
+  text-align: center;
+  align-items: center;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 430px;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.AssignerListInput__icon-right {
+  padding-left: 8px;
+  cursor: pointer;
+
+  img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.AssignerListInput__icon-right.hidden {
+  display: none;
+  z-index: -1;
+}
