@@ -1,5 +1,7 @@
 import alias from '@rollup/plugin-alias';
 import sass from 'rollup-plugin-sass';
+// import svg from 'rollup-plugin-svg-import';
+import svg from 'rollup-plugin-svg';
 import typescript from 'rollup-plugin-typescript2';
 
 import pkg from './package.json';
@@ -17,11 +19,16 @@ export default {
   ],
   plugins: [
     sass({insert: true}),
-    typescript(),
+    // typescript(),
+    typescript({
+      tsconfig: 'tsconfig.json',
+      module: 'esnext',
+    }),
     alias({
       entries: {
         '@src/*': 'src/*',
         '@images/*': 'src/images/*',
+        '@assets/*': 'src/assets/*',
         '@styles/*': 'src/styles/*',
         '@hook/*': 'src/hook/*',
         '@utils/*': 'src/utils/*',
@@ -29,6 +36,7 @@ export default {
         '@components/*': 'src/components/*',
       },
     }),
+    svg(),
   ],
   external: ['react', 'react-dom'],
 };
