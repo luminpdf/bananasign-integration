@@ -1,14 +1,23 @@
 import './InviteUser.style.scss';
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 import {Images} from '@src/assets';
 
 import Button from '@components/Button';
 
+import InviteToSignContext from '../InviteToSignContext';
+import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
 
 const InviteUser: React.FC = () => {
+  const context = useContext(InviteToSignContext);
+  const handleOpenAddAssignerModal = () => {
+    console.log('dispatch');
+    context.dispatch(
+      InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true),
+    );
+  };
   const signers = [1, 2];
   return (
     <div className="InviteUser__container">
@@ -24,6 +33,7 @@ const InviteUser: React.FC = () => {
             ))}
           </div>
           <Button
+            onClick={handleOpenAddAssignerModal}
             className="InviteUser__wrapper-add-button"
             isRippleEffect
             title="Add Signer"

@@ -1,0 +1,74 @@
+@import '../../constants/styles/variables.scss';
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Overlay--custom {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+  background: var(--color-neutral-70);
+
+  &:after {
+    width: 0;
+    height: 100%;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content--custom {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  background: white;
+  //   box-shadow: $container-shadow;
+  border-radius: 8px;
+  padding: 24px 16px 24px 16px;
+  max-width: 368px;
+  min-width: 368px;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 16%;
+}
+
+.ReactModal__ButtonClose {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: var(--color-soft-white);
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ReactModal__Content--min-height {
+  min-height: 394px;
+}
