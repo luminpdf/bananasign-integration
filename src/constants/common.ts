@@ -17,3 +17,8 @@ export const BUTTON_TYPE = {
 };
 
 export const GUEST_USER = 'Guest User';
+
+export const MODAL_TYPES = {
+  ONLY_ONE_SIGNER_IS_OWNER: 'ONLY_ONE_SIGNER_IS_OWNER',
+  CANCEL_PROGRESS: 'CANCEL_PROGRESS',
+};

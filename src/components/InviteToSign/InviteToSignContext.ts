@@ -25,6 +25,9 @@ export const initialState = {
   searchContacts: [],
   cancelAddAssigners: false,
   openBananasignIframe: false,
+  modalWarningData: {
+    type: '',
+  },
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

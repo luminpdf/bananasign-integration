@@ -10,6 +10,7 @@ import Header from './Header';
 import InviteToSignProvider from './InviteToSignProvider';
 import InviteUser from './InviteUser';
 import Loading from './Loading';
+import WarningModal from './WarningModal';
 
 const InviteToSign: React.FC = () => {
   const [open, _setOpen] = React.useState(true);
@@ -27,6 +28,7 @@ const InviteToSign: React.FC = () => {
         <AddSignerViewerModal />
         <Loading />
         <BananasignIframe />
+        <WarningModal />
       </div>
     </InviteToSignProvider>
   );

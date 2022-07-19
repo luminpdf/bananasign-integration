@@ -1,8 +1,12 @@
 import './Header.style.scss';
 
-import React from 'react';
+import React, {useContext} from 'react';
 
 import {Images} from '@src/assets';
+import {MODAL_TYPES} from '@src/constants/common';
+
+import InviteToSignContext from '../InviteToSignContext';
+import {InviteToSignContextActions} from '../InviteToSignContextActions';
 
 const PROGRESS_BAR_LIST_ITEM = [
   {value: 'INVITE TO SIGN', className: 'active'},
@@ -12,6 +16,8 @@ const PROGRESS_BAR_LIST_ITEM = [
 ];
 
 const Header: React.FC = () => {
+  const context = useContext(InviteToSignContext);
+  const {dispatch} = context;
   const renderProgressBar = () => (
     <div className="Header__progressBar-container">
       <ul className="Header__progressBar-list">
@@ -39,8 +45,17 @@ const Header: React.FC = () => {
       </div>
     );
   };
+  const onClose = () => {
+    dispatch(
+      InviteToSignContextActions.SET_MODAL_WARNING_TYPE({
+        type: MODAL_TYPES.CANCEL_PROGRESS,
+        onConfirm: () => console.log('aaaa'),
+      }),
+    );
+  };
+
   return (
-    <div className="Header__container">
+    <div onClick={onClose} className="Header__container">
       {renderCancelButton()}
       {renderProgressBar()}
       {renderRightLogo()}

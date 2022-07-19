@@ -100,6 +100,11 @@ export const InviteToSignContextReducer = (state: any, action: any) => {
         ...state,
         openBananasignIframe: action.payload,
       };
+    case INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE:
+      return {
+        ...state,
+        modalWarningData: action.payload,
+      };
 
     default:
       return;

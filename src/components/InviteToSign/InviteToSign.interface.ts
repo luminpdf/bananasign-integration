@@ -18,4 +18,11 @@ export interface IState {
   searchContacts: IAssignerProps[];
   cancelAddAssigners: boolean;
   openBananasignIframe: boolean;
+  modalWarningData: ModalWarning;
 }
+
+export type ModalWarning = {
+  type: string;
+  onConfirm?: () => void;
+  onCancel?: () => void;
+};

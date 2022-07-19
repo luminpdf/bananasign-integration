@@ -12,20 +12,10 @@
   border-radius: 8px;
 
   &.EmptyAssignUsers {
-    border: none;
 
     .AssignerListInput__container {
       padding: 0;
     }
-
-    .InputAssigner__input {
-      border: 2px solid var(--color-neutral-40);
-      border-radius: 8px;
-    }
-  }
-
-  .InputAssigner__input {
-    border: unset;
   }
 
   &.isOpenSearch {
@@ -43,6 +33,10 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border: unset;
+
+  &.CustomInput__input {
+    border: unset;
+  }
 
   &.CustomInput__input--focus {
     &:focus {

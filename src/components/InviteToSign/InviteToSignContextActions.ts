@@ -1,4 +1,4 @@
-import {IAssignerProps} from './InviteToSign.interface';
+import {IAssignerProps, ModalWarning} from './InviteToSign.interface';
 import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 
 export const InviteToSignContextActions = {
@@ -84,6 +84,12 @@ export const InviteToSignContextActions = {
     return {
       type: INVITE_TO_SIGN_ACTION_TYPES.OPEN_BANANASIGN_IFRAME,
       payload: isOpen,
+    };
+  },
+  SET_MODAL_WARNING_TYPE: (modalType: ModalWarning) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE,
+      payload: modalType,
     };
   },
 };
