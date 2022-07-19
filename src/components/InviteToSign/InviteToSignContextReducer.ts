@@ -1,5 +1,5 @@
 import {IAssignerProps} from './InviteToSign.interface';
-import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignProvider';
+import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const InviteToSignContextReducer = (state: any, action: any) => {

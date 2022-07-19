@@ -2,7 +2,7 @@ import './AddSignerViewerModal.style.scss';
 
 import React, {useContext, useMemo, useRef, useState} from 'react';
 
-import CustomModal from '@src/components/CustomModal/CustomModal';
+import CustomModal from '@src/components/CustomModal';
 import ReactModalCoupleButton from '@src/components/ReactModalCoupleButton';
 import {REQUEST_TYPE} from '@src/constants/common';
 import useOnClickOutside from '@src/hooks/useOnClickOutside';

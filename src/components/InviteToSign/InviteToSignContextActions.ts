@@ -1,5 +1,5 @@
 import {IAssignerProps} from './InviteToSign.interface';
-import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignProvider';
+import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 
 export const InviteToSignContextActions = {
   SET_LOADING: (isLoading: boolean) => {

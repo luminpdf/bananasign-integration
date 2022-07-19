@@ -1,4 +1,5 @@
 import alias from '@rollup/plugin-alias';
+import json from '@rollup/plugin-json';
 import sass from 'rollup-plugin-sass';
 // import svg from 'rollup-plugin-svg-import';
 import svg from 'rollup-plugin-svg';
@@ -37,6 +38,7 @@ export default {
       },
     }),
     svg(),
+    json(),
   ],
   external: ['react', 'react-dom'],
 };
