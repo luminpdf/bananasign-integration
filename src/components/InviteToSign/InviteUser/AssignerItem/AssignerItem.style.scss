@@ -5,6 +5,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 9px 12px;
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
 
   &__wrapper {
@@ -65,5 +70,14 @@
       color: white;
       border: none;
     }
+  }
+
+  &__user-info-text--added {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    line-height: 20px;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--color-secondary-50);
   }
 }

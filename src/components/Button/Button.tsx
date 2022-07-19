@@ -1,5 +1,6 @@
 import './Button.style.scss';
 
+import classNames from 'classnames';
 import React from 'react';
 
 import {useRippleButton} from '@src/hooks/useRippleButton';
@@ -22,7 +23,9 @@ const Button: React.FC<IButtonProps> = (props) => {
 
   return (
     <button
-      className={`${className} Button__Container ${buttonType}`}
+      className={classNames(`${className} Button__Container ${buttonType}`, {
+        'button-disabled': disabled,
+      })}
       onClick={(e) => {
         if (isRippleEffect) {
           const node = e.target as HTMLElement;

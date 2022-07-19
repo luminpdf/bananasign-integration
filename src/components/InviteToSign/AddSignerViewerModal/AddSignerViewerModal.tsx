@@ -1,46 +1,59 @@
 import './AddSignerViewerModal.style.scss';
 
-import React, {useContext, useState} from 'react';
+import React, {useContext, useMemo, useRef, useState} from 'react';
 
 import CustomModal from '@src/components/CustomModal/CustomModal';
-// import classNames from 'classnames';
 import ReactModalCoupleButton from '@src/components/ReactModalCoupleButton';
-import common from '@src/utils/common';
+import {REQUEST_TYPE} from '@src/constants/common';
+import useOnClickOutside from '@src/hooks/useOnClickOutside';
 
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import InputAssigner from './InputAssigner';
+import {IInputAssignerRef} from './InputAssigner/InputAssigner.interface';
+// import RecentContacts from './RecentContacts';
 import SearchContact from './SearchContact';
 
-const CONTACT_TAB = {
-  RECENT_CONTACTS: 'RECENT_CONTACTS',
-  GOOGLE_CONTACT: 'GOOGLE_CONTACT',
+const REQUEST_TYPE_TO_STRING = {
+  [REQUEST_TYPE.SIGNER]: 'Add Signer',
+  [REQUEST_TYPE.VIEWER]: 'Add Viewer',
 };
-const contactListTabs = Object.keys(CONTACT_TAB);
 
 const AddSignerViewerModal: React.FC = () => {
   const context = useContext(InviteToSignContext);
   const {
-    state: {isOpenAddAssignerModal},
+    state: {isOpenAddAssignerModal, type, signers, viewers},
+    dispatch,
   } = context;
-  const [currentTab, setCurrentTab] = useState(CONTACT_TAB.RECENT_CONTACTS);
-  // const CONTACT_TAB_COMPONENT = {
-  //   [CONTACT_TAB.GOOGLE_CONTACT]: <GoogleContactTab currentTab={currentTab} />,
-  //   [CONTACT_TAB.RECENT_CONTACTS]: <RecentContacts currentTab={currentTab} />,
-  // }
-  const setAssignModalTabActive = (tab: string) => {
-    return setCurrentTab(tab);
+  const [isFocusSearchView, setFocusSearchView] = useState(false);
+  const searchRef = useRef(null);
+  const inputRef = useRef<IInputAssignerRef>(null);
+
+  useOnClickOutside(searchRef, () => {
+    inputRef?.current?.unFocusInput();
+    setFocusSearchView(false);
+  });
+
+  const resetInputContact = () => {
+    inputRef?.current?.resetInput();
   };
 
   const onCloseModal = () => {
-    context.dispatch(
-      InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(false),
-    );
+    dispatch(InviteToSignContextActions.CANCEL_ADD_ASSIGNERS(true));
+    dispatch(InviteToSignContextActions.CLOSE_AND_RESET_MODAL_SEARCH());
   };
 
   const onConfirm = () => {
-    console.log('confirm');
+    dispatch(InviteToSignContextActions.CLOSE_AND_RESET_MODAL_SEARCH());
   };
+
+  const isEnableConfirmButton = useMemo(() => {
+    const signersList = {
+      [REQUEST_TYPE.SIGNER]: signers,
+      [REQUEST_TYPE.VIEWER]: viewers,
+    };
+    return signersList[type].some((item) => item?.newAssignUser);
+  }, [type, signers, viewers]);
 
   return (
     <CustomModal
@@ -51,57 +64,32 @@ const AddSignerViewerModal: React.FC = () => {
     >
       <div className="AssignModal__container">
         <div className="AssignModal__header">
-          <h4 className="AssignModal__title">{'Add Signer'}</h4>
+          <h4 className="AssignModal__title">{REQUEST_TYPE_TO_STRING[type]}</h4>
           <InputAssigner
-          // ref={inputRef}
-          // onFocus={() => setFocusSearchView(true)}
-          // isOpenSearch={isfocusSearchView}
+            ref={inputRef}
+            onFocus={() => setFocusSearchView(true)}
+            isOpenSearch={isFocusSearchView}
           />
         </div>
 
         <div className="AssignModal__body">
           <SearchContact
-          // ref={searchRef}
-          // resetInput={resetInputContact}
-          // active={isfocusSearchView}
+            ref={searchRef}
+            resetInput={resetInputContact}
+            active={isFocusSearchView}
           />
-
-          <div className="AssignModal__tabs">
-            {contactListTabs.map((item: string, index: number) => {
-              return (
-                <h5
-                  key={index}
-                  onClick={() => setAssignModalTabActive(item)}
-                  className={`AssignModal__tab ${
-                    currentTab === item && 'active'
-                  }`}
-                >
-                  {common.capitalizeLetter(item)}
-                </h5>
-              );
-            })}
+          <div className="AssignModal__contact-list">
+            <div className="AssignModal__contact-component active">
+              {/* <RecentContacts /> */}
+            </div>
           </div>
-          {/* <div className="AssignModal__contact-list">
-            {contactListTabs.map((item, index) => {
-              return (
-                <div
-                  className={classNames('AssignModal__contact-component', {
-                    active: currentTab === item,
-                  })}
-                  key={index}
-                >
-                  {CONTACT_TAB_COMPONENT[item]}
-                </div>
-              );
-            })}
-          </div> */}
         </div>
         <div className="AssignModal__footer">
           <ReactModalCoupleButton
             onCancel={onCloseModal}
             onConfirm={onConfirm}
             primaryTitle="Done"
-            // disabledConfirmButton={!isEnableConfirmButton}
+            disabledConfirmButton={!isEnableConfirmButton}
           />
         </div>
       </div>

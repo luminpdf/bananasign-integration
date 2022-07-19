@@ -1,12 +1,9 @@
 import React from 'react';
 
+import {IAssignerProps} from '../InviteToSign/InviteToSign.interface';
+
 export interface IAvatarProps {
   className?: string;
-  user: IUserProps;
+  user: IAssignerProps;
   style?: React.CSSProperties;
 }
-
-type IUserProps = {
-  name?: string;
-  url?: string;
-};

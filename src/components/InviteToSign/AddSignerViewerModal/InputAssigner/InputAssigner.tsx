@@ -1,80 +1,94 @@
 import './InputAssigner.style.scss';
 
 import classNames from 'classnames';
-import React, {useImperativeHandle, useRef, useState} from 'react';
+import React, {useContext, useImperativeHandle, useRef, useState} from 'react';
 
 import {Images} from '@src/assets';
 import CustomInput from '@src/components/CustomInput';
 import {ICustomInputRef} from '@src/components/CustomInput/CustomInput.interface';
+import {CONTACT_TYPE, GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
+import common from '@src/utils/common';
 
+import InviteToSignContext from '../../InviteToSignContext';
+import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 import AssignerListInput from './AssignerListInput/AssignerListInput';
-// import { AssignModalActions, AssignModalContext } from '../AssignModal';
-// import AssignerListInput from '../AssignerListInput';
-import {IInputAssignerProps} from './InputAssigner.interface';
+import {
+  IInputAssignerProps,
+  IInputAssignerRef,
+} from './InputAssigner.interface';
 
-// import { REQUEST_TYPE } from '@src/constants/common';
-
-// const GUEST_USER = 'Guest User';
-
-const InputAssigner: React.FC<IInputAssignerProps> = React.forwardRef(
+const InputAssigner = React.forwardRef<IInputAssignerRef, IInputAssignerProps>(
   (props, ref) => {
-    //   const { state: { signers, viewers, type, searchContacts, contextView }, dispatch } = useContext(AssignModalContext);
+    const {
+      state: {searchContacts, signers, viewers, type},
+      dispatch,
+    } = useContext(InviteToSignContext);
     const {onFocus, onBlur, isOpenSearch} = props;
     const [email, setEmail] = useState('');
     const customInputRef = useRef<ICustomInputRef>(null);
-    //   const assignUsers = type === REQUEST_TYPE.SIGNER ? signers : viewers;
-    //   const [currentUser, currentContract] = useSelector(
-    //     state => [selectors.getCurrentUser(state), selectors.getCurrentContract(state)],
-    //     shallowEqual,
-    //   );
+    const assignUsers = type === REQUEST_TYPE.SIGNER ? signers : viewers;
+    const assignUsersAdded = assignUsers.filter((user) => !user.isOwner);
 
     useImperativeHandle(ref, () => ({
       unFocusInput: () => customInputRef?.current?.unFocus(),
       resetInput: () => {
         customInputRef?.current?.reset();
         setEmail('');
-        //   dispatch(AssignModalActions.SET_CONTEXT_DATA({
-        //     searchContacts: [],
-        //     totalSearchContacts: 0,
-        //     keyWordSearchContact: '',
-        //   }));
+        dispatch(InviteToSignContextActions.SET_SEARCH_CONTACTS([]));
+        dispatch(InviteToSignContextActions.SET_WORD_SEARCH_CONTACT(''));
       },
     }));
 
-    //   const isEmptyAssignUsers = Array.isArray(assignUsers) && assignUsers.length === 0;
-    //   const isOwner = true;
-    //   const isAddViewerSigning = contextView?.state?.currentScreen === DOCUMENT_SCREENS.SIGN_SUCCESS || contextView?.state?.isAddViewerAfterSign;
-    // check empty add viewer for signer after signing
-    //   const isEmptyAssignUsersAfterSigning = isAddViewerSigning && !assignUsers.filter(assigner => assigner?.newAssignUser).length;
+    const handleSearchContactByEmail = common.debounce((keyWords: string) => {
+      if (!common.validateEmail(keyWords)) {
+        return false;
+      }
+
+      const contactList = [
+        {
+          name: GUEST_USER,
+          avatarRemoteId: '',
+          email: keyWords,
+          type: CONTACT_TYPE.GUEST,
+          userId: '',
+        },
+      ];
+
+      dispatch(InviteToSignContextActions.SET_SEARCH_CONTACTS(contactList));
+      dispatch(InviteToSignContextActions.SET_WORD_SEARCH_CONTACT(keyWords));
+      return true;
+    }, 300);
+
+    const isEmptyAssignUsers =
+      Array.isArray(assignUsersAdded) && assignUsersAdded.length === 0;
 
     const _handleInputChange = (value: string) => {
-      console.log({value});
-      // dispatch(AssignModalActions.SET_CONTEXT_DATA({
-      //   keyWordSearchContact: value,
-      //   loading: true
-      // }))
+      dispatch(InviteToSignContextActions.SET_WORD_SEARCH_CONTACT(value));
+      handleSearchContactByEmail(value);
     };
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
       setEmail(e.target.value || '');
       _handleInputChange(e.target.value || '');
-      // if (searchContacts.length > 0) {
-      //   dispatch(AssignModalActions.SET_CONTEXT_DATA({
-      //     searchContacts: [],
-      //     totalSearchContacts: 0
-      //   }))
-      // }
+
+      if (searchContacts.length > 0) {
+        dispatch(InviteToSignContextActions.SET_SEARCH_CONTACTS([]));
+      }
     };
 
     return (
       <div
         className={classNames('InputAssigner__container', {
           isOpenSearch: isOpenSearch,
-          //   'EmptyAssignUsers': isEmptyAssignUsers || isEmptyAssignUsersAfterSigning,
-          //   'EmptyAssignUsers': isEmptyAssignUsers,
+          EmptyAssignUsers: isEmptyAssignUsers,
         })}
       >
-        <AssignerListInput />
+        {!isEmptyAssignUsers && (
+          <>
+            <AssignerListInput />
+            <div className="InputAssigner__divider" />
+          </>
+        )}
         <CustomInput
           ref={customInputRef}
           name="name"

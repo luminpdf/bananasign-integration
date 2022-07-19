@@ -21,7 +21,6 @@ export interface ICustomInputProps
   classWrapper?: string;
   icon?: string;
   onPress?: () => void;
-  buttonName?: string;
   isErrorBorder?: boolean;
   showErrorMessageOnFocus?: boolean;
 }

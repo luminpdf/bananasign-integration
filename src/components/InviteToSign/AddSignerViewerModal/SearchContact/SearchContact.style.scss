@@ -17,13 +17,14 @@
   visibility: hidden;
   transform: translateY(10px) scale(0.8);
   z-index: -1;
-  transition: scale .3s ease, visibility 0s linear 0.33s, opacity 0.3s linear, transform 0.3s ease;
+  transition: scale 0.3s ease, visibility 0s linear 0.33s, opacity 0.3s linear,
+    transform 0.3s ease;
 
   &.active {
     opacity: 1;
     visibility: visible;
     z-index: 1;
-    transform: translateY(0) scale(1);;
+    transform: translateY(0) scale(1);
     transition-delay: 0s;
   }
 }
@@ -37,10 +38,10 @@
   flex-direction: column;
   padding-top: 8px;
 
-//   .UserItem__container {
-//     width: 100%;
-//     box-sizing: border-box;
-//     padding: 9px 16px 9px 16px;
-//   }
+  .SearchContact__item {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 16px 9px 16px;
+    cursor: pointer;
+  }
 }
-

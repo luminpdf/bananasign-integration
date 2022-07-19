@@ -43,7 +43,7 @@ const CustomModal: React.FC<ICustomModalProps> = (props) => {
 CustomModal.defaultProps = {
   children: null,
   isOpen: false,
-  shouldCloseOnOverlayClick: true,
+  shouldCloseOnOverlayClick: false,
   isShowCloseButton: true,
   onCancel: undefined,
   className: '',

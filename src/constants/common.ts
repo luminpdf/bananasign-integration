@@ -15,3 +15,5 @@ export const BUTTON_TYPE = {
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
 };
+
+export const GUEST_USER = 'Guest User';

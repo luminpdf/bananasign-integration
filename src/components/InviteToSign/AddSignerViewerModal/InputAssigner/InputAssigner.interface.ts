@@ -3,3 +3,8 @@ export interface IInputAssignerProps {
   onBlur?: () => void;
   isOpenSearch?: boolean;
 }
+
+export interface IInputAssignerRef {
+  unFocusInput: () => void;
+  resetInput: () => void;
+}

@@ -25,36 +25,6 @@
   padding-top: 16px;
   position: relative;
 }
-.AssignModal__tabs {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-around;
-  border-bottom: 1px solid var(--color-primary-230);
-}
-.AssignModal__tab {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  color: var(--color-other-1);
-  margin: 0;
-  padding-bottom: 8px;
-  cursor: pointer;
-  width: 50%;
-
-  &:hover {
-    color: var(--color-neutral-100);
-  }
-
-  &.active {
-    border-bottom: 2px solid var(--color-blue);
-    color: var(--color-neutral-100);
-  }
-}
 .AssignModal__contact-list {
   width: 100%;
   max-height: 224px;
@@ -164,45 +134,4 @@
   justify-content: space-between;
   flex-direction: row;
   margin-top: 16px;
-}
-
-.RecentContacts__container {
-  transition: transform 0.5s;
-
-  .UserItem__container {
-    padding: 9px 12px 9px 8px;
-  }
-
-  &:hover {
-    .UserItem__info {
-      transform: scale3d(1.01, 1.01, 1);
-    }
-  }
-}
-
-.RecentContacts__no-contacts {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  img {
-    height: 100px;
-  }
-
-  span {
-    font-family: var(--font-primary);
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--color-blue);
-    margin-top: 16px;
-  }
-}
-
-.RecentContacts__list {
-  overflow: overlay !important;
 }

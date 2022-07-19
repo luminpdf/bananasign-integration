@@ -1,0 +1,40 @@
+.RecentContacts__container {
+  transition: transform 0.5s;
+
+  .UserItem__container {
+    padding: 9px 12px 9px 8px;
+  }
+
+  &:hover {
+    .UserItem__info {
+      transform: scale3d(1.01, 1.01, 1);
+    }
+  }
+}
+
+.RecentContacts__no-contacts {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img {
+    height: 90px;
+  }
+
+  span {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-neutral-100);
+    margin-top: 16px;
+  }
+}
+
+.RecentContacts__list {
+  overflow: overlay !important;
+}

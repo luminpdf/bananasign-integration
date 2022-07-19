@@ -140,29 +140,26 @@ const CustomInput = React.forwardRef<ICustomInputRef, ICustomInputProps>(
   },
 );
 
-// CustomInput.defaultProps = {
-//   className: '',
-//   labelClassName: '',
-//   errorMessage: '',
-//   label: '',
-//   name: '',
-//   onBlur: () => undefined,
-//   onFocus: () => undefined,
-//   onChange: () => undefined,
-//   fullWidth: false,
-//   hideValidationIcon: false,
-//   showClearButton: false,
-//   type: 'text',
-//   disabled: false,
-//   readOnly: false,
-//   classWrapper: '',
-//   icon: '',
-//   postfix: null,
-//   isErrorBorder: false,
-//   onPress: () => undefined,
-//   buttonName: '',
-//   showErrorMessageOnFocus: false,
-// };
+CustomInput.defaultProps = {
+  className: '',
+  labelClassName: '',
+  errorMessage: '',
+  label: '',
+  name: '',
+  onBlur: () => undefined,
+  onFocus: () => undefined,
+  onChange: () => undefined,
+  fullWidth: false,
+  hideValidationIcon: false,
+  showClearButton: false,
+  type: 'text',
+  disabled: false,
+  readOnly: false,
+  classWrapper: '',
+  icon: '',
+  isErrorBorder: false,
+  showErrorMessageOnFocus: false,
+};
 
 CustomInput.displayName = 'CustomInput';
 

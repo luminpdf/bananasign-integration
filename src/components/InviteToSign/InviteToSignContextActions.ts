@@ -1,28 +1,83 @@
-import {INVITE_TO_SIGN_ACTION_TYPE} from './InviteToSignProvider';
+import {IAssignerProps} from './InviteToSign.interface';
+import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignProvider';
 
 export const InviteToSignContextActions = {
   SET_LOADING: (isLoading: boolean) => {
     return {
-      type: INVITE_TO_SIGN_ACTION_TYPE.SET_LOADING,
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_LOADING,
       payload: isLoading,
     };
   },
   SET_OPEN_ADD_ASSIGNER_MODAL: (isOpen: boolean) => {
     return {
-      type: INVITE_TO_SIGN_ACTION_TYPE.SET_OPEN_ADD_ASSIGNER_MODAL,
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_OPEN_ADD_ASSIGNER_MODAL,
       payload: isOpen,
     };
   },
-  REMOVE_SIGNER: (email: string) => {
+  REMOVE_SIGNER: (contact: IAssignerProps) => {
     return {
-      type: INVITE_TO_SIGN_ACTION_TYPE.REMOVE_SIGNER,
-      payload: email,
+      type: INVITE_TO_SIGN_ACTION_TYPES.REMOVE_SIGNER,
+      payload: contact,
     };
   },
-  REMOVE_VIEWER: (email: string) => {
+  REMOVE_VIEWER: (contact: IAssignerProps) => {
     return {
-      type: INVITE_TO_SIGN_ACTION_TYPE.REMOVE_VIEWER,
-      payload: email,
+      type: INVITE_TO_SIGN_ACTION_TYPES.REMOVE_VIEWER,
+      payload: contact,
+    };
+  },
+  SET_WORD_SEARCH_CONTACT: (text: string) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_WORD_SEARCH_CONTACT,
+      payload: text,
+    };
+  },
+  SET_SEARCH_CONTACTS: (contact: IAssignerProps[]) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_SEARCH_CONTACTS,
+      payload: contact,
+    };
+  },
+  ADD_VIEWER: (contact: IAssignerProps) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.ADD_VIEWER,
+      payload: contact,
+    };
+  },
+  ADD_SIGNER: (contact: IAssignerProps) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.ADD_SIGNER,
+      payload: contact,
+    };
+  },
+  SET_REQUEST_TYPE: (type: string) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_REQUEST_TYPE,
+      payload: type,
+    };
+  },
+  CANCEL_ADD_ASSIGNERS: (isCancel: boolean) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.CANCEL_ADD_ASSIGNERS,
+      payload: isCancel,
+    };
+  },
+  SET_SIGNERS: (signers: IAssignerProps[]) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_SIGNERS,
+      payload: signers,
+    };
+  },
+  SET_VIEWERS: (viewers: IAssignerProps[]) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_VIEWERS,
+      payload: viewers,
+    };
+  },
+  CLOSE_AND_RESET_MODAL_SEARCH: () => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.CLOSE_AND_RESET_MODAL_SEARCH,
+      payload: {},
     };
   },
 };

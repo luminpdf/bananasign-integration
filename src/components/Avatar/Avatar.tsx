@@ -44,7 +44,7 @@ const Avatar: React.FC<IAvatarProps> = ({className, user, style}) => {
   const thumbnailAvatar = useMemo(() => {
     return (
       <img
-        src={user.url}
+        src={user.avatarRemoteId}
         alt="user avatar"
         onError={({currentTarget}) => {
           currentTarget.onerror = null; // prevents looping
@@ -53,10 +53,14 @@ const Avatar: React.FC<IAvatarProps> = ({className, user, style}) => {
         }}
       />
     );
-  }, [user?.url]);
+  }, [user?.avatarRemoteId]);
 
   const renderAvatar = () => {
-    return (user?.url && thumbnailAvatar) || (user?.name && nameAvatar) || null;
+    return (
+      (user?.avatarRemoteId && thumbnailAvatar) ||
+      (user?.name && nameAvatar) ||
+      null
+    );
   };
 
   return (

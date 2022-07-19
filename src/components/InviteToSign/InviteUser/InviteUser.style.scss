@@ -80,6 +80,10 @@
       max-height: 250px;
       border-bottom: solid 1px var(--color-primary-230);
       margin-bottom: 12px;
+
+      &.hide_border {
+        border-bottom: none;
+      }
     }
   }
 

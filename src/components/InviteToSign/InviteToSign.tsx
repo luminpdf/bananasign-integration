@@ -22,8 +22,8 @@ const InviteToSign: React.FC = () => {
         <Header />
         <InviteUser />
         <Footer />
+        <AddSignerViewerModal />
       </div>
-      <AddSignerViewerModal />
     </InviteToSignProvider>
   );
 };

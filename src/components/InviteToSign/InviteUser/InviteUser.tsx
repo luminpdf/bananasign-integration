@@ -1,24 +1,54 @@
 import './InviteUser.style.scss';
 
-import React, {useContext} from 'react';
+import classNames from 'classnames';
+import React, {useContext, useEffect, useState} from 'react';
 
 import {Images} from '@src/assets';
+import {REQUEST_TYPE} from '@src/constants/common';
 
 import Button from '@components/Button';
 
+import {IAssignerProps} from '../InviteToSign.interface';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
 
 const InviteUser: React.FC = () => {
   const context = useContext(InviteToSignContext);
-  const handleOpenAddAssignerModal = () => {
-    console.log('dispatch');
-    context.dispatch(
-      InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true),
-    );
+  const {
+    state: {signers, viewers, isOpenAddAssignerModal, cancelAddAssigners},
+    dispatch,
+  } = context;
+  const [signersState, setSignersState] = useState<IAssignerProps[]>([]);
+  const [viewersState, setViewersState] = useState<IAssignerProps[]>([]);
+
+  useEffect(() => {
+    if (isOpenAddAssignerModal) {
+      return;
+    }
+    if (cancelAddAssigners) {
+      dispatch(InviteToSignContextActions.SET_SIGNERS(signersState));
+      dispatch(InviteToSignContextActions.SET_VIEWERS(viewersState));
+      dispatch(InviteToSignContextActions.CANCEL_ADD_ASSIGNERS(false));
+    } else {
+      setSignersState(signers);
+      setViewersState(viewers);
+    }
+  }, [isOpenAddAssignerModal, signers, viewers]);
+
+  const handleOpenAddAssignerModal = (type: string) => {
+    dispatch(InviteToSignContextActions.SET_REQUEST_TYPE(type));
+    dispatch(InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true));
   };
-  const signers = [1, 2];
+
+  const handleRemoveSigner = (signer: IAssignerProps) => {
+    dispatch(InviteToSignContextActions.REMOVE_SIGNER(signer));
+  };
+
+  const handleRemoveViewer = (viewer: IAssignerProps) => {
+    dispatch(InviteToSignContextActions.REMOVE_VIEWER(viewer));
+  };
+
   return (
     <div className="InviteUser__container">
       <h1 className="InviteUser__title">Invite people</h1>
@@ -27,13 +57,22 @@ const InviteUser: React.FC = () => {
           Who needs to Sign?<span> *</span>
         </h2>
         <div className="InviteUser__wrapper-add-user">
-          <div className="InviteUser__wrapper-user-list">
-            {signers.map((_signer) => (
-              <AssignerItem />
+          <div
+            className={classNames('InviteUser__wrapper-user-list', {
+              hide_border: !signersState.length,
+            })}
+          >
+            {signersState.map((signer: IAssignerProps, index: number) => (
+              <AssignerItem
+                key={signer?.email + '' + index}
+                user={signer}
+                onRemoveUser={handleRemoveSigner}
+                role="signer"
+              />
             ))}
           </div>
           <Button
-            onClick={handleOpenAddAssignerModal}
+            onClick={() => handleOpenAddAssignerModal(REQUEST_TYPE.SIGNER)}
             className="InviteUser__wrapper-add-button"
             isRippleEffect
             title="Add Signer"
@@ -42,12 +81,22 @@ const InviteUser: React.FC = () => {
         </div>
         <h2 className="InviteUser__wrapper-title">Who needs to View?</h2>
         <div className="InviteUser__wrapper-add-user">
-          <div className="InviteUser__wrapper-user-list">
-            {signers.map((_signer) => (
-              <AssignerItem />
+          <div
+            className={classNames('InviteUser__wrapper-user-list', {
+              hide_border: !viewersState.length,
+            })}
+          >
+            {viewersState.map((viewer: IAssignerProps, index: number) => (
+              <AssignerItem
+                key={viewer?.email + '' + index}
+                user={viewer}
+                onRemoveUser={handleRemoveViewer}
+                role="viewer"
+              />
             ))}
           </div>
           <Button
+            onClick={() => handleOpenAddAssignerModal(REQUEST_TYPE.VIEWER)}
             className="InviteUser__wrapper-add-button"
             isRippleEffect
             title="Add Viewer"

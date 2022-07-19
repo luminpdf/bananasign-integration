@@ -8,8 +8,14 @@ import icon_show from './icon_show.svg';
 import icon_sign_logo from './icon_sign_logo.svg';
 import icon_sign from './icon_sign.svg';
 import icon_trash from './icon_trash.svg';
+import image_empty_contracts from './image_empty_contracts.svg';
+import image_empty_search_contact from './image_empty_search_contact.svg';
+import image_no_key_words from './image_no_key_words.svg';
 
 export {
+  image_empty_contracts,
+  image_no_key_words,
+  image_empty_search_contact,
   icon_cancel_button,
   icon_sign_logo,
   icon_sign,
