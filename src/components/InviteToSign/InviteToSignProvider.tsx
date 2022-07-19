@@ -19,6 +19,7 @@ export const INVITE_TO_SIGN_ACTION_TYPES = {
   SET_REQUEST_TYPE: 'SET_REQUEST_TYPE',
   CANCEL_ADD_ASSIGNERS: 'CANCEL_ADD_ASSIGNERS',
   CLOSE_AND_RESET_MODAL_SEARCH: 'CLOSE_AND_RESET_MODAL_SEARCH',
+  OPEN_BANANASIGN_IFRAME: 'OPEN_BANANASIGN_IFRAME',
 };
 
 interface IInviteToSignProps {
@@ -40,6 +41,7 @@ export const initialState = {
   keyWordSearchContact: '',
   searchContacts: [],
   cancelAddAssigners: false,
+  openBananasignIframe: false,
 };
 
 const InviteToSignProvider: React.FC<IInviteToSignProps> = (props) => {

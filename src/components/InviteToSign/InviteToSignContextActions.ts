@@ -80,4 +80,10 @@ export const InviteToSignContextActions = {
       payload: {},
     };
   },
+  OPEN_BANANASIGN_IFRAME: (isOpen: boolean) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.OPEN_BANANASIGN_IFRAME,
+      payload: isOpen,
+    };
+  },
 };

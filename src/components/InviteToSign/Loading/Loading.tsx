@@ -10,10 +10,10 @@ import InviteToSignContext from '../InviteToSignContext';
 const Loading: React.FC = () => {
   const context = useContext(InviteToSignContext);
   const {
-    state: {loading},
+    state: {loading, openBananasignIframe},
   } = context;
 
-  if (!loading) {
+  if (!loading || openBananasignIframe) {
     return null;
   }
 

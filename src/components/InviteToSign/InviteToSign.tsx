@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 
 import AddSignerViewerModal from './AddSignerViewerModal';
+import BananasignIframe from './BananasignIframe';
 import Footer from './Footer';
 import Header from './Header';
 import InviteToSignProvider from './InviteToSignProvider';
@@ -25,6 +26,7 @@ const InviteToSign: React.FC = () => {
         <Footer />
         <AddSignerViewerModal />
         <Loading />
+        <BananasignIframe />
       </div>
     </InviteToSignProvider>
   );

@@ -95,6 +95,11 @@ export const InviteToSignContextReducer = (state: any, action: any) => {
         keyWordSearchContact: '',
         isOpenAddAssignerModal: false,
       };
+    case INVITE_TO_SIGN_ACTION_TYPES.OPEN_BANANASIGN_IFRAME:
+      return {
+        ...state,
+        openBananasignIframe: action.payload,
+      };
 
     default:
       return;

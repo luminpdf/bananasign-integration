@@ -17,4 +17,5 @@ export interface IState {
   keyWordSearchContact: string;
   searchContacts: IAssignerProps[];
   cancelAddAssigners: boolean;
+  openBananasignIframe: boolean;
 }

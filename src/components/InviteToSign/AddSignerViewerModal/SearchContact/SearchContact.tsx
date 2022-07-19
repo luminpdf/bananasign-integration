@@ -21,6 +21,7 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
       state: {searchContacts, signers, viewers, type},
       dispatch,
     } = useContext(InviteToSignContext);
+
     const existedUser = useCallback(
       (contact: IAssignerProps) => {
         return (

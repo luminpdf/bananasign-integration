@@ -51,6 +51,9 @@ const InviteUser: React.FC = () => {
 
   const handleNext = () => {
     dispatch(InviteToSignContextActions.SET_LOADING(true));
+    setTimeout(() => {
+      dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
+    }, 3000);
   };
 
   return (
