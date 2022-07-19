@@ -49,6 +49,10 @@ const InviteUser: React.FC = () => {
     dispatch(InviteToSignContextActions.REMOVE_VIEWER(viewer));
   };
 
+  const handleNext = () => {
+    dispatch(InviteToSignContextActions.SET_LOADING(true));
+  };
+
   return (
     <div className="InviteUser__container">
       <h1 className="InviteUser__title">Invite people</h1>
@@ -107,6 +111,7 @@ const InviteUser: React.FC = () => {
           className="InviteUser__next-button"
           isRippleEffect
           title="Next"
+          onClick={handleNext}
         />
       </div>
     </div>

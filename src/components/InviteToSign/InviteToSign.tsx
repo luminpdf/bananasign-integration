@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Header from './Header';
 import InviteToSignProvider from './InviteToSignProvider';
 import InviteUser from './InviteUser';
+import Loading from './Loading';
 
 const InviteToSign: React.FC = () => {
   const [open, _setOpen] = React.useState(true);
@@ -23,6 +24,7 @@ const InviteToSign: React.FC = () => {
         <InviteUser />
         <Footer />
         <AddSignerViewerModal />
+        <Loading />
       </div>
     </InviteToSignProvider>
   );
