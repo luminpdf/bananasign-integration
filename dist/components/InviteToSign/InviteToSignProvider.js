@@ -17,7 +17,7 @@ var __assign =
 import {useReducer} from 'react';
 import {jsx as _jsx} from 'react/jsx-runtime';
 
-import {REQUEST_TYPE} from '@src/constants/common';
+import {BANANA_SIGN_WEB_URL, REQUEST_TYPE} from '@src/constants/common';
 import common from '@src/utils/common';
 
 import InviteToSignContext, {initialState} from './InviteToSignContext';
@@ -28,7 +28,8 @@ var InviteToSignProvider = function (_a) {
     signers = _a.signers,
     viewers = _a.viewers,
     onPutDocumentInfo = _a.onPutDocumentInfo,
-    integrationId = _a.integrationId;
+    integrationId = _a.integrationId,
+    bananasignUrl = _a.bananasignUrl;
   var signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
   var viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
   var _b = useReducer(
@@ -39,6 +40,7 @@ var InviteToSignProvider = function (_a) {
         onClose: onClose,
         onPutDocumentInfo: onPutDocumentInfo,
         integrationId: integrationId,
+        bananasignUrl: bananasignUrl || BANANA_SIGN_WEB_URL,
       }),
     ),
     state = _b[0],

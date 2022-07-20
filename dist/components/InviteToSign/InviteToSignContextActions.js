@@ -90,5 +90,11 @@ export var InviteToSignContextActions = {
       payload: modalType,
     };
   },
+  SET_IDENTIFY: function (identify) {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_IDENTIFY,
+      payload: identify,
+    };
+  },
 };
 //# sourceMappingURL=InviteToSignContextActions.js.map

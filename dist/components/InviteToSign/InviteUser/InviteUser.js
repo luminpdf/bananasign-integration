@@ -255,11 +255,8 @@ var InviteUser = function () {
             result = _a.sent();
             identify = result.identify;
             if (identify) {
-              setTimeout(function () {
-                dispatch(
-                  InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true),
-                );
-              }, 3000);
+              dispatch(InviteToSignContextActions.SET_IDENTIFY(identify));
+              dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
             }
             return [3 /*break*/, 5];
           case 3:

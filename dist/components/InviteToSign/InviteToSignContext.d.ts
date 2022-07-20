@@ -24,6 +24,8 @@ export declare const initialState: {
         identify: string;
     }>;
     integrationId: string;
+    identify: string;
+    bananasignUrl: string;
 };
 declare const InviteToSignContext: React.Context<ContextType>;
 export default InviteToSignContext;

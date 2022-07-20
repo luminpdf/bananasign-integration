@@ -21,6 +21,8 @@ export var initialState = {
     return Promise.resolve({identify: ''});
   },
   integrationId: '',
+  identify: '',
+  bananasignUrl: '',
 };
 var InviteToSignContext = React.createContext({
   state: initialState,

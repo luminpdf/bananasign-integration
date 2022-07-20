@@ -678,7 +678,7 @@ var k = function (n) {
   F = 'tertiary',
   B = 'ONLY_ONE_SIGNER_IS_OWNER',
   j = 'CANCEL_PROGRESS',
-  P = function (n) {
+  N = function (n) {
     var r = n.onCancel,
       e = n.onConfirm,
       t = n.primaryTitle,
@@ -711,13 +711,13 @@ var k = function (n) {
       ),
     );
   };
-P.defaultProps = {
+N.defaultProps = {
   disabledConfirmButton: !1,
   primaryTitle: 'Done',
   secondaryTitle: 'Cancel',
   className: '',
 };
-var N = e.memo(P);
+var P = e.memo(N);
 var R = {
     loading: !1,
     isOpenAddAssignerModal: !1,
@@ -734,10 +734,12 @@ var R = {
       return Promise.resolve({identify: ''});
     },
     integrationId: '',
+    identify: '',
+    bananasignUrl: '',
   },
   L = f.default.createContext({state: R, dispatch: function () {}}),
-  V = 'SET_LOADING',
-  S = 'SET_OPEN_ADD_ASSIGNER_MODAL',
+  S = 'SET_LOADING',
+  V = 'SET_OPEN_ADD_ASSIGNER_MODAL',
   O = 'SET_SIGNERS',
   H = 'SET_VIEWERS',
   T = 'REMOVE_SIGNER',
@@ -751,50 +753,54 @@ var R = {
   Q = 'CLOSE_AND_RESET_MODAL_SEARCH',
   X = 'OPEN_BANANASIGN_IFRAME',
   $ = 'SET_MODAL_WARNING_TYPE',
-  J = function (n) {
-    return {type: V, payload: n};
-  },
+  J = 'SET_IDENTIFY',
   K = function (n) {
     return {type: S, payload: n};
   },
   nn = function (n) {
-    return {type: T, payload: n};
+    return {type: V, payload: n};
   },
   on = function (n) {
-    return {type: U, payload: n};
+    return {type: T, payload: n};
   },
   rn = function (n) {
-    return {type: G, payload: n};
+    return {type: U, payload: n};
   },
   en = function (n) {
-    return {type: W, payload: n};
+    return {type: G, payload: n};
   },
   tn = function (n) {
-    return {type: Z, payload: n};
+    return {type: W, payload: n};
   },
   an = function (n) {
-    return {type: z, payload: n};
+    return {type: Z, payload: n};
   },
   ln = function (n) {
-    return {type: Y, payload: n};
+    return {type: z, payload: n};
   },
   sn = function (n) {
-    return {type: q, payload: n};
+    return {type: Y, payload: n};
   },
   cn = function (n) {
-    return {type: O, payload: n};
+    return {type: q, payload: n};
   },
   fn = function (n) {
+    return {type: O, payload: n};
+  },
+  dn = function (n) {
     return {type: H, payload: n};
   },
-  dn = function () {
+  pn = function () {
     return {type: Q, payload: {}};
   },
-  pn = function (n) {
+  un = function (n) {
     return {type: X, payload: n};
   },
-  un = function (n) {
+  mn = function (n) {
     return {type: $, payload: n};
+  },
+  yn = function (n) {
+    return {type: J, payload: n};
   };
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n:root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.InputAssigner__container {\n  margin-top: 16px;\n  display: flex;\n  align-items: flex-start;\n  justify-content: center;\n  flex-direction: column;\n  width: 100%;\n  border: 2px solid var(--color-neutral-40);\n  box-sizing: border-box;\n  border-radius: 8px;\n}\n.InputAssigner__container.EmptyAssignUsers .AssignerListInput__container {\n  padding: 0;\n}\n.InputAssigner__container.isOpenSearch {\n  border: 2px solid var(--color-neutral-100);\n}\n\n.InputAssigner__wrapper--input .CustomInput__wrapper {\n  margin-top: 0;\n}\n\n.InputAssigner__input {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  border: unset;\n}\n.InputAssigner__input.CustomInput__input {\n  border: unset;\n}\n.InputAssigner__input.CustomInput__input--focus:focus {\n  border: unset;\n}\n\n.InputAssigner__divider {\n  width: 100%;\n  height: 1px;\n  background-color: var(--color-primary-230);\n  margin-top: 2px;\n}',
@@ -802,7 +808,7 @@ n(
   n(
     ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.CustomInput-container {\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  flex-direction: column;\n}\n.CustomInput-container.fullWidth {\n  width: 100%;\n}\n\n.CustomInput__label {\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 700;\n  font-size: 12px;\n  line-height: 18px;\n  color: var(--color-neutral-100);\n}\n\n.CustomInput__wrapper {\n  height: 44px;\n  width: 100%;\n  border-radius: 8px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-direction: column;\n  position: relative;\n  margin-top: 4px;\n}\n\n.CustomInput__input {\n  width: 100%;\n  background: transparent;\n  border: none;\n  outline: none;\n  -webkit-appearance: none;\n  box-sizing: border-box;\n  display: block;\n  background-color: white;\n  box-shadow: none;\n  border: 2px solid var(--color-neutral-40);\n  box-sizing: border-box;\n  border-radius: 8px;\n  height: 44px;\n  padding: 0 18px;\n  font-size: 16px;\n  font-weight: 500;\n  line-height: 24px;\n  font-family: var(--font-primary);\n  letter-spacing: 0.34px;\n  color: var(--color-neutral-100);\n}\n.CustomInput__input::placeholder {\n  color: var(--color-neutral-40);\n  font-family: var(--font-primary);\n}\n.CustomInput__input:focus {\n  border: 2px solid var(--color-neutral-100);\n}\n.CustomInput__input--error {\n  border-color: red !important;\n}\n.CustomInput__input--hasIcon {\n  padding-right: 48px;\n}\n.CustomInput__input--hasLeftIcon {\n  padding-left: 36px;\n}\n.CustomInput__input--focus {\n  border-color: var(--color-neutral-100);\n}\n\n.CustomInput__error-message {\n  font-size: 12px;\n  color: var(--color-red);\n  font-weight: 600;\n  margin-top: 4px;\n  margin-bottom: 0px;\n  font-family: var(--font-primary);\n}\n\n.CustomInput__icon {\n  position: absolute;\n  top: 50%;\n  right: 18px;\n  transform: translateY(-50%);\n}\n\n.CustomInput__icon--clickable {\n  cursor: pointer;\n}\n\n.CustomInput__left-icon {\n  position: absolute;\n  top: 50%;\n  left: 12px;\n  transform: translateY(-50%);\n  color: var(--color-secondary);\n  pointer-events: none;\n}\n\n.CustomInput__addon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  max-width: 200px;\n}\n\n.CustomInput__input--disable {\n  color: var(--color-other-1);\n}',
   );
-var mn = f.default.forwardRef(function (n, r) {
+var gn = f.default.forwardRef(function (n, r) {
   var t = n.classWrapper,
     a = n.className,
     l = n.onFocus,
@@ -863,8 +869,8 @@ var mn = f.default.forwardRef(function (n, r) {
     F = Boolean(d),
     B = !w && !v,
     j = e.useRef(null),
-    P = F && !E && !y && B,
-    N = g && B && Boolean(null == x ? void 0 : x.length),
+    N = F && !E && !y && B,
+    P = g && B && Boolean(null == x ? void 0 : x.length),
     R = E || (!F && Boolean(x && !k)),
     L = !R || D;
   return (
@@ -932,7 +938,7 @@ var mn = f.default.forwardRef(function (n, r) {
                             {
                               'CustomInput__input--focus': R,
                               'CustomInput__input--error': (L && F) || k,
-                              'CustomInput__input--hasIcon': P || N,
+                              'CustomInput__input--hasIcon': N || P,
                               'CustomInput__input--hasLeftIcon': Boolean(C),
                               'CustomInput__input--disable': v,
                             },
@@ -956,7 +962,7 @@ var mn = f.default.forwardRef(function (n, r) {
                         M,
                       ),
                     ),
-                    N &&
+                    P &&
                       o.jsx(
                         'div',
                         m(
@@ -995,7 +1001,7 @@ var mn = f.default.forwardRef(function (n, r) {
     )
   );
 });
-(mn.defaultProps = {
+(gn.defaultProps = {
   className: '',
   labelClassName: '',
   errorMessage: '',
@@ -1015,9 +1021,9 @@ var mn = f.default.forwardRef(function (n, r) {
   isErrorBorder: !1,
   showErrorMessageOnFocus: !1,
 }),
-  (mn.displayName = 'CustomInput');
-var yn = e.memo(mn),
-  gn = function (n) {
+  (gn.displayName = 'CustomInput');
+var hn = e.memo(gn),
+  xn = function (n) {
     var o = '';
     n &&
       n.split(' ').length > 0 &&
@@ -1025,12 +1031,12 @@ var yn = e.memo(mn),
       (o = (o = n.split(' ')[0].charAt(0)).toUpperCase()));
     return o;
   },
-  hn = function (n) {
+  bn = function (n) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
       String(n).toLowerCase(),
     );
   },
-  xn = function (n, o) {
+  wn = function (n, o) {
     var r = null;
     return function () {
       for (var e = [], t = 0; t < arguments.length; t++) e[t] = arguments[t];
@@ -1040,7 +1046,7 @@ var yn = e.memo(mn),
         }, o));
     };
   },
-  bn = function (n, o) {
+  vn = function (n, o) {
     return n.map(function (n, r) {
       return m(m({}, n), {
         name: (null == n ? void 0 : n.name) || 'Guest User',
@@ -1054,7 +1060,7 @@ var yn = e.memo(mn),
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.AssignerListInput__container {\n  display: flex;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  max-height: 150px;\n  overflow: hidden;\n  overflow-y: scroll;\n  height: 100%;\n  -webkit-overflow-scrolling: touch;\n  overflow: overlay;\n  padding-top: 8px;\n}\n.AssignerListInput__container::-webkit-scrollbar {\n  border-radius: 36px;\n  height: 10px;\n  width: 4px;\n}\n.AssignerListInput__container::-webkit-scrollbar-thumb {\n  background: var(--color-primary-230);\n  border-radius: 36px;\n}\n.AssignerListInput__container::-webkit-scrollbar-track {\n  border-radius: 36px;\n}\n.AssignerListInput__container.scroll::before {\n  content: "";\n  background: white;\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6601015406) 0%, rgba(255, 255, 255, 0) 100%);\n  height: 15px;\n  position: fixed;\n  width: 489px;\n}\n\n.AssignerListInput__row-email {\n  display: flex;\n  align-items: center;\n  padding: 2px 4px 2px 8px;\n  background: var(--color-primary-160);\n  margin: 0px 0px 8px 8px;\n  border-radius: 4px;\n}\n.AssignerListInput__row-email.disabled {\n  cursor: not-allowed;\n  opacity: 0.7;\n}\n\n.AssignerListInput__email {\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 500;\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--color-blue);\n  text-align: center;\n  align-items: center;\n  display: block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  max-width: 430px;\n}\n.AssignerListInput__email.disabled {\n  cursor: not-allowed;\n  opacity: 0.7;\n}\n\n.AssignerListInput__icon-right {\n  padding: 3px;\n  margin-left: 5px;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.AssignerListInput__icon-right img {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 15px;\n  height: 15px;\n}\n.AssignerListInput__icon-right:hover {\n  background-color: var(--color-primary-230);\n}\n\n.AssignerListInput__icon-right.hidden {\n  display: none;\n  z-index: -1;\n}',
 );
-var wn = function () {
+var Cn = function () {
     var n = e.useRef(null),
       r = e.useRef(0),
       t = e.useContext(L),
@@ -1082,7 +1088,7 @@ var wn = function () {
     );
     var y = function (n) {
         !(function (n) {
-          d(f === M ? nn(n) : on(n));
+          d(f === M ? on(n) : rn(n));
         })(n);
       },
       g = u(function (n, r, e, t) {
@@ -1132,7 +1138,7 @@ var wn = function () {
       ),
     );
   },
-  vn = f.default.forwardRef(function (n, r) {
+  _n = f.default.forwardRef(function (n, r) {
     var t = e.useContext(L),
       a = t.state,
       l = a.searchContacts,
@@ -1164,16 +1170,16 @@ var wn = function () {
             void 0 === n ||
             n.reset(),
             x(''),
-            d(en([])),
-            d(rn(''));
+            d(tn([])),
+            d(en(''));
         },
       };
     });
-    var v = xn(function (n) {
+    var v = wn(function (n) {
         return (
-          !!hn(n) &&
+          !!bn(n) &&
           (d(
-            en([
+            tn([
               {
                 name: 'Guest User',
                 avatarRemoteId: '',
@@ -1183,7 +1189,7 @@ var wn = function () {
               },
             ]),
           ),
-          d(rn(n)),
+          d(en(n)),
           !0)
         );
       }, 300),
@@ -1202,11 +1208,11 @@ var wn = function () {
             !C &&
               o.jsxs(o.Fragment, {
                 children: [
-                  o.jsx(wn, {}),
+                  o.jsx(Cn, {}),
                   o.jsx('div', {className: 'InputAssigner__divider'}),
                 ],
               }),
-            o.jsx(yn, {
+            o.jsx(hn, {
               ref: b,
               name: 'name',
               fullWidth: !0,
@@ -1217,9 +1223,9 @@ var wn = function () {
                 var o;
                 x(n.target.value || ''),
                   (o = n.target.value || ''),
-                  d(rn(o)),
+                  d(en(o)),
                   v(o),
-                  l.length > 0 && d(en([]));
+                  l.length > 0 && d(tn([]));
               },
               placeholder: 'Enter email address',
               minLength: 1,
@@ -1235,13 +1241,13 @@ var wn = function () {
       ),
     );
   });
-(vn.displayName = 'InputAssigner'),
-  (vn.defaultProps = {
+(_n.displayName = 'InputAssigner'),
+  (_n.defaultProps = {
     onFocus: function () {},
     onBlur: function () {},
     isOpenSearch: !1,
   });
-var Cn = e.memo(vn);
+var kn = e.memo(_n);
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.SearchContact__container {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  background: white;\n  border: 1px solid var(--color-primary-230);\n  box-sizing: border-box;\n  box-shadow: var(--container-shadow);\n  border-radius: 4px;\n  align-items: center;\n  justify-content: flex-start;\n  display: flex;\n  flex-direction: column;\n  padding: 0;\n  opacity: 0;\n  visibility: hidden;\n  transform: translateY(10px) scale(0.8);\n  z-index: -1;\n  transition: scale 0.3s ease, visibility 0s linear 0.33s, opacity 0.3s linear, transform 0.3s ease;\n}\n.SearchContact__container.active {\n  opacity: 1;\n  visibility: visible;\n  z-index: 1;\n  transform: translateY(0) scale(1);\n  transition-delay: 0s;\n}\n\n.SearchContact__list {\n  height: 100%;\n  width: 100%;\n  display: flex;\n  align-items: flex-start;\n  justify-content: flex-start;\n  flex-direction: column;\n  padding-top: 8px;\n}\n.SearchContact__list .SearchContact__item {\n  width: 100%;\n  box-sizing: border-box;\n  padding: 9px 16px 9px 16px;\n  cursor: pointer;\n}',
 ),
@@ -1251,7 +1257,7 @@ n(
   n(
     ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.Avatar__container {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background: var(--color-neutral-100);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid var(--color-primary-350);\n  box-sizing: border-box;\n  overflow: hidden;\n  position: relative;\n}\n.Avatar__container img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.Avatar__container .Avatar__default-user {\n  width: 26px;\n  height: 26px;\n}\n\n.Avatar__name {\n  font-size: 16px;\n  line-height: 24px;\n  font-family: var(--font-primary);\n  font-weight: bold;\n  font-style: normal;\n  color: white;\n}\n\n.Avatar__wrapper {\n  position: relative;\n  margin-right: 8px;\n}',
   );
-var _n = function (n) {
+var Dn = function (n) {
   var r = n.className,
     t = n.user,
     a = n.style,
@@ -1269,7 +1275,7 @@ var _n = function (n) {
               'span',
               m(
                 {className: 'Avatar__name'},
-                {children: gn((null == t ? void 0 : t.name) || '')},
+                {children: xn((null == t ? void 0 : t.name) || '')},
               ),
             );
       },
@@ -1309,9 +1315,9 @@ var _n = function (n) {
     ),
   );
 };
-_n.defaultProps = {classNames: '', style: {}};
-var kn = e.memo(_n),
-  Dn = function (n) {
+Dn.defaultProps = {classNames: '', style: {}};
+var Mn = e.memo(Dn),
+  In = function (n) {
     var r = n.user,
       e = n.className,
       t = n.showIconTrash,
@@ -1348,7 +1354,7 @@ var kn = e.memo(_n),
                 {className: 'AssignerItem__wrapper'},
                 {
                   children: [
-                    o.jsx(kn, {
+                    o.jsx(Mn, {
                       user: r,
                       className: 'AssignerItem__wrapper-avatar',
                     }),
@@ -1417,15 +1423,15 @@ var kn = e.memo(_n),
       ),
     );
   };
-Dn.defaultProps = {
+In.defaultProps = {
   className: '',
   showIconTrash: !0,
   onClick: function () {},
   role: '',
   disabled: !1,
 };
-var Mn = e.memo(Dn),
-  In = f.default.forwardRef(function (n, r) {
+var En = e.memo(In),
+  An = f.default.forwardRef(function (n, r) {
     var t = n.active,
       a = n.resetInput,
       l = e.useContext(L),
@@ -1451,7 +1457,7 @@ var Mn = e.memo(Dn),
         return (
           p === I
             ? u(
-                tn(
+                an(
                   m(m(m({}, n), o), {
                     name: (null == n ? void 0 : n.name) || 'Guest User',
                     id: '',
@@ -1462,7 +1468,7 @@ var Mn = e.memo(Dn),
               )
             : p === M &&
               u(
-                an(
+                ln(
                   m(m(m({}, n), o), {
                     name: (null == n ? void 0 : n.name) || 'Guest User',
                     id: '',
@@ -1489,7 +1495,7 @@ var Mn = e.memo(Dn),
                     {
                       children: s.map(function (n, r) {
                         return o.jsx(
-                          Mn,
+                          En,
                           {
                             onClick: g,
                             user: n,
@@ -1508,12 +1514,12 @@ var Mn = e.memo(Dn),
       ),
     );
   });
-(In.displayName = 'SearchContact'),
-  (In.defaultProps = {active: !1, resetInput: function () {}});
-var En,
-  An = e.memo(In),
-  Fn = (((En = {})[M] = 'Add Signer'), (En[I] = 'Add Viewer'), En),
-  Bn = function () {
+(An.displayName = 'SearchContact'),
+  (An.defaultProps = {active: !1, resetInput: function () {}});
+var Fn,
+  Bn = e.memo(An),
+  jn = (((Fn = {})[M] = 'Add Signer'), (Fn[I] = 'Add Viewer'), Fn),
+  Nn = function () {
     var n,
       r,
       t = e.useContext(L),
@@ -1555,7 +1561,7 @@ var En,
         [n, r],
       );
     var h = function () {
-        f(sn(!0)), f(dn());
+        f(cn(!0)), f(pn());
       },
       x = e.useMemo(
         function () {
@@ -1592,10 +1598,10 @@ var En,
                             'h4',
                             m(
                               {className: 'AssignModal__title'},
-                              {children: Fn[i]},
+                              {children: jn[i]},
                             ),
                           ),
-                          o.jsx(Cn, {
+                          o.jsx(kn, {
                             ref: g,
                             onFocus: function () {
                               return u(!0);
@@ -1612,7 +1618,7 @@ var En,
                       {className: 'AssignModal__body'},
                       {
                         children: [
-                          o.jsx(An, {
+                          o.jsx(Bn, {
                             ref: y,
                             resetInput: function () {
                               var n;
@@ -1643,10 +1649,10 @@ var En,
                     m(
                       {className: 'AssignModal__footer'},
                       {
-                        children: o.jsx(N, {
+                        children: o.jsx(P, {
                           onCancel: h,
                           onConfirm: function () {
-                            f(dn());
+                            f(pn());
                           },
                           primaryTitle: 'Done',
                           disabledConfirmButton: !x,
@@ -1662,41 +1668,38 @@ var En,
       ),
     );
   },
-  jn = e.memo(Bn);
+  Pn = e.memo(Nn);
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.BananasignIframe__container {\n  position: absolute;\n  top: 0;\n  z-index: 101;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  background: var(--color-soft-white);\n}',
 );
-var Pn = function () {
+var Rn = function () {
     var n = e.useContext(L),
       r = n.state,
       t = r.openBananasignIframe,
       a = r.onClose,
-      l = n.dispatch,
-      i = function (n) {
-        if ('localhost:5000' === n.origin)
+      l = r.identify,
+      i = r.bananasignUrl,
+      s = n.dispatch,
+      c = function (n) {
+        if (n.origin === i)
           switch (n.data.type) {
             case 'close_task':
               a();
               break;
             case 'back_step':
-              l(pn(!1));
+              s(un(!1));
           }
       };
     return (
       e.useEffect(function () {
         return (
-          y(void 0, void 0, void 0, function () {
-            return g(this, function (n) {
-              return [2];
-            });
-          }).then(function (n) {}),
-          window.addEventListener('message', i, !1),
+          window.addEventListener('message', c, !1),
           function () {
-            window.removeEventListener('message', i);
+            window.removeEventListener('message', c);
           }
         );
       }, []),
-      t
+      t && l
         ? o.jsx(
             'div',
             m(
@@ -1705,13 +1708,17 @@ var Pn = function () {
                 children: o.jsx('iframe', {
                   width: '100%',
                   height: '100%',
-                  src: 'localhost:5000',
+                  src: ''.concat(i, '/embed/').concat(l),
                   title: 'Iframe Upload',
                   frameBorder: '0',
                   allow:
                     'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
                   id: 'bananaSignIframe',
-                  onLoad: function () {},
+                  onLoad: function () {
+                    var n = document.getElementById('bananaSignIframe');
+                    n && (n.style.visibility = 'visible'), s(K(!1));
+                  },
+                  style: {visibility: 'hidden'},
                   allowFullScreen: !0,
                 }),
               },
@@ -1720,11 +1727,11 @@ var Pn = function () {
         : null
     );
   },
-  Nn = e.memo(Pn);
+  Ln = e.memo(Rn);
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.Footer__container {\n  display: inline-flex;\n  height: auto;\n  width: auto;\n  position: fixed;\n  bottom: 32px;\n  right: 36px;\n}\n.Footer__container h6 {\n  font-family: var(--font-primary);\n  color: var(--color-neutral-100);\n  font-weight: 500;\n  font-size: 12px;\n  line-height: 18px;\n  margin: 0;\n}',
 );
-var Rn = function () {
+var Sn = function () {
     return o.jsxs(
       'div',
       m(
@@ -1741,17 +1748,17 @@ var Rn = function () {
       ),
     );
   },
-  Ln = e.memo(Rn);
+  Vn = e.memo(Sn);
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.Header__container {\n  position: relative;\n  justify-content: space-between;\n  display: flex;\n  align-items: center;\n  height: 72px;\n  background-color: white;\n}\n.Header__left {\n  margin-left: 24px;\n  cursor: pointer;\n}\n.Header__right {\n  display: flex;\n  align-items: center;\n  margin-right: 22px;\n}\n.Header__progressBar-container {\n  width: 60%;\n  z-index: 15;\n}\n.Header__progressBar-list {\n  margin: 0;\n}\n.Header__progressBar-list li {\n  list-style-type: none;\n  float: left;\n  width: 25%;\n  position: relative;\n  text-align: center;\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 700;\n  font-size: 10px;\n  line-height: 16px;\n  color: var(--color-other-11);\n}\n.Header__progressBar-list li::before {\n  content: " ";\n  line-height: 30px;\n  border-radius: 50%;\n  width: 12px;\n  height: 12px;\n  display: block;\n  text-align: center;\n  margin: 0 auto 10px;\n  background: var(--color-blue);\n}\n.Header__progressBar-list li::after {\n  content: "";\n  position: absolute;\n  width: 100%;\n  height: 4px;\n  background: var(--color-primary-160);\n  top: 4px;\n  left: -50%;\n  z-index: -1;\n}\n.Header__progressBar-list li:first-child::after {\n  content: none;\n}\n.Header__progressBar-list li.active {\n  color: var(--color-neutral-100);\n}\n.Header__progressBar-list li.active span {\n  position: absolute;\n  top: 25px;\n  left: 0;\n  right: 0;\n}\n.Header__progressBar-list li:not(:first-child) span {\n  position: absolute;\n  top: 25px;\n  text-align: center;\n  left: 0;\n  right: 0;\n}\n.Header__progressBar-list li.active::before {\n  border: 9px solid var(--color-blue);\n  background: var(--color-neutral-0);\n  margin-top: -10px;\n  transform: scale(1);\n  animation: ani-bounce 2s infinite;\n  box-shadow: 0 0 0 0 var(--color-blue);\n  animation-delay: 0s, 1.5s;\n}\n.Header__progressBar-list li.active::after {\n  background: var(--color-primary-160);\n}\n\n@keyframes ani-bounce {\n  0% {\n    transform: scale(0.9);\n    box-shadow: 0 0 0 0 rgba(49, 128, 241, 0.7);\n  }\n  70% {\n    transform: scale(1);\n    box-shadow: 0 0 0 8px rgba(49, 128, 241, 0);\n  }\n  100% {\n    transform: scale(0.9);\n    box-shadow: 0 0 0 0 rgba(49, 128, 241, 0);\n  }\n}',
 );
-var Vn = [
+var On = [
     {value: 'INVITE TO SIGN', className: 'active'},
     {value: 'ADD DUE DATE', className: ''},
     {value: 'PREPARE', className: ''},
     {value: 'REVIEW', className: ''},
   ],
-  Sn = function () {
+  Hn = function () {
     var n = e.useContext(L),
       r = n.state.onClose,
       t = n.dispatch;
@@ -1760,7 +1767,7 @@ var Vn = [
       m(
         {
           onClick: function () {
-            t(un({type: j, onConfirm: r}));
+            t(mn({type: j, onConfirm: r}));
           },
           className: 'Header__container',
         },
@@ -1783,7 +1790,7 @@ var Vn = [
                     m(
                       {className: 'Header__progressBar-list'},
                       {
-                        children: Vn.map(function (n) {
+                        children: On.map(function (n) {
                           return o.jsx(
                             'li',
                             m(
@@ -1815,12 +1822,12 @@ var Vn = [
       ),
     );
   },
-  On = e.memo(Sn),
-  Hn = function (n, o) {
+  Tn = e.memo(Hn),
+  Un = function (n, o) {
     switch (o.type) {
-      case V:
-        return m(m({}, n), {loading: o.payload});
       case S:
+        return m(m({}, n), {loading: o.payload});
+      case V:
         return m(m({}, n), {isOpenAddAssignerModal: o.payload});
       case T:
         var r = h([], n.signers, !0).filter(function (n) {
@@ -1866,41 +1873,45 @@ var Vn = [
         return m(m({}, n), {openBananasignIframe: o.payload});
       case $:
         return m(m({}, n), {modalWarningData: o.payload});
+      case J:
+        return m(m({}, n), {identify: o.payload});
       default:
         return;
     }
   },
-  Tn = function (n) {
+  Zn = function (n) {
     var r = n.children,
       t = n.onClose,
       a = n.signers,
       l = n.viewers,
       i = n.onPutDocumentInfo,
       s = n.integrationId,
-      c = bn(a, M),
-      f = bn(l, I),
-      d = e.useReducer(
-        Hn,
+      c = n.bananasignUrl,
+      f = vn(a, M),
+      d = vn(l, I),
+      p = e.useReducer(
+        Un,
         m(m({}, R), {
-          signers: c,
-          viewers: f,
+          signers: f,
+          viewers: d,
           onClose: t,
           onPutDocumentInfo: i,
           integrationId: s,
+          bananasignUrl: c || 'https://app.bananasign.co',
         }),
       ),
-      p = d[0],
-      u = d[1];
+      u = p[0],
+      y = p[1];
     return o.jsx(
       L.Provider,
-      m({value: {state: p, dispatch: u}}, {children: r}),
+      m({value: {state: u, dispatch: y}}, {children: r}),
     );
   };
-(Tn.defaultProps = {children: null}),
+(Zn.defaultProps = {children: null}),
   n(
     ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.InviteUser__container {\n  display: flex;\n  flex-direction: column;\n  width: 65%;\n  height: auto;\n  border-radius: 8px;\n  padding: 40px 24px;\n  margin: 0 auto;\n}\n.InviteUser__container .InviteUser__wrapper-add-button {\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 700;\n  font-size: 16px;\n  line-height: 24px;\n  text-transform: none;\n  color: var(--color-neutral-100);\n  border-radius: 8px;\n  border: 1.5px solid var(--color-neutral-100);\n  background: var(--color-neutral-0);\n  padding: 5px 30px;\n}\n.InviteUser__container .InviteUser__wrapper-add-button span {\n  margin-left: 8px;\n}\n.InviteUser__title {\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 600;\n  font-size: 24px;\n  line-height: 32px;\n  color: var(--color-neutral-100);\n  margin: 0;\n}\n.InviteUser__wrapper {\n  background: white;\n  display: grid;\n  grid-template-columns: auto 2fr;\n  gap: 32px 24px;\n  height: auto;\n  border-radius: 8px;\n  padding: 24px 24px 24px 80px;\n  margin-top: 16px;\n  animation: zoom-out 0.5s ease;\n}\n@keyframes zoom-out {\n  0% {\n    transform: scale(0, 0);\n  }\n  100% {\n    transform: scale(1, 1);\n  }\n}\n.InviteUser__wrapper-title {\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 600;\n  font-size: 24px;\n  line-height: 32px;\n  color: var(--color-neutral-100);\n  font-size: 16px;\n  margin: 0;\n}\n.InviteUser__wrapper-title span {\n  color: red;\n}\n.InviteUser__wrapper-add-user {\n  width: 80%;\n}\n.InviteUser__wrapper-user-list {\n  overflow: scroll;\n  max-height: 250px;\n  border-bottom: solid 1px var(--color-primary-230);\n  margin-bottom: 12px;\n}\n.InviteUser__wrapper-user-list.hide_border {\n  border-bottom: none;\n}\n.InviteUser__next-button {\n  font-size: 16px;\n  line-height: 24px;\n  text-transform: none;\n  color: var(--color-neutral-100);\n  border-radius: 8px;\n  background: var(--color-warning-40);\n  text-align: center;\n  height: 48px;\n  width: 200px;\n  grid-column: 2;\n  margin-left: auto;\n  float: right;\n  right: 5px;\n}\n.InviteUser__next-button:hover {\n  background: var(--color-warning-40);\n  opacity: 0.8;\n}',
   );
-var Un = function () {
+var zn = function () {
     var n = e.useContext(L),
       r = n.state,
       t = r.signers,
@@ -1919,18 +1930,18 @@ var Un = function () {
       C = w[1];
     e.useEffect(
       function () {
-        l || (i ? (p(cn(x)), p(fn(v)), p(sn(!1))) : (b(t), C(a)));
+        l || (i ? (p(fn(x)), p(dn(v)), p(cn(!1))) : (b(t), C(a)));
       },
       [l, t, a],
     );
     var _ = function (n) {
-        p(ln(n)), p(K(!0));
+        p(sn(n)), p(nn(!0));
       },
       k = function (n) {
-        p(nn(n)), (null == n ? void 0 : n.isOwner) && p(fn(h([n], a, !0)));
+        p(on(n)), (null == n ? void 0 : n.isOwner) && p(dn(h([n], a, !0)));
       },
       E = function (n) {
-        p(on(n)), (null == n ? void 0 : n.isOwner) && p(cn(h([n], t, !0)));
+        p(rn(n)), (null == n ? void 0 : n.isOwner) && p(fn(h([n], t, !0)));
       };
     return o.jsxs(
       'div',
@@ -1978,7 +1989,7 @@ var Un = function () {
                                 {
                                   children: x.map(function (n, r) {
                                     return o.jsx(
-                                      Mn,
+                                      En,
                                       {
                                         user: n,
                                         onRemoveUser: k,
@@ -2028,7 +2039,7 @@ var Un = function () {
                                 {
                                   children: v.map(function (n, r) {
                                     return o.jsx(
-                                      Mn,
+                                      En,
                                       {
                                         user: n,
                                         onRemoveUser: E,
@@ -2059,15 +2070,15 @@ var Un = function () {
                       title: 'Next',
                       onClick: function () {
                         return y(void 0, void 0, void 0, function () {
-                          var n, o;
-                          return g(this, function (r) {
-                            switch (r.label) {
+                          var n, o, r;
+                          return g(this, function (e) {
+                            switch (e.label) {
                               case 0:
                                 if (f) return [2];
-                                p(J(!0)), (r.label = 1);
+                                p(K(!0)), (e.label = 1);
                               case 1:
                                 return (
-                                  r.trys.push([1, 3, 4, 5]),
+                                  e.trys.push([1, 3, 4, 5]),
                                   [
                                     4,
                                     s({
@@ -2079,21 +2090,18 @@ var Un = function () {
                                 );
                               case 2:
                                 return (
-                                  (n = r.sent()),
-                                  n.identify &&
-                                    setTimeout(function () {
-                                      p(pn(!0));
-                                    }, 3e3),
+                                  (n = e.sent()),
+                                  (o = n.identify) && (p(yn(o)), p(un(!0))),
                                   [3, 5]
                                 );
                               case 3:
                                 return (
-                                  (o = r.sent()),
-                                  console.log({error: o}),
+                                  (r = e.sent()),
+                                  console.log({error: r}),
                                   [3, 5]
                                 );
                               case 4:
-                                return p(J(!1)), [7];
+                                return p(K(!1)), [7];
                               case 5:
                                 return [2];
                             }
@@ -2110,12 +2118,12 @@ var Un = function () {
       ),
     );
   },
-  Zn = e.memo(Un);
+  Gn = e.memo(zn);
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.Loading__container {\n  position: absolute;\n  top: 0;\n  z-index: 100;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  background: var(--color-soft-white);\n}',
 );
-var zn,
-  Gn = function () {
+var Wn,
+  Yn = function () {
     var n = e.useContext(L).state,
       r = n.loading,
       t = n.openBananasignIframe;
@@ -2137,19 +2145,19 @@ var zn,
           ),
         );
   },
-  Wn = e.memo(Gn);
+  qn = e.memo(Yn);
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.WarningModal__container {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n.WarningModal__container img {\n  width: 64px;\n}\n.WarningModal__container p {\n  font-family: var(--font-primary);\n  font-style: normal;\n  line-height: 24px;\n}\n.WarningModal__container-title {\n  font-weight: 700;\n  font-size: 18px;\n  color: var(--color-neutral-100);\n  margin: 16px 0 0 0;\n}\n.WarningModal__container-content {\n  font-weight: 500;\n  font-size: 16px;\n  text-align: center;\n  color: var(--color-other-1);\n  margin: 16px 0;\n}',
 );
-var Yn =
-    (((zn = {})[B] = {
+var Qn =
+    (((Wn = {})[B] = {
       TITLE: 'Only you will be able to sign',
       CONTENT: '',
       FIRST_BTN: 'Cancel',
       SECOND_BTN: 'Continue',
       ICON: 'data:image/svg+xml,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M64%2032C64%2049.673%2049.673%2064%2032%2064C14.3269%2064%200%2049.673%200%2032C0%2014.3269%2014.3269%200%2032%200C49.673%200%2064%2014.3269%2064%2032ZM32.0003%2028.8003C33.7677%2028.8003%2035.2003%2030.233%2035.2003%2032.0003V48.0032C35.2003%2049.7706%2033.7677%2051.2032%2032.0003%2051.2032C30.233%2051.2032%2028.8003%2049.7706%2028.8003%2048.0032V32.0003C28.8003%2030.233%2030.233%2028.8003%2032.0003%2028.8003ZM32.0003%2022.4C33.7677%2022.4%2035.2003%2020.9673%2035.2003%2019.2C35.2003%2017.4327%2033.7677%2016%2032.0003%2016C30.233%2016%2028.8003%2017.4327%2028.8003%2019.2C28.8003%2020.9673%2030.233%2022.4%2032.0003%2022.4Z%22%20fill%3D%22%233180F1%22%2F%3E%3C%2Fsvg%3E',
     }),
-    (zn[j] = {
+    (Wn[j] = {
       TITLE: 'Discard Changes',
       CONTENT:
         'Do you want to cancel this progress? This will clear data you input before.',
@@ -2157,17 +2165,17 @@ var Yn =
       SECOND_BTN: 'Discard',
       ICON: 'data:image/svg+xml,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M64%2032C64%2049.673%2049.673%2064%2032%2064C14.3269%2064%200%2049.673%200%2032C0%2014.3269%2014.3269%200%2032%200C49.673%200%2064%2014.3269%2064%2032Z%22%20fill%3D%22%23FAE200%22%2F%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M35.2005%2035.2C35.2005%2036.9673%2033.7679%2038.4%2032.0005%2038.4C30.2332%2038.4%2028.8005%2036.9673%2028.8005%2035.2V19.2C28.8005%2017.4327%2030.2332%2016%2032.0005%2016C33.7679%2016%2035.2005%2017.4327%2035.2005%2019.2V35.2ZM35.2005%2048.0005C35.2005%2049.7678%2033.7678%2051.2005%2032.0005%2051.2005C30.2331%2051.2005%2028.8005%2049.7678%2028.8005%2048.0005C28.8005%2046.2331%2030.2331%2044.8005%2032.0005%2044.8005C33.7678%2044.8005%2035.2005%2046.2331%2035.2005%2048.0005Z%22%20fill%3D%22%230C395B%22%2F%3E%3C%2Fsvg%3E',
     }),
-    zn),
-  qn = function () {
+    Wn),
+  Xn = function () {
     var n = e.useContext(L),
       r = n.state.modalWarningData,
       t = n.dispatch,
       a = function () {
-        t(un({type: ''})),
+        t(mn({type: ''})),
           r.onCancel && 'function' == typeof r.onCancel && r.onCancel();
       };
     if (!r.type) return null;
-    var l = Yn[r.type];
+    var l = Qn[r.type];
     return o.jsx(
       _,
       m(
@@ -2194,10 +2202,10 @@ var Yn =
                       {children: l.CONTENT},
                     ),
                   ),
-                  o.jsx(N, {
+                  o.jsx(P, {
                     onCancel: a,
                     onConfirm: function () {
-                      t(un({type: ''})),
+                      t(mn({type: ''})),
                         r.onConfirm &&
                           'function' == typeof r.onConfirm &&
                           r.onConfirm();
@@ -2213,7 +2221,7 @@ var Yn =
       ),
     );
   },
-  Qn = e.memo(qn);
+  $n = e.memo(Xn);
 module.exports = function (n) {
   var r = n.isOpen,
     e = n.onClose,
@@ -2221,9 +2229,10 @@ module.exports = function (n) {
     a = n.viewers,
     l = n.onPutDocumentInfo,
     i = n.integrationId,
-    s = Boolean(r && i);
+    s = n.bananasignUrl,
+    f = Boolean(r && i);
   return o.jsx(
-    Tn,
+    Zn,
     m(
       {
         onClose: e,
@@ -2231,21 +2240,22 @@ module.exports = function (n) {
         viewers: a,
         onPutDocumentInfo: l,
         integrationId: i,
+        bananasignUrl: s,
       },
       {
         children: o.jsxs(
           'div',
           m(
-            {className: c.default('InviteToSign__container', {open: s})},
+            {className: c.default('InviteToSign__container', {open: f})},
             {
               children: [
-                o.jsx(On, {}),
-                o.jsx(Zn, {}),
+                o.jsx(Tn, {}),
+                o.jsx(Gn, {}),
+                o.jsx(Vn, {}),
+                o.jsx(Pn, {}),
+                o.jsx(qn, {}),
                 o.jsx(Ln, {}),
-                o.jsx(jn, {}),
-                o.jsx(Wn, {}),
-                o.jsx(Nn, {}),
-                o.jsx(Qn, {}),
+                o.jsx($n, {}),
               ],
             },
           ),

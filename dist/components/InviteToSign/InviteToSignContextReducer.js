@@ -104,6 +104,8 @@ export var InviteToSignContextReducer = function (state, action) {
       });
     case INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE:
       return __assign(__assign({}, state), {modalWarningData: action.payload});
+    case INVITE_TO_SIGN_ACTION_TYPES.SET_IDENTIFY:
+      return __assign(__assign({}, state), {identify: action.payload});
     default:
       return;
   }

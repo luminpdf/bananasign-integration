@@ -60,4 +60,8 @@ export declare const InviteToSignContextActions: {
         type: string;
         payload: ModalWarning;
     };
+    SET_IDENTIFY: (identify: string) => {
+        type: string;
+        payload: string;
+    };
 };

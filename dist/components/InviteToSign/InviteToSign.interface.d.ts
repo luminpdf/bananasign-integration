@@ -9,6 +9,7 @@ export interface IInviteToSignProps {
     viewers: IAssignerProps[];
     onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
     integrationId: string;
+    bananasignUrl?: string;
 }
 export interface IGetIdentify {
     identify: string;
@@ -39,6 +40,8 @@ export interface IState {
     onClose: () => void;
     onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
     integrationId: string;
+    identify: string;
+    bananasignUrl: string;
 }
 export interface PayloadPutDocumentInfo {
     signers: IAssignerProps[];

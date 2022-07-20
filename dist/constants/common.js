@@ -18,5 +18,5 @@ export var MODAL_TYPES = {
   ONLY_ONE_SIGNER_IS_OWNER: 'ONLY_ONE_SIGNER_IS_OWNER',
   CANCEL_PROGRESS: 'CANCEL_PROGRESS',
 };
-export var BANANA_SIGN_WEB_URL = 'localhost:5000';
+export var BANANA_SIGN_WEB_URL = 'https://app.bananasign.co';
 //# sourceMappingURL=common.js.map
