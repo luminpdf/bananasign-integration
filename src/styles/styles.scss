@@ -11,9 +11,10 @@
   }
 }
 
-@include ttffont('MarkPro', 'normal', '../assets/fonts/MarkPro/MarkPro');
-@include ttffont('MarkPro-Regular',300,'../assets/fonts/MarkPro/MarkPro-Regular');
-@include ttffont('MarkPro-Bold', 600, '../assets/fonts/MarkPro/MarkPro-Bold');
+
+@include ttffont('MarkPro', 'normal', '//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c');
+@include ttffont('MarkPro-Regular',300,'//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9');
+@include ttffont('MarkPro-Bold', 600, '//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07');
 
 @mixin custom-scrollbar {
   &::-webkit-scrollbar {

@@ -10,7 +10,7 @@
   -webkit-overflow-scrolling: touch;
   overflow: overlay;
   padding-top: 8px;
-//   @include custom-scrollbar;
+  @include custom-scrollbar;
 }
 
 .AssignerListInput__row-email {
