@@ -1,3 +1,35 @@
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    border-radius: 36px;
+    height: 10px;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary-230);
+    border-radius: 36px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 36px;
+  }
+
+  &.scroll {
+    &::before {
+      content: '';
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6601015406162465) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      height: 15px;
+      position: fixed;
+      width: 489px;
+    }
+  }
+}
+
 .AssignerListInput__container {
   display: flex;
   justify-content: flex-start;
