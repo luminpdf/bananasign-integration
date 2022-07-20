@@ -179,21 +179,15 @@ ReactDom.render(
             viewers: viewers,
             onPutDocumentInfo: function (_a) {
               var viewers = _a.viewers,
-                signers = _a.signers,
-                integrationId = _a.integrationId;
+                signers = _a.signers;
               return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_b) {
-                  console.log({
-                    viewers: viewers,
-                    signers: signers,
-                    integrationId: integrationId,
-                  });
+                  console.log({viewers: viewers, signers: signers});
                   // TODO: service put contract temporary
                   return [2 /*return*/, {identify: ''}];
                 });
               });
             },
-            integrationId: 'abc',
           }),
         },
       ),

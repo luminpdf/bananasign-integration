@@ -21,7 +21,7 @@ To install, you can use [npm](https://npmjs.org/):
 | signers           | array    | :white_check_mark: | List assigner<br/>ex: [{ email: 'example@gmail.com', name: 'example' }]                         |
 | viewers           | array    | :white_check_mark: | List assigner<br/>ex: [{ email: 'example@gmail.com', name: 'example' }]                         |
 | onPutDocumentInfo | function | :white_check_mark: | Function that put document info                                                                 |
-| bananasignUrl     | string   |                    | Base url to open bananasign service by iframe                                                   |
+| bananasignUrl     | string   |                    | Base url to open bananasign service by iframe. Default: app.bananasign.co                       |
 
 ## Examples
 
@@ -68,11 +68,11 @@ function App() {
           const { identify } = await axios.post('/put-contract-temporary', {
             viewers,
             signers,
-            integrationId, // received since integration with bananasign
+            integrationId, // received since init integration with bananasign
           });
 
           // param to open iframe bananasign
-          return identify;
+          return { identify };
         }}
       />
     </div>

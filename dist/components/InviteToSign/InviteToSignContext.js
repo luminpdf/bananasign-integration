@@ -20,7 +20,6 @@ export var initialState = {
   onPutDocumentInfo: function (_payload) {
     return Promise.resolve({identify: ''});
   },
-  integrationId: '',
   identify: '',
   bananasignUrl: '',
 };

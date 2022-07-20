@@ -33,9 +33,7 @@ var InviteToSign = function (props) {
     signers = props.signers,
     viewers = props.viewers,
     onPutDocumentInfo = props.onPutDocumentInfo,
-    integrationId = props.integrationId,
     bananasignUrl = props.bananasignUrl;
-  var show = Boolean(isOpen && integrationId);
   return _jsx(
     InviteToSignProvider,
     __assign(
@@ -44,7 +42,6 @@ var InviteToSign = function (props) {
         signers: signers,
         viewers: viewers,
         onPutDocumentInfo: onPutDocumentInfo,
-        integrationId: integrationId,
         bananasignUrl: bananasignUrl,
       },
       {
@@ -53,7 +50,7 @@ var InviteToSign = function (props) {
           __assign(
             {
               className: classNames('InviteToSign__container', {
-                open: show,
+                open: isOpen,
               }),
             },
             {

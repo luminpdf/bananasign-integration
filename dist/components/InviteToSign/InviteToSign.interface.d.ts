@@ -8,7 +8,6 @@ export interface IInviteToSignProps {
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
     onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-    integrationId: string;
     bananasignUrl?: string;
 }
 export interface IGetIdentify {
@@ -39,14 +38,12 @@ export interface IState {
     modalWarningData: ModalWarning;
     onClose: () => void;
     onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-    integrationId: string;
     identify: string;
     bananasignUrl: string;
 }
 export interface PayloadPutDocumentInfo {
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
-    integrationId: string;
 }
 export declare type ModalWarning = {
     type: string;

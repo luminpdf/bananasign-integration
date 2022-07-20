@@ -28,7 +28,6 @@ var InviteToSignProvider = function (_a) {
     signers = _a.signers,
     viewers = _a.viewers,
     onPutDocumentInfo = _a.onPutDocumentInfo,
-    integrationId = _a.integrationId,
     bananasignUrl = _a.bananasignUrl;
   var signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
   var viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
@@ -39,7 +38,6 @@ var InviteToSignProvider = function (_a) {
         viewers: viewersData,
         onClose: onClose,
         onPutDocumentInfo: onPutDocumentInfo,
-        integrationId: integrationId,
         bananasignUrl: bananasignUrl || BANANA_SIGN_WEB_URL,
       }),
     ),

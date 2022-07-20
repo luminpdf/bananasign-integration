@@ -182,7 +182,6 @@ var InviteUser = function () {
     cancelAddAssigners = _a.cancelAddAssigners,
     onPutDocumentInfo = _a.onPutDocumentInfo,
     loading = _a.loading,
-    integrationId = _a.integrationId,
     dispatch = context.dispatch;
   var _b = useState([]),
     signersState = _b[0],
@@ -248,7 +247,6 @@ var InviteUser = function () {
               onPutDocumentInfo({
                 signers: signers,
                 viewers: viewers,
-                integrationId: integrationId,
               }),
             ];
           case 2:

@@ -733,7 +733,6 @@ var R = {
     onPutDocumentInfo: function (n) {
       return Promise.resolve({identify: ''});
     },
-    integrationId: '',
     identify: '',
     bananasignUrl: '',
   },
@@ -1885,26 +1884,24 @@ var On = [
       a = n.signers,
       l = n.viewers,
       i = n.onPutDocumentInfo,
-      s = n.integrationId,
-      c = n.bananasignUrl,
-      f = vn(a, M),
-      d = vn(l, I),
-      p = e.useReducer(
+      s = n.bananasignUrl,
+      c = vn(a, M),
+      f = vn(l, I),
+      d = e.useReducer(
         Un,
         m(m({}, R), {
-          signers: f,
-          viewers: d,
+          signers: c,
+          viewers: f,
           onClose: t,
           onPutDocumentInfo: i,
-          integrationId: s,
-          bananasignUrl: c || 'https://app.bananasign.co',
+          bananasignUrl: s || 'https://app.bananasign.co',
         }),
       ),
-      u = p[0],
-      y = p[1];
+      p = d[0],
+      u = d[1];
     return o.jsx(
       L.Provider,
-      m({value: {state: u, dispatch: y}}, {children: r}),
+      m({value: {state: p, dispatch: u}}, {children: r}),
     );
   };
 (Zn.defaultProps = {children: null}),
@@ -1920,28 +1917,27 @@ var zn = function () {
       i = r.cancelAddAssigners,
       s = r.onPutDocumentInfo,
       f = r.loading,
-      d = r.integrationId,
-      p = n.dispatch,
-      u = e.useState([]),
-      x = u[0],
-      b = u[1],
-      w = e.useState([]),
-      v = w[0],
-      C = w[1];
+      d = n.dispatch,
+      p = e.useState([]),
+      u = p[0],
+      x = p[1],
+      b = e.useState([]),
+      w = b[0],
+      v = b[1];
     e.useEffect(
       function () {
-        l || (i ? (p(fn(x)), p(dn(v)), p(cn(!1))) : (b(t), C(a)));
+        l || (i ? (d(fn(u)), d(dn(w)), d(cn(!1))) : (x(t), v(a)));
       },
       [l, t, a],
     );
-    var _ = function (n) {
-        p(sn(n)), p(nn(!0));
+    var C = function (n) {
+        d(sn(n)), d(nn(!0));
+      },
+      _ = function (n) {
+        d(on(n)), (null == n ? void 0 : n.isOwner) && d(dn(h([n], a, !0)));
       },
       k = function (n) {
-        p(on(n)), (null == n ? void 0 : n.isOwner) && p(dn(h([n], a, !0)));
-      },
-      E = function (n) {
-        p(rn(n)), (null == n ? void 0 : n.isOwner) && p(fn(h([n], t, !0)));
+        d(rn(n)), (null == n ? void 0 : n.isOwner) && d(fn(h([n], t, !0)));
       };
     return o.jsxs(
       'div',
@@ -1983,16 +1979,16 @@ var zn = function () {
                                 {
                                   className: c.default(
                                     'InviteUser__wrapper-user-list',
-                                    {hide_border: !x.length},
+                                    {hide_border: !u.length},
                                   ),
                                 },
                                 {
-                                  children: x.map(function (n, r) {
+                                  children: u.map(function (n, r) {
                                     return o.jsx(
                                       En,
                                       {
                                         user: n,
-                                        onRemoveUser: k,
+                                        onRemoveUser: _,
                                         role: 'signer',
                                       },
                                       (null == n ? void 0 : n.email) + '' + r,
@@ -2003,7 +1999,7 @@ var zn = function () {
                             ),
                             o.jsx(D, {
                               onClick: function () {
-                                return _(M);
+                                return C(M);
                               },
                               className: 'InviteUser__wrapper-add-button',
                               isRippleEffect: !0,
@@ -2033,16 +2029,16 @@ var zn = function () {
                                 {
                                   className: c.default(
                                     'InviteUser__wrapper-user-list',
-                                    {hide_border: !v.length},
+                                    {hide_border: !w.length},
                                   ),
                                 },
                                 {
-                                  children: v.map(function (n, r) {
+                                  children: w.map(function (n, r) {
                                     return o.jsx(
                                       En,
                                       {
                                         user: n,
-                                        onRemoveUser: E,
+                                        onRemoveUser: k,
                                         role: 'viewer',
                                       },
                                       (null == n ? void 0 : n.email) + '' + r,
@@ -2053,7 +2049,7 @@ var zn = function () {
                             ),
                             o.jsx(D, {
                               onClick: function () {
-                                return _(I);
+                                return C(I);
                               },
                               className: 'InviteUser__wrapper-add-button',
                               isRippleEffect: !0,
@@ -2075,23 +2071,16 @@ var zn = function () {
                             switch (e.label) {
                               case 0:
                                 if (f) return [2];
-                                p(K(!0)), (e.label = 1);
+                                d(K(!0)), (e.label = 1);
                               case 1:
                                 return (
                                   e.trys.push([1, 3, 4, 5]),
-                                  [
-                                    4,
-                                    s({
-                                      signers: t,
-                                      viewers: a,
-                                      integrationId: d,
-                                    }),
-                                  ]
+                                  [4, s({signers: t, viewers: a})]
                                 );
                               case 2:
                                 return (
                                   (n = e.sent()),
-                                  (o = n.identify) && (p(yn(o)), p(un(!0))),
+                                  (o = n.identify) && (d(yn(o)), d(un(!0))),
                                   [3, 5]
                                 );
                               case 3:
@@ -2101,7 +2090,7 @@ var zn = function () {
                                   [3, 5]
                                 );
                               case 4:
-                                return p(K(!1)), [7];
+                                return d(K(!1)), [7];
                               case 5:
                                 return [2];
                             }
@@ -2228,9 +2217,7 @@ module.exports = function (n) {
     t = n.signers,
     a = n.viewers,
     l = n.onPutDocumentInfo,
-    i = n.integrationId,
-    s = n.bananasignUrl,
-    f = Boolean(r && i);
+    i = n.bananasignUrl;
   return o.jsx(
     Zn,
     m(
@@ -2239,14 +2226,13 @@ module.exports = function (n) {
         signers: t,
         viewers: a,
         onPutDocumentInfo: l,
-        integrationId: i,
-        bananasignUrl: s,
+        bananasignUrl: i,
       },
       {
         children: o.jsxs(
           'div',
           m(
-            {className: c.default('InviteToSign__container', {open: f})},
+            {className: c.default('InviteToSign__container', {open: r})},
             {
               children: [
                 o.jsx(Tn, {}),

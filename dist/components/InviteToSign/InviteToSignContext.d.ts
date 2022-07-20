@@ -23,7 +23,6 @@ export declare const initialState: {
     onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) => Promise<{
         identify: string;
     }>;
-    integrationId: string;
     identify: string;
     bananasignUrl: string;
 };
