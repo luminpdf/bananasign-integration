@@ -26,6 +26,8 @@ export const initialState = {
   onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) =>
     Promise.resolve({identify: ''}),
   integrationId: '',
+  identify: '',
+  bananasignUrl: '',
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

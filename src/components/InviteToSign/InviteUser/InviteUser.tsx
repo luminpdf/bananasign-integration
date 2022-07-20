@@ -76,9 +76,8 @@ const InviteUser: React.FC = () => {
       });
       const {identify} = result;
       if (identify) {
-        setTimeout(() => {
-          dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
-        }, 3000);
+        dispatch(InviteToSignContextActions.SET_IDENTIFY(identify));
+        dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
       }
     } catch (error) {
       console.log({error});

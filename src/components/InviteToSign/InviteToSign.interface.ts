@@ -15,6 +15,8 @@ export interface IInviteToSignProps {
   onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   /* Flow id integration with bananasign service */
   integrationId: string;
+  /* Bananasign service url */
+  bananasignUrl?: string;
 }
 
 export interface IGetIdentify {
@@ -48,6 +50,8 @@ export interface IState {
   onClose: () => void;
   onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   integrationId: string;
+  identify: string;
+  bananasignUrl: string;
 }
 
 export interface PayloadPutDocumentInfo {

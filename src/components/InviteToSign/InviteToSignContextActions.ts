@@ -92,4 +92,10 @@ export const InviteToSignContextActions = {
       payload: modalType,
     };
   },
+  SET_IDENTIFY: (identify: string) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_IDENTIFY,
+      payload: identify,
+    };
+  },
 };

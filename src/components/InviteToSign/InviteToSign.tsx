@@ -14,8 +14,15 @@ import Loading from './Loading';
 import WarningModal from './WarningModal';
 
 const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
-  const {isOpen, onClose, signers, viewers, onPutDocumentInfo, integrationId} =
-    props;
+  const {
+    isOpen,
+    onClose,
+    signers,
+    viewers,
+    onPutDocumentInfo,
+    integrationId,
+    bananasignUrl,
+  } = props;
   const show = Boolean(isOpen && integrationId);
   return (
     <InviteToSignProvider
@@ -24,6 +31,7 @@ const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
       viewers={viewers}
       onPutDocumentInfo={onPutDocumentInfo}
       integrationId={integrationId}
+      bananasignUrl={bananasignUrl}
     >
       <div
         className={classNames('InviteToSign__container', {
