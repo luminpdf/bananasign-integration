@@ -13,10 +13,6 @@ const USER_DELETED = 'Deleted';
 
 const defaultProps = {
   classNames: '',
-  user: {
-    name: '',
-    url: '',
-  },
   style: {},
 };
 

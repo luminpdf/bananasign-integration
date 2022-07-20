@@ -2,7 +2,7 @@ import React from 'react';
 
 import {REQUEST_TYPE} from '@src/constants/common';
 
-import {IState} from './InviteToSign.interface';
+import {IState, PayloadOnNext} from './InviteToSign.interface';
 
 interface ContextType {
   state: IState;
@@ -12,13 +12,7 @@ interface ContextType {
 export const initialState = {
   loading: false,
   isOpenAddAssignerModal: false,
-  signers: [
-    {
-      name: 'ha thuy',
-      email: 'hahah@gmail.com',
-      isOwner: true,
-    },
-  ],
+  signers: [],
   viewers: [],
   type: REQUEST_TYPE.SIGNER,
   keyWordSearchContact: '',
@@ -28,6 +22,9 @@ export const initialState = {
   modalWarningData: {
     type: '',
   },
+  onClose: () => undefined,
+  assigners: [],
+  onNext: (_payload: PayloadOnNext) => ({identify: ''}),
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

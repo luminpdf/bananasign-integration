@@ -7,19 +7,24 @@ import AddSignerViewerModal from './AddSignerViewerModal';
 import BananasignIframe from './BananasignIframe';
 import Footer from './Footer';
 import Header from './Header';
+import {IInviteToSignProps} from './InviteToSign.interface';
 import InviteToSignProvider from './InviteToSignProvider';
 import InviteUser from './InviteUser';
 import Loading from './Loading';
 import WarningModal from './WarningModal';
 
-const InviteToSign: React.FC = () => {
-  const [open, _setOpen] = React.useState(true);
+const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
+  const {isOpen, onClose, assigners, onNext} = props;
 
   return (
-    <InviteToSignProvider>
+    <InviteToSignProvider
+      onClose={onClose}
+      assigners={assigners}
+      onNext={onNext}
+    >
       <div
         className={classNames('InviteToSign__container', {
-          open: open,
+          open: isOpen,
         })}
       >
         <Header />

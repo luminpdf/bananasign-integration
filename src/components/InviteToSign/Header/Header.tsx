@@ -17,7 +17,10 @@ const PROGRESS_BAR_LIST_ITEM = [
 
 const Header: React.FC = () => {
   const context = useContext(InviteToSignContext);
-  const {dispatch} = context;
+  const {
+    state: {onClose},
+    dispatch,
+  } = context;
   const renderProgressBar = () => (
     <div className="Header__progressBar-container">
       <ul className="Header__progressBar-list">
@@ -45,17 +48,17 @@ const Header: React.FC = () => {
       </div>
     );
   };
-  const onClose = () => {
+  const handleClose = () => {
     dispatch(
       InviteToSignContextActions.SET_MODAL_WARNING_TYPE({
         type: MODAL_TYPES.CANCEL_PROGRESS,
-        onConfirm: () => console.log('aaaa'),
+        onConfirm: onClose,
       }),
     );
   };
 
   return (
-    <div onClick={onClose} className="Header__container">
+    <div onClick={handleClose} className="Header__container">
       {renderCancelButton()}
       {renderProgressBar()}
       {renderRightLogo()}

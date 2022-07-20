@@ -3,7 +3,7 @@ import './SearchContact.style.scss';
 import classNames from 'classnames';
 import React, {useCallback, useContext} from 'react';
 
-import {REQUEST_TYPE} from '@src/constants/common';
+import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
 
 import {IAssignerProps} from '../../InviteToSign.interface';
 import InviteToSignContext from '../../InviteToSignContext';
@@ -43,6 +43,10 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
           InviteToSignContextActions.ADD_VIEWER({
             ...assignUser,
             ...newAssignUser,
+            name: assignUser?.name || GUEST_USER,
+            id: '',
+            requestType: 'VIEWER',
+            dueTimeExpired: 0,
           }),
         );
       } else if (type === REQUEST_TYPE.SIGNER) {
@@ -50,6 +54,10 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
           InviteToSignContextActions.ADD_SIGNER({
             ...assignUser,
             ...newAssignUser,
+            name: assignUser?.name || GUEST_USER,
+            id: '',
+            requestType: 'SIGNER',
+            dueTimeExpired: 0,
           }),
         );
       }

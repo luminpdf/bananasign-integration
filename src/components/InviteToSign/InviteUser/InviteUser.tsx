@@ -8,7 +8,7 @@ import {REQUEST_TYPE} from '@src/constants/common';
 
 import Button from '@components/Button';
 
-import {IAssignerProps} from '../InviteToSign.interface';
+import {IAssignerProps, IGetIdentify} from '../InviteToSign.interface';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
@@ -16,7 +16,13 @@ import AssignerItem from './AssignerItem';
 const InviteUser: React.FC = () => {
   const context = useContext(InviteToSignContext);
   const {
-    state: {signers, viewers, isOpenAddAssignerModal, cancelAddAssigners},
+    state: {
+      signers,
+      viewers,
+      isOpenAddAssignerModal,
+      cancelAddAssigners,
+      onNext,
+    },
     dispatch,
   } = context;
   const [signersState, setSignersState] = useState<IAssignerProps[]>([]);
@@ -49,11 +55,25 @@ const InviteUser: React.FC = () => {
     dispatch(InviteToSignContextActions.REMOVE_VIEWER(viewer));
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     dispatch(InviteToSignContextActions.SET_LOADING(true));
-    setTimeout(() => {
-      dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
-    }, 3000);
+    try {
+      const result: IGetIdentify = await onNext({
+        signers,
+        viewers,
+        integrationId: '',
+      });
+      const {identify} = result;
+      if (identify) {
+        setTimeout(() => {
+          dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
+        }, 3000);
+      }
+    } catch (error) {
+      console.log({error});
+    } finally {
+      dispatch(InviteToSignContextActions.SET_LOADING(false));
+    }
   };
 
   return (

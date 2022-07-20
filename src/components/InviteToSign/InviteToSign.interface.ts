@@ -1,11 +1,34 @@
+export type Assigners = {
+  signers: IAssignerProps[];
+  viewers: IAssignerProps[];
+};
+export interface IInviteToSignProps {
+  /* show/hide bananasign widget */
+  /* default = false */
+  isOpen: boolean;
+  /* Function that will be run when the widget is requested to be closed, prior to actually closing. */
+  onClose: () => void;
+  /* List assigners */
+  assigners: Assigners;
+  /* Function that put document info */
+  onNext: (payload: PayloadOnNext) => IGetIdentify;
+}
+
+export interface IGetIdentify {
+  identify: string;
+}
+
 export interface IAssignerProps {
-  email?: string;
+  email: string;
   name?: string;
   avatarRemoteId?: string;
   type?: string;
   userId?: string;
   isOwner?: boolean;
   newAssignUser?: boolean;
+  id?: string;
+  requestType?: string;
+  dueTimeExpired?: number;
 }
 
 export interface IState {
@@ -19,6 +42,15 @@ export interface IState {
   cancelAddAssigners: boolean;
   openBananasignIframe: boolean;
   modalWarningData: ModalWarning;
+  onClose: () => void;
+  assigners: IAssignerProps[];
+  onNext: (payload: PayloadOnNext) => IGetIdentify;
+}
+
+export interface PayloadOnNext {
+  signers: IAssignerProps[];
+  viewers: IAssignerProps[];
+  integrationId: string;
 }
 
 export type ModalWarning = {
