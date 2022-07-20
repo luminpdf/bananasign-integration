@@ -1,15 +1,13 @@
 import './AssignerItem.style.scss';
 
 import classNames from 'classnames';
-import React, {useContext} from 'react';
+import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import {Images} from '@src/assets';
 import Avatar from '@src/components/Avatar';
 import {GUEST_USER} from '@src/constants/common';
 
-import InviteToSignContext from '../../InviteToSignContext';
-import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 import {IAssignerItemProps} from './AssignerItem.interface';
 
 const getTooltipContent = (role: string) =>
@@ -19,8 +17,6 @@ const getTooltipContent = (role: string) =>
   }[role]);
 
 const AssignerItem: React.FC<IAssignerItemProps> = (props) => {
-  const context = useContext(InviteToSignContext);
-  const {dispatch} = context;
   const {
     user,
     className,
@@ -43,14 +39,6 @@ const AssignerItem: React.FC<IAssignerItemProps> = (props) => {
     ReactTooltip.hide();
     if (onRemoveUser && typeof onRemoveUser === 'function') {
       onRemoveUser(user);
-    }
-
-    if (isOwner) {
-      if (role === 'signer') {
-        dispatch(InviteToSignContextActions.ADD_VIEWER(user));
-      } else {
-        dispatch(InviteToSignContextActions.ADD_SIGNER(user));
-      }
     }
   };
 

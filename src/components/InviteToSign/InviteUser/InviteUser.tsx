@@ -49,12 +49,18 @@ const InviteUser: React.FC = () => {
     dispatch(InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true));
   };
 
-  const handleRemoveSigner = (signer: IAssignerProps) => {
-    dispatch(InviteToSignContextActions.REMOVE_SIGNER(signer));
+  const handleRemoveSigner = (user: IAssignerProps) => {
+    dispatch(InviteToSignContextActions.REMOVE_SIGNER(user));
+    if (user?.isOwner) {
+      dispatch(InviteToSignContextActions.SET_VIEWERS([user, ...viewers]));
+    }
   };
 
-  const handleRemoveViewer = (viewer: IAssignerProps) => {
-    dispatch(InviteToSignContextActions.REMOVE_VIEWER(viewer));
+  const handleRemoveViewer = (user: IAssignerProps) => {
+    dispatch(InviteToSignContextActions.REMOVE_VIEWER(user));
+    if (user?.isOwner) {
+      dispatch(InviteToSignContextActions.SET_SIGNERS([user, ...signers]));
+    }
   };
 
   const handleNext = async () => {
