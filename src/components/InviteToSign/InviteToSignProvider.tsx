@@ -1,35 +1,41 @@
 import React, {ReactNode, useReducer} from 'react';
 
+import {REQUEST_TYPE} from '@src/constants/common';
 import common from '@src/utils/common';
 
-import {Assigners, IGetIdentify, PayloadOnNext} from './InviteToSign.interface';
+import {
+  IAssignerProps,
+  IGetIdentify,
+  PayloadPutDocumentInfo,
+} from './InviteToSign.interface';
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
-
-// import {REQUEST_TYPE} from '@src/constants/common';
 
 interface IInviteToSignProviderProps {
   children: ReactNode;
   onClose: () => void;
-  assigners: Assigners;
-  onNext: (payload: PayloadOnNext) => Promise<IGetIdentify>;
+  signers: IAssignerProps[];
+  viewers: IAssignerProps[];
+  onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   integrationId: string;
 }
 
 const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   children,
   onClose,
-  assigners,
-  onNext,
+  signers,
+  viewers,
+  onPutDocumentInfo,
   integrationId,
 }) => {
-  const {signers, viewers} = common.serializeAssigners(assigners);
+  const signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
+  const viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
   const [state, dispatch] = useReducer(InviteToSignContextReducer, {
     ...initialState,
-    signers,
-    viewers,
+    signers: signersData,
+    viewers: viewersData,
     onClose,
-    onNext,
+    onPutDocumentInfo,
     integrationId,
   });
 

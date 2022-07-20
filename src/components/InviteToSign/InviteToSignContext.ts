@@ -2,7 +2,7 @@ import React from 'react';
 
 import {REQUEST_TYPE} from '@src/constants/common';
 
-import {IState, PayloadOnNext} from './InviteToSign.interface';
+import {IState, PayloadPutDocumentInfo} from './InviteToSign.interface';
 
 interface ContextType {
   state: IState;
@@ -23,8 +23,8 @@ export const initialState = {
     type: '',
   },
   onClose: () => undefined,
-  assigners: [],
-  onNext: (_payload: PayloadOnNext) => Promise.resolve({identify: ''}),
+  onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) =>
+    Promise.resolve({identify: ''}),
   integrationId: '',
 };
 

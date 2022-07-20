@@ -21,7 +21,7 @@ const InviteUser: React.FC = () => {
       viewers,
       isOpenAddAssignerModal,
       cancelAddAssigners,
-      onNext,
+      onPutDocumentInfo,
       loading,
       integrationId,
     },
@@ -63,7 +63,7 @@ const InviteUser: React.FC = () => {
     }
     dispatch(InviteToSignContextActions.SET_LOADING(true));
     try {
-      const result: IGetIdentify = await onNext({
+      const result: IGetIdentify = await onPutDocumentInfo({
         signers,
         viewers,
         integrationId,

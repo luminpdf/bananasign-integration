@@ -9,9 +9,10 @@ export interface IInviteToSignProps {
   /* Function that will be run when the widget is requested to be closed, prior to actually closing. */
   onClose: () => void;
   /* List assigners */
-  assigners: Assigners;
+  signers: IAssignerProps[];
+  viewers: IAssignerProps[];
   /* Function that put document info */
-  onNext: (payload: PayloadOnNext) => Promise<IGetIdentify>;
+  onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   /* Flow id integration with bananasign service */
   integrationId: string;
 }
@@ -45,12 +46,11 @@ export interface IState {
   openBananasignIframe: boolean;
   modalWarningData: ModalWarning;
   onClose: () => void;
-  assigners: IAssignerProps[];
-  onNext: (payload: PayloadOnNext) => Promise<IGetIdentify>;
+  onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   integrationId: string;
 }
 
-export interface PayloadOnNext {
+export interface PayloadPutDocumentInfo {
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
   integrationId: string;

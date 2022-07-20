@@ -1,8 +1,5 @@
-import {
-  Assigners,
-  IAssignerProps,
-} from '@src/components/InviteToSign/InviteToSign.interface';
-import {GUEST_USER} from '@src/constants/common';
+import {IAssignerProps} from '@src/components/InviteToSign/InviteToSign.interface';
+import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
 
 const getAvatarName = (name: string) => {
   let words = '';
@@ -45,31 +42,23 @@ export const debounce = <F extends (...args: any[]) => any>(
   return debounced as (...args: Parameters<F>) => ReturnType<F>;
 };
 
-const serializeAssigners = (assigners: Assigners) => {
-  const {signers, viewers} = assigners;
-  const serializeSigners = signers.map(
+const serializeAssigners = (
+  assigners: IAssignerProps[],
+  requestType: string,
+) => {
+  const serializeSigners = assigners.map(
     (assigner: IAssignerProps, index: number) => {
       return {
         ...assigner,
         name: assigner?.name || GUEST_USER,
-        isOwner: index === 0,
+        isOwner: requestType === REQUEST_TYPE.SIGNER && index === 0, // default the first signer is owner
         id: '',
-        requestType: 'SIGNER',
+        requestType,
         dueDateExpired: 0,
       };
     },
   );
-  const serializeViewers = viewers.map((assigner: IAssignerProps) => {
-    return {
-      ...assigner,
-      name: assigner?.name || GUEST_USER,
-      isOwner: false,
-      id: '',
-      requestType: 'VIEWER',
-      dueDateExpired: 0,
-    };
-  });
-  return {signers: serializeSigners, viewers: serializeViewers};
+  return serializeSigners;
 };
 
 export default {
