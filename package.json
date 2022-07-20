@@ -1,6 +1,6 @@
 {
-  "name": "banana-widget",
-  "version": "0.0.34",
+  "name": "bananasign-integration",
+  "version": "0.0.40",
   "description": "",
   "keywords": [],
   "repository": {
@@ -16,7 +16,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc --outDir dist --declaration true && rollup -c",
+    "build": "rm -rf dist && tsc --outDir dist --declaration true && rollup -c",
     "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
     "dev": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
     "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./build/profile.json && webpack-bundle-analyzer ./build/profile.json",
