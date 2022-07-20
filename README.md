@@ -18,10 +18,9 @@ To install, you can use [npm](https://npmjs.org/):
 | :---------------- | :------- | :----------------- | :---------------------------------------------------------------------------------------------- |
 | isOpen            | boolean  | :white_check_mark: | show/hide bananasign widget                                                                     |
 | onClose           | function | :white_check_mark: | Function that will be run when the widget is requested to be closed, prior to actually closing. |
-| signers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
-| viewers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
+| signers           | array    | :white_check_mark: | List assigner<br/>ex: [{ email: 'example@gmail.com', name: 'example' }]                         |
+| viewers           | array    | :white_check_mark: | List assigner<br/>ex: [{ email: 'example@gmail.com', name: 'example' }]                         |
 | onPutDocumentInfo | function | :white_check_mark: | Function that put document info                                                                 |
-| integrationId     | string   | :white_check_mark: | Received since request init integration with bananasign                                         |
 | bananasignUrl     | string   |                    | Base url to open bananasign service by iframe                                                   |
 
 ## Examples
@@ -63,19 +62,18 @@ function App() {
         onClose={closeWidget}
         signers={signers}
         viewers={viewers}
-        onPutDocumentInfo={async ({viewers, signers, integrationId}) => {
+        onPutDocumentInfo={async ({viewers, signers}) => {
           // TODO: service put contract temporary
 
           const { identify } = await axios.post('/put-contract-temporary', {
             viewers,
             signers,
-            integrationId,
+            integrationId, // received since integration with bananasign
           });
 
           // param to open iframe bananasign
           return identify;
         }}
-        integrationId="abc"
       />
     </div>
   );

@@ -23,12 +23,11 @@ ReactDom.render(
         onClose={() => console.log('onClose')}
         signers={signers}
         viewers={viewers}
-        onPutDocumentInfo={async ({viewers, signers, integrationId}) => {
-          console.log({viewers, signers, integrationId});
+        onPutDocumentInfo={async ({viewers, signers}) => {
+          console.log({viewers, signers});
           // TODO: service put contract temporary
           return {identify: ''};
         }}
-        integrationId="abc"
       />
     </Suspense>
   </>,

@@ -17,7 +17,6 @@ interface IInviteToSignProviderProps {
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
   onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-  integrationId: string;
   bananasignUrl?: string;
 }
 
@@ -27,7 +26,6 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   signers,
   viewers,
   onPutDocumentInfo,
-  integrationId,
   bananasignUrl,
 }) => {
   const signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
@@ -38,7 +36,6 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
     viewers: viewersData,
     onClose,
     onPutDocumentInfo,
-    integrationId,
     bananasignUrl: bananasignUrl || BANANA_SIGN_WEB_URL,
   });
 

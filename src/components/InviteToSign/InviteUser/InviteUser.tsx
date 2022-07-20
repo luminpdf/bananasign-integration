@@ -23,7 +23,6 @@ const InviteUser: React.FC = () => {
       cancelAddAssigners,
       onPutDocumentInfo,
       loading,
-      integrationId,
     },
     dispatch,
   } = context;
@@ -72,7 +71,6 @@ const InviteUser: React.FC = () => {
       const result: IGetIdentify = await onPutDocumentInfo({
         signers,
         viewers,
-        integrationId,
       });
       const {identify} = result;
       if (identify) {

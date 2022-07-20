@@ -25,7 +25,6 @@ export const initialState = {
   onClose: () => undefined,
   onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) =>
     Promise.resolve({identify: ''}),
-  integrationId: '',
   identify: '',
   bananasignUrl: '',
 };
