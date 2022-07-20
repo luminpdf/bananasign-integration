@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {REQUEST_TYPE} from '@src/constants/common';
-
 export var initialState = {
   loading: false,
   isOpenAddAssignerModal: false,
@@ -18,10 +17,10 @@ export var initialState = {
   onClose: function () {
     return undefined;
   },
-  assigners: [],
-  onNext: function (_payload) {
-    return {identify: ''};
+  onPutDocumentInfo: function (_payload) {
+    return Promise.resolve({identify: ''});
   },
+  integrationId: '',
 };
 var InviteToSignContext = React.createContext({
   state: initialState,

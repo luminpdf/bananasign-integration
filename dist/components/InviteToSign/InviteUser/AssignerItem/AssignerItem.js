@@ -27,7 +27,6 @@ import {GUEST_USER} from '@src/constants/common';
 
 import InviteToSignContext from '../../InviteToSignContext';
 import {InviteToSignContextActions} from '../../InviteToSignContextActions';
-
 var getTooltipContent = function (role) {
   return {
     signer: 'Change my role to viewer',

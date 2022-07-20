@@ -25,7 +25,6 @@ import {Images} from '@src/assets';
 import InviteToSignContext from '@src/components/InviteToSign/InviteToSignContext';
 import {InviteToSignContextActions} from '@src/components/InviteToSign/InviteToSignContextActions';
 import {REQUEST_TYPE} from '@src/constants/common';
-
 var AssignerListInput = function () {
   var divRef = useRef(null);
   var maxSigners = useRef(0);

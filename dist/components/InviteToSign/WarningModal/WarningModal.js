@@ -27,7 +27,6 @@ import {MODAL_TYPES} from '@src/constants/common';
 
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
-
 var MODAL_WARNING_TYPES =
   ((_a = {}),
   (_a[MODAL_TYPES.ONLY_ONE_SIGNER_IS_OWNER] = {

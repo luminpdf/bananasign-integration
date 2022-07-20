@@ -1,10 +1,12 @@
 import React, { ReactNode } from 'react';
-import { Assigners, PayloadOnNext } from './InviteToSign.interface';
+import { IAssignerProps, IGetIdentify, PayloadPutDocumentInfo } from './InviteToSign.interface';
 interface IInviteToSignProviderProps {
     children: ReactNode;
     onClose: () => void;
-    assigners: Assigners;
-    onNext: (payload: PayloadOnNext) => void;
+    signers: IAssignerProps[];
+    viewers: IAssignerProps[];
+    onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    integrationId: string;
 }
 declare const InviteToSignProvider: React.FC<IInviteToSignProviderProps>;
 export default InviteToSignProvider;

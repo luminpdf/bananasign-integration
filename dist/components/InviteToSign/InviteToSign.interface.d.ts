@@ -1,12 +1,14 @@
-export declare type Assigners = {
+export interface Assigners {
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
-};
+}
 export interface IInviteToSignProps {
     isOpen: boolean;
     onClose: () => void;
-    assigners: Assigners;
-    onNext: (payload: PayloadOnNext) => IGetIdentify;
+    signers: IAssignerProps[];
+    viewers: IAssignerProps[];
+    onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    integrationId: string;
 }
 export interface IGetIdentify {
     identify: string;
@@ -35,10 +37,10 @@ export interface IState {
     openBananasignIframe: boolean;
     modalWarningData: ModalWarning;
     onClose: () => void;
-    assigners: IAssignerProps[];
-    onNext: (payload: PayloadOnNext) => IGetIdentify;
+    onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    integrationId: string;
 }
-export interface PayloadOnNext {
+export interface PayloadPutDocumentInfo {
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
     integrationId: string;

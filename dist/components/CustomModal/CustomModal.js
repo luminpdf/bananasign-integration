@@ -20,7 +20,6 @@ import ReactModal from 'react-modal';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import {Images} from '@src/assets';
-
 ReactModal.setAppElement('#root');
 var CustomModal = function (props) {
   var children = props.children,

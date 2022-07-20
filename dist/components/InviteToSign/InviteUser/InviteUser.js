@@ -161,7 +161,6 @@ import Button from '@components/Button';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
-
 var InviteUser = function () {
   var context = useContext(InviteToSignContext);
   var _a = context.state,
@@ -169,7 +168,9 @@ var InviteUser = function () {
     viewers = _a.viewers,
     isOpenAddAssignerModal = _a.isOpenAddAssignerModal,
     cancelAddAssigners = _a.cancelAddAssigners,
-    onNext = _a.onNext,
+    onPutDocumentInfo = _a.onPutDocumentInfo,
+    loading = _a.loading,
+    integrationId = _a.integrationId,
     dispatch = context.dispatch;
   var _b = useState([]),
     signersState = _b[0],
@@ -209,16 +210,19 @@ var InviteUser = function () {
       return __generator(this, function (_a) {
         switch (_a.label) {
           case 0:
+            if (loading) {
+              return [2 /*return*/];
+            }
             dispatch(InviteToSignContextActions.SET_LOADING(true));
             _a.label = 1;
           case 1:
             _a.trys.push([1, 3, 4, 5]);
             return [
               4 /*yield*/,
-              onNext({
+              onPutDocumentInfo({
                 signers: signers,
                 viewers: viewers,
-                integrationId: '',
+                integrationId: integrationId,
               }),
             ];
           case 2:

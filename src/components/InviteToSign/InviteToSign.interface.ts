@@ -1,7 +1,7 @@
-export type Assigners = {
+export interface Assigners {
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
-};
+}
 export interface IInviteToSignProps {
   /* show/hide bananasign widget */
   /* default = false */

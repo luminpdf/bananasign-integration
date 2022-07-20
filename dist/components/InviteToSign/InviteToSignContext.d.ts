@@ -1,5 +1,5 @@
 import React from 'react';
-import { IState, PayloadOnNext } from './InviteToSign.interface';
+import { IState, PayloadPutDocumentInfo } from './InviteToSign.interface';
 interface ContextType {
     state: IState;
     dispatch: React.Dispatch<{
@@ -20,10 +20,10 @@ export declare const initialState: {
         type: string;
     };
     onClose: () => undefined;
-    assigners: never[];
-    onNext: (_payload: PayloadOnNext) => {
+    onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) => Promise<{
         identify: string;
-    };
+    }>;
+    integrationId: string;
 };
 declare const InviteToSignContext: React.Context<ContextType>;
 export default InviteToSignContext;

@@ -23,7 +23,6 @@ import {
 } from 'react/jsx-runtime';
 
 import {Images} from '@src/assets';
-
 // import AssignerItem from '../../InviteUser/AssignerItem';
 var EmptyContacts = function () {
   return _jsxs(

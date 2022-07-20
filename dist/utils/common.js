@@ -14,7 +14,7 @@ var __assign =
     return __assign.apply(this, arguments);
   };
 
-import {GUEST_USER} from '@src/constants/common';
+import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
 var getAvatarName = function (name) {
   var words = '';
   if (name && name.split(' ').length > 0) {
@@ -56,32 +56,19 @@ export var debounce = function (func, waitFor) {
   };
   return debounced;
 };
-var serializeAssigners = function (assigners) {
-  var signers = assigners.signers,
-    viewers = assigners.viewers;
-  var serializeSigners = signers.map(function (assigner, index) {
+var serializeAssigners = function (assigners, requestType) {
+  var serializeSigners = assigners.map(function (assigner, index) {
     return __assign(__assign({}, assigner), {
       name:
         (assigner === null || assigner === void 0 ? void 0 : assigner.name) ||
         GUEST_USER,
-      isOwner: index === 0,
+      isOwner: requestType === REQUEST_TYPE.SIGNER && index === 0,
       id: '',
-      requestType: 'SIGNER',
+      requestType: requestType,
       dueDateExpired: 0,
     });
   });
-  var serializeViewers = viewers.map(function (assigner) {
-    return __assign(__assign({}, assigner), {
-      name:
-        (assigner === null || assigner === void 0 ? void 0 : assigner.name) ||
-        GUEST_USER,
-      isOwner: false,
-      id: '',
-      requestType: 'VIEWER',
-      dueDateExpired: 0,
-    });
-  });
-  return {signers: serializeSigners, viewers: serializeViewers};
+  return serializeSigners;
 };
 export default {
   getAvatarName: getAvatarName,

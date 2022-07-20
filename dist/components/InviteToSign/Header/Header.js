@@ -24,7 +24,6 @@ import {MODAL_TYPES} from '@src/constants/common';
 
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
-
 var PROGRESS_BAR_LIST_ITEM = [
   {value: 'INVITE TO SIGN', className: 'active'},
   {value: 'ADD DUE DATE', className: ''},

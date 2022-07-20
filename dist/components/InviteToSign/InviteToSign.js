@@ -27,23 +27,31 @@ import InviteToSignProvider from './InviteToSignProvider';
 import InviteUser from './InviteUser';
 import Loading from './Loading';
 import WarningModal from './WarningModal';
-
 var InviteToSign = function (props) {
   var isOpen = props.isOpen,
     onClose = props.onClose,
-    assigners = props.assigners,
-    onNext = props.onNext;
+    signers = props.signers,
+    viewers = props.viewers,
+    onPutDocumentInfo = props.onPutDocumentInfo,
+    integrationId = props.integrationId;
+  var show = Boolean(isOpen && integrationId);
   return _jsx(
     InviteToSignProvider,
     __assign(
-      {onClose: onClose, assigners: assigners, onNext: onNext},
+      {
+        onClose: onClose,
+        signers: signers,
+        viewers: viewers,
+        onPutDocumentInfo: onPutDocumentInfo,
+        integrationId: integrationId,
+      },
       {
         children: _jsxs(
           'div',
           __assign(
             {
               className: classNames('InviteToSign__container', {
-                open: isOpen,
+                open: show,
               }),
             },
             {

@@ -17,28 +17,32 @@ var __assign =
 import {useReducer} from 'react';
 import {jsx as _jsx} from 'react/jsx-runtime';
 
+import {REQUEST_TYPE} from '@src/constants/common';
 import common from '@src/utils/common';
 
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
-
 var InviteToSignProvider = function (_a) {
   var children = _a.children,
     onClose = _a.onClose,
-    assigners = _a.assigners;
-  var _b = common.serializeAssigners(assigners),
-    signers = _b.signers,
-    viewers = _b.viewers;
-  var _c = useReducer(
+    signers = _a.signers,
+    viewers = _a.viewers,
+    onPutDocumentInfo = _a.onPutDocumentInfo,
+    integrationId = _a.integrationId;
+  var signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
+  var viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
+  var _b = useReducer(
       InviteToSignContextReducer,
       __assign(__assign({}, initialState), {
-        signers: signers,
-        viewers: viewers,
+        signers: signersData,
+        viewers: viewersData,
         onClose: onClose,
+        onPutDocumentInfo: onPutDocumentInfo,
+        integrationId: integrationId,
       }),
     ),
-    state = _c[0],
-    dispatch = _c[1];
+    state = _b[0],
+    dispatch = _b[1];
   return _jsx(
     InviteToSignContext.Provider,
     __assign({value: {state: state, dispatch: dispatch}}, {children: children}),
