@@ -147,7 +147,6 @@ var __generator =
     }
   };
 
-// import {InviteToSign} from 'banana-widget';
 import {Suspense} from 'react';
 import ReactDom from 'react-dom';
 import {Fragment as _Fragment, jsx as _jsx} from 'react/jsx-runtime';
@@ -177,10 +176,17 @@ ReactDom.render(
             },
             signers: signers,
             viewers: viewers,
-            onPutDocumentInfo: function (payload) {
+            onPutDocumentInfo: function (_a) {
+              var viewers = _a.viewers,
+                signers = _a.signers,
+                integrationId = _a.integrationId;
               return __awaiter(void 0, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                  console.log({payload: payload});
+                return __generator(this, function (_b) {
+                  console.log({
+                    viewers: viewers,
+                    signers: signers,
+                    integrationId: integrationId,
+                  });
                   // TODO: service put contract temporary
                   return [2 /*return*/, {identify: ''}];
                 });

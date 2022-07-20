@@ -9,8 +9,7 @@ function n(n) {
     n
   );
 }
-Object.defineProperty(exports, '__esModule', {value: !0}),
-  require('@styles/styles.css'),
+require('@styles/styles.css'),
   require('@styles/styles.less'),
   require('@styles/styles.scss');
 var o = require('react'),
@@ -1044,7 +1043,7 @@ var yn = o.memo(mn),
     };
   },
   bn = function (n, o) {
-    var r = n.map(function (n, r) {
+    return n.map(function (n, r) {
       return m(m({}, n), {
         name: (null == n ? void 0 : n.name) || 'Guest User',
         isOwner: o === M && 0 === r,
@@ -1053,7 +1052,6 @@ var yn = o.memo(mn),
         dueDateExpired: 0,
       });
     });
-    return r;
   };
 n(
   ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.AssignerListInput__container {\n  display: flex;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  max-height: 150px;\n  overflow: hidden;\n  overflow-y: scroll;\n  height: 100%;\n  -webkit-overflow-scrolling: touch;\n  overflow: overlay;\n  padding-top: 8px;\n}\n.AssignerListInput__container::-webkit-scrollbar {\n  border-radius: 36px;\n  height: 10px;\n  width: 4px;\n}\n.AssignerListInput__container::-webkit-scrollbar-thumb {\n  background: var(--color-primary-230);\n  border-radius: 36px;\n}\n.AssignerListInput__container::-webkit-scrollbar-track {\n  border-radius: 36px;\n}\n.AssignerListInput__container.scroll::before {\n  content: "";\n  background: white;\n  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6601015406) 0%, rgba(255, 255, 255, 0) 100%);\n  height: 15px;\n  position: fixed;\n  width: 489px;\n}\n\n.AssignerListInput__row-email {\n  display: flex;\n  align-items: center;\n  padding: 2px 4px 2px 8px;\n  background: var(--color-primary-160);\n  margin: 0px 0px 8px 8px;\n  border-radius: 4px;\n}\n.AssignerListInput__row-email.disabled {\n  cursor: not-allowed;\n  opacity: 0.7;\n}\n\n.AssignerListInput__email {\n  font-family: var(--font-primary);\n  font-style: normal;\n  font-weight: 500;\n  font-size: 14px;\n  line-height: 20px;\n  color: var(--color-blue);\n  text-align: center;\n  align-items: center;\n  display: block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  max-width: 430px;\n}\n.AssignerListInput__email.disabled {\n  cursor: not-allowed;\n  opacity: 0.7;\n}\n\n.AssignerListInput__icon-right {\n  padding: 3px;\n  margin-left: 5px;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.AssignerListInput__icon-right img {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 15px;\n  height: 15px;\n}\n.AssignerListInput__icon-right:hover {\n  background-color: var(--color-primary-230);\n}\n\n.AssignerListInput__icon-right.hidden {\n  display: none;\n  z-index: -1;\n}',
@@ -2262,5 +2260,5 @@ var qn =
     );
   },
   $n = o.memo(Xn);
-exports.BananasignWidget = $n;
+module.exports = $n;
 //# sourceMappingURL=index.js.map

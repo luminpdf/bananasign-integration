@@ -21,6 +21,7 @@ import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
 import pkg from './package.json';
+
 let production = process.env.NODE_ENV == 'production';
 export default [
   {
@@ -35,6 +36,7 @@ export default [
           react: 'React',
           'react-dom': 'ReactDOM',
         },
+        exports: 'auto',
       },
     ],
     external: ['react', 'react-dom', '@styles/styles.scss'],

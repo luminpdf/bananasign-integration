@@ -1,10 +1,7 @@
-// import {InviteToSign} from 'banana-widget';
 import {Suspense} from 'react';
 import ReactDom from 'react-dom';
 
 import BananasignWidget from '@src/components/InviteToSign';
-
-import {PayloadPutDocumentInfo} from './components/InviteToSign/InviteToSign.interface';
 
 const signers = [
   {email: 'example1@gmail.com', name: 'example 1'},
@@ -25,8 +22,8 @@ ReactDom.render(
         onClose={() => console.log('onClose')}
         signers={signers}
         viewers={viewers}
-        onPutDocumentInfo={async (payload: PayloadPutDocumentInfo) => {
-          console.log({payload});
+        onPutDocumentInfo={async ({viewers, signers, integrationId}) => {
+          console.log({viewers, signers, integrationId});
           // TODO: service put contract temporary
           return {identify: ''};
         }}
