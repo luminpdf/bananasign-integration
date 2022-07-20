@@ -25,17 +25,12 @@ import pkg from './package.json';
 let production = process.env.NODE_ENV == 'production';
 export default [
   {
-    input: 'src/index.tsx',
+    input: 'src/components/InviteToSign/InviteToSign.tsx',
     output: [
       {
         file: pkg.main,
         format: 'cjs',
         sourcemap: true,
-        strict: false,
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
         exports: 'auto',
       },
     ],
@@ -47,6 +42,7 @@ export default [
       cleanup(),
       url({
         limit: Infinity, // inline files < 10k, copy files > 10k
+        // include: ['**/*.ttf', '**/*.png'],
         include: ['**/*.svg'], // defaults to .svg, .png, .jpg and .gif files
         emitFiles: true, // defaults to true
         fileName: '[dirname][name][extname]',
