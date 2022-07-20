@@ -16,11 +16,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc --outDir dist --declaration true && rollup -c",
+    "build": "rm -rf dist && tsc --outDir dist --declaration true && npm run copy:types && rollup -c",
     "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
     "dev": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
     "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./build/profile.json && webpack-bundle-analyzer ./build/profile.json",
-    "release": "npm version patch"
+    "release": "npm version patch",
+    "copy:types": "cpy ./bananasign-widget.d.ts ./dist --parents --dot"
   },
   "browserify-shim": {
     "react": "global:React",

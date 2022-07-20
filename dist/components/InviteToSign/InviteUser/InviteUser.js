@@ -146,6 +146,18 @@ var __generator =
       return {value: op[0] ? op[1] : void 0, done: true};
     }
   };
+var __spreadArray =
+  (this && this.__spreadArray) ||
+  function (to, from, pack) {
+    if (pack || arguments.length === 2)
+      for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+    return to.concat(ar || Array.prototype.slice.call(from));
+  };
 
 import './InviteUser.style.scss';
 
@@ -198,11 +210,25 @@ var InviteUser = function () {
     dispatch(InviteToSignContextActions.SET_REQUEST_TYPE(type));
     dispatch(InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true));
   };
-  var handleRemoveSigner = function (signer) {
-    dispatch(InviteToSignContextActions.REMOVE_SIGNER(signer));
+  var handleRemoveSigner = function (user) {
+    dispatch(InviteToSignContextActions.REMOVE_SIGNER(user));
+    if (user === null || user === void 0 ? void 0 : user.isOwner) {
+      dispatch(
+        InviteToSignContextActions.SET_VIEWERS(
+          __spreadArray([user], viewers, true),
+        ),
+      );
+    }
   };
-  var handleRemoveViewer = function (viewer) {
-    dispatch(InviteToSignContextActions.REMOVE_VIEWER(viewer));
+  var handleRemoveViewer = function (user) {
+    dispatch(InviteToSignContextActions.REMOVE_VIEWER(user));
+    if (user === null || user === void 0 ? void 0 : user.isOwner) {
+      dispatch(
+        InviteToSignContextActions.SET_SIGNERS(
+          __spreadArray([user], signers, true),
+        ),
+      );
+    }
   };
   var handleNext = function () {
     return __awaiter(void 0, void 0, void 0, function () {

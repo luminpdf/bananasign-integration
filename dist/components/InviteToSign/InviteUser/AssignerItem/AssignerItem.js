@@ -17,16 +17,12 @@ var __assign =
 import './AssignerItem.style.scss';
 
 import classNames from 'classnames';
-import {useContext} from 'react';
 import ReactTooltip from 'react-tooltip';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import {Images} from '@src/assets';
 import Avatar from '@src/components/Avatar';
 import {GUEST_USER} from '@src/constants/common';
-
-import InviteToSignContext from '../../InviteToSignContext';
-import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 var getTooltipContent = function (role) {
   return {
     signer: 'Change my role to viewer',
@@ -34,8 +30,6 @@ var getTooltipContent = function (role) {
   }[role];
 };
 var AssignerItem = function (props) {
-  var context = useContext(InviteToSignContext);
-  var dispatch = context.dispatch;
   var user = props.user,
     className = props.className,
     showIconTrash = props.showIconTrash,
@@ -56,13 +50,6 @@ var AssignerItem = function (props) {
     ReactTooltip.hide();
     if (onRemoveUser && typeof onRemoveUser === 'function') {
       onRemoveUser(user);
-    }
-    if (isOwner) {
-      if (role === 'signer') {
-        dispatch(InviteToSignContextActions.ADD_VIEWER(user));
-      } else {
-        dispatch(InviteToSignContextActions.ADD_SIGNER(user));
-      }
     }
   };
   var dataToolTip = isOwner

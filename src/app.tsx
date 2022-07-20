@@ -1,3 +1,4 @@
+// import {InviteToSign} from 'banana-widget';
 import {Suspense} from 'react';
 import ReactDom from 'react-dom';
 

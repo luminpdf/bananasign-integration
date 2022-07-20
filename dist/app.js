@@ -147,6 +147,7 @@ var __generator =
     }
   };
 
+// import {InviteToSign} from 'banana-widget';
 import {Suspense} from 'react';
 import ReactDom from 'react-dom';
 import {Fragment as _Fragment, jsx as _jsx} from 'react/jsx-runtime';

@@ -1314,33 +1314,32 @@ var _n = function (n) {
 _n.defaultProps = {classNames: '', style: {}};
 var kn = o.memo(_n),
   Dn = function (n) {
-    var e = o.useContext(L).dispatch,
-      t = n.user,
-      a = n.className,
-      l = n.showIconTrash,
-      i = n.onClick,
-      s = n.onRemoveUser,
-      c = n.role,
-      d = n.disabled,
-      u = 'Guest User' === (null == t ? void 0 : t.name),
-      y = null == t ? void 0 : t.isOwner,
-      g = y
+    var o = n.user,
+      e = n.className,
+      t = n.showIconTrash,
+      a = n.onClick,
+      l = n.onRemoveUser,
+      i = n.role,
+      s = n.disabled,
+      c = 'Guest User' === (null == o ? void 0 : o.name),
+      d = null == o ? void 0 : o.isOwner,
+      u = d
         ? (function (n) {
             return {
               signer: 'Change my role to viewer',
               viewer: 'Change my role to signer',
             }[n];
-          })(c || 'signer')
-        : 'Remove '.concat(c);
+          })(i || 'signer')
+        : 'Remove '.concat(i);
     return r.jsxs(
       'div',
       m(
         {
           onClick: function () {
-            i && 'function' == typeof i && i(t);
+            a && 'function' == typeof a && a(o);
           },
-          className: f.default('AssignerItem__container '.concat(a), {
-            disabled: d,
+          className: f.default('AssignerItem__container '.concat(e), {
+            disabled: s,
           }),
         },
         {
@@ -1352,7 +1351,7 @@ var kn = o.memo(_n),
                 {
                   children: [
                     r.jsx(kn, {
-                      user: t,
+                      user: o,
                       className: 'AssignerItem__wrapper-avatar',
                     }),
                     r.jsxs(
@@ -1363,12 +1362,12 @@ var kn = o.memo(_n),
                           children: [
                             r.jsxs('p', {
                               children: [
-                                u ? 'Guest User' : t.name,
+                                c ? 'Guest User' : o.name,
                                 ' ',
-                                y && '(Owner)',
+                                d && '(Owner)',
                               ],
                             }),
-                            r.jsx('p', {children: t.email}),
+                            r.jsx('p', {children: o.email}),
                           ],
                         },
                       ),
@@ -1377,23 +1376,21 @@ var kn = o.memo(_n),
                 },
               ),
             ),
-            l &&
+            t &&
               r.jsxs(
                 'div',
                 m(
                   {
                     onClick: function () {
-                      p.default.hide(),
-                        s && 'function' == typeof s && s(t),
-                        y && e('signer' === c ? tn(t) : an(t));
+                      p.default.hide(), l && 'function' == typeof l && l(o);
                     },
-                    'data-tip': g,
+                    'data-tip': u,
                     className: 'AssignerItem__delete-button',
                   },
                   {
                     children: [
                       r.jsx('img', {
-                        src: y
+                        src: d
                           ? 'data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M0%204C0%201.79086%201.79086%200%204%200H20C22.2091%200%2024%201.79086%2024%204V20C24%2022.2091%2022.2091%2024%2020%2024H4C1.79086%2024%200%2022.2091%200%2020V4Z%22%2F%3E%3Cpath%20d%3D%22M15.5059%204.32746C15.1805%204.00201%2014.6528%204.00201%2014.3274%204.32745C14.002%204.65288%2014.002%205.18052%2014.3274%205.50596L14.9849%206.16351H10.3333C7.11168%206.16351%204.5%208.77517%204.5%2011.9968V12.8302C4.5%2013.2904%204.8731%2013.6635%205.33333%2013.6635C5.79357%2013.6635%206.16667%2013.2904%206.16667%2012.8302V11.9968C6.16667%209.69565%208.03215%207.83017%2010.3333%207.83017H14.9888L14.3274%208.49164C14.002%208.81708%2014.002%209.34472%2014.3274%209.67016C14.6528%209.99559%2015.1805%209.99558%2015.5059%209.67015L17.2933%207.88267C17.7815%207.39451%2017.7815%206.60306%2017.2933%206.11491L15.5059%204.32746Z%22%20fill%3D%22%2350677A%22%2F%3E%3Cpath%20d%3D%22M13.6655%2017.8334C16.8871%2017.8334%2019.4988%2015.2217%2019.4988%2012V11.1667C19.4988%2010.7065%2019.1257%2010.3334%2018.6655%2010.3334C18.2053%2010.3334%2017.8321%2010.7065%2017.8321%2011.1667V12C17.8321%2014.3012%2015.9667%2016.1667%2013.6655%2016.1667H9.00992L9.67143%2015.5052C9.99686%2015.1797%209.99686%2014.6521%209.67142%2014.3267C9.34598%2014.0012%208.81834%2014.0012%208.4929%2014.3267L6.70547%2016.1141C6.21732%2016.6023%206.21732%2017.3938%206.70547%2017.8819L8.49291%2019.6694C8.81834%2019.9948%209.34598%2019.9948%209.67142%2019.6694C9.99686%2019.344%209.99686%2018.8163%209.67143%2018.4909L9.01394%2017.8334H13.6655Z%22%20fill%3D%22%2350677A%22%2F%3E%3C%2Fsvg%3E'
                           : 'data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M4.5%206.16666C4.5%206.62689%204.8731%206.99999%205.33333%206.99999H18.6667C19.1269%206.99999%2019.5%206.62689%2019.5%206.16666C19.5%205.70642%2019.1269%205.33332%2018.6667%205.33332H16.0244C15.6813%204.36233%2014.7552%203.66666%2013.6667%203.66666H10.3333C9.24482%203.66666%208.31878%204.36233%207.97559%205.33332H5.33333C4.8731%205.33332%204.5%205.70642%204.5%206.16666ZM5.33333%209.49999C5.33333%209.03976%205.70643%208.66666%206.16667%208.66666H17.8333C18.2936%208.66666%2018.6667%209.03976%2018.6667%209.49999V17.8333C18.6667%2019.2141%2017.5474%2020.3333%2016.1667%2020.3333H7.83333C6.45263%2020.3333%205.33333%2019.2141%205.33333%2017.8333V9.49999ZM10.3333%2012C10.3333%2011.5397%209.96023%2011.1667%209.5%2011.1667C9.03977%2011.1667%208.66667%2011.5397%208.66667%2012V17C8.66667%2017.4602%209.03977%2017.8333%209.5%2017.8333C9.96023%2017.8333%2010.3333%2017.4602%2010.3333%2017V12ZM15.3333%2012C15.3333%2011.5397%2014.9602%2011.1667%2014.5%2011.1667C14.0397%2011.1667%2013.6667%2011.5397%2013.6667%2012V17C13.6667%2017.4602%2014.0397%2017.8333%2014.5%2017.8333C14.9602%2017.8333%2015.3333%2017.4602%2015.3333%2017V12Z%22%20fill%3D%22%2350677A%22%2F%3E%3C%2Fsvg%3E',
                         alt: 'delete icon',
@@ -1409,7 +1406,7 @@ var kn = o.memo(_n),
                   },
                 ),
               ),
-            d &&
+            s &&
               r.jsx(
                 'span',
                 m(
@@ -1917,25 +1914,25 @@ var Un = function () {
       d = e.integrationId,
       p = n.dispatch,
       u = o.useState([]),
-      h = u[0],
-      x = u[1],
-      b = o.useState([]),
-      w = b[0],
-      v = b[1];
+      x = u[0],
+      b = u[1],
+      w = o.useState([]),
+      v = w[0],
+      C = w[1];
     o.useEffect(
       function () {
-        l || (i ? (p(cn(h)), p(fn(w)), p(sn(!1))) : (x(t), v(a)));
+        l || (i ? (p(cn(x)), p(fn(v)), p(sn(!1))) : (b(t), C(a)));
       },
       [l, t, a],
     );
-    var C = function (n) {
+    var _ = function (n) {
         p(ln(n)), p(K(!0));
       },
-      _ = function (n) {
-        p(nn(n));
-      },
       k = function (n) {
-        p(on(n));
+        p(nn(n)), (null == n ? void 0 : n.isOwner) && p(fn(h([n], a, !0)));
+      },
+      E = function (n) {
+        p(on(n)), (null == n ? void 0 : n.isOwner) && p(cn(h([n], t, !0)));
       };
     return r.jsxs(
       'div',
@@ -1977,16 +1974,16 @@ var Un = function () {
                                 {
                                   className: f.default(
                                     'InviteUser__wrapper-user-list',
-                                    {hide_border: !h.length},
+                                    {hide_border: !x.length},
                                   ),
                                 },
                                 {
-                                  children: h.map(function (n, o) {
+                                  children: x.map(function (n, o) {
                                     return r.jsx(
                                       Mn,
                                       {
                                         user: n,
-                                        onRemoveUser: _,
+                                        onRemoveUser: k,
                                         role: 'signer',
                                       },
                                       (null == n ? void 0 : n.email) + '' + o,
@@ -1997,7 +1994,7 @@ var Un = function () {
                             ),
                             r.jsx(D, {
                               onClick: function () {
-                                return C(M);
+                                return _(M);
                               },
                               className: 'InviteUser__wrapper-add-button',
                               isRippleEffect: !0,
@@ -2027,16 +2024,16 @@ var Un = function () {
                                 {
                                   className: f.default(
                                     'InviteUser__wrapper-user-list',
-                                    {hide_border: !w.length},
+                                    {hide_border: !v.length},
                                   ),
                                 },
                                 {
-                                  children: w.map(function (n, o) {
+                                  children: v.map(function (n, o) {
                                     return r.jsx(
                                       Mn,
                                       {
                                         user: n,
-                                        onRemoveUser: k,
+                                        onRemoveUser: E,
                                         role: 'viewer',
                                       },
                                       (null == n ? void 0 : n.email) + '' + o,
@@ -2047,7 +2044,7 @@ var Un = function () {
                             ),
                             r.jsx(D, {
                               onClick: function () {
-                                return C(I);
+                                return _(I);
                               },
                               className: 'InviteUser__wrapper-add-button',
                               isRippleEffect: !0,
