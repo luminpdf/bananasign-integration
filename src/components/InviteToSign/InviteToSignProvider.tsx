@@ -2,7 +2,7 @@ import React, {ReactNode, useReducer} from 'react';
 
 import common from '@src/utils/common';
 
-import {Assigners, PayloadOnNext} from './InviteToSign.interface';
+import {Assigners, IGetIdentify, PayloadOnNext} from './InviteToSign.interface';
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
 
@@ -12,13 +12,16 @@ interface IInviteToSignProviderProps {
   children: ReactNode;
   onClose: () => void;
   assigners: Assigners;
-  onNext: (payload: PayloadOnNext) => void;
+  onNext: (payload: PayloadOnNext) => Promise<IGetIdentify>;
+  integrationId: string;
 }
 
 const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   children,
   onClose,
   assigners,
+  onNext,
+  integrationId,
 }) => {
   const {signers, viewers} = common.serializeAssigners(assigners);
   const [state, dispatch] = useReducer(InviteToSignContextReducer, {
@@ -26,6 +29,8 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
     signers,
     viewers,
     onClose,
+    onNext,
+    integrationId,
   });
 
   return (

@@ -14,17 +14,18 @@ import Loading from './Loading';
 import WarningModal from './WarningModal';
 
 const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
-  const {isOpen, onClose, assigners, onNext} = props;
-
+  const {isOpen, onClose, assigners, onNext, integrationId} = props;
+  const show = Boolean(isOpen && integrationId);
   return (
     <InviteToSignProvider
       onClose={onClose}
       assigners={assigners}
       onNext={onNext}
+      integrationId={integrationId}
     >
       <div
         className={classNames('InviteToSign__container', {
-          open: isOpen,
+          open: show,
         })}
       >
         <Header />

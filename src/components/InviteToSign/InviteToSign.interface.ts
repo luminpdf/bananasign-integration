@@ -11,7 +11,9 @@ export interface IInviteToSignProps {
   /* List assigners */
   assigners: Assigners;
   /* Function that put document info */
-  onNext: (payload: PayloadOnNext) => IGetIdentify;
+  onNext: (payload: PayloadOnNext) => Promise<IGetIdentify>;
+  /* Flow id integration with bananasign service */
+  integrationId: string;
 }
 
 export interface IGetIdentify {
@@ -44,7 +46,8 @@ export interface IState {
   modalWarningData: ModalWarning;
   onClose: () => void;
   assigners: IAssignerProps[];
-  onNext: (payload: PayloadOnNext) => IGetIdentify;
+  onNext: (payload: PayloadOnNext) => Promise<IGetIdentify>;
+  integrationId: string;
 }
 
 export interface PayloadOnNext {

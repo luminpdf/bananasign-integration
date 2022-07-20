@@ -22,6 +22,8 @@ const InviteUser: React.FC = () => {
       isOpenAddAssignerModal,
       cancelAddAssigners,
       onNext,
+      loading,
+      integrationId,
     },
     dispatch,
   } = context;
@@ -56,12 +58,15 @@ const InviteUser: React.FC = () => {
   };
 
   const handleNext = async () => {
+    if (loading) {
+      return;
+    }
     dispatch(InviteToSignContextActions.SET_LOADING(true));
     try {
       const result: IGetIdentify = await onNext({
         signers,
         viewers,
-        integrationId: '',
+        integrationId,
       });
       const {identify} = result;
       if (identify) {

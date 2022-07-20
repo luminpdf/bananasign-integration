@@ -24,7 +24,8 @@ export const initialState = {
   },
   onClose: () => undefined,
   assigners: [],
-  onNext: (_payload: PayloadOnNext) => ({identify: ''}),
+  onNext: (_payload: PayloadOnNext) => Promise.resolve({identify: ''}),
+  integrationId: '',
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

@@ -1,6 +1,8 @@
-import {InviteToSign} from 'banana-widget';
+// import {InviteToSign} from 'banana-widget';
 import {Suspense} from 'react';
 import ReactDom from 'react-dom';
+
+import InviteToSign from './components/InviteToSign';
 
 const assigners = {
   signers: [
@@ -22,11 +24,12 @@ ReactDom.render(
         isOpen={true}
         onClose={() => console.log('onClose')}
         assigners={assigners}
-        onNext={(_payload: any) => {
+        onNext={async (payload) => {
+          console.log({payload});
           // TODO: service put contract temporary
-          console.log(_payload);
           return {identify: ''};
         }}
+        integrationId="abc"
       />
     </Suspense>
   </>,
