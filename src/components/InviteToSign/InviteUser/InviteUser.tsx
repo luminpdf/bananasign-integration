@@ -78,9 +78,7 @@ const InviteUser: React.FC = () => {
         dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
       }
     } catch (error) {
-      console.log({error});
-    } finally {
-      dispatch(InviteToSignContextActions.SET_LOADING(false));
+      console.warn('Cannot load bananasign service');
     }
   };
 

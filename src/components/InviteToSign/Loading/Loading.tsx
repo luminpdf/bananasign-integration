@@ -10,14 +10,10 @@ import InviteToSignContext from '../InviteToSignContext';
 const Loading: React.FC = () => {
   const context = useContext(InviteToSignContext);
   const {
-    state: {loading, openBananasignIframe},
+    state: {loading},
   } = context;
 
-  if (!loading || openBananasignIframe) {
-    return null;
-  }
-
-  return (
+  return !loading ? null : (
     <div className="Loading__container">
       <Lottie
         loop

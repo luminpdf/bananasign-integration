@@ -241,7 +241,7 @@ var InviteUser = function () {
             dispatch(InviteToSignContextActions.SET_LOADING(true));
             _a.label = 1;
           case 1:
-            _a.trys.push([1, 3, 4, 5]);
+            _a.trys.push([1, 3, , 4]);
             return [
               4 /*yield*/,
               saveDocumentInfo({
@@ -256,15 +256,12 @@ var InviteUser = function () {
               dispatch(InviteToSignContextActions.SET_IDENTIFY(identify));
               dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
             }
-            return [3 /*break*/, 5];
+            return [3 /*break*/, 4];
           case 3:
             error_1 = _a.sent();
-            console.log({error: error_1});
-            return [3 /*break*/, 5];
+            console.warn('Cannot load bananasign service');
+            return [3 /*break*/, 4];
           case 4:
-            dispatch(InviteToSignContextActions.SET_LOADING(false));
-            return [7 /*endfinally*/];
-          case 5:
             return [2 /*return*/];
         }
       });

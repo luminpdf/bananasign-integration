@@ -25,27 +25,24 @@ import {Lotties} from '@src/assets';
 import InviteToSignContext from '../InviteToSignContext';
 var Loading = function () {
   var context = useContext(InviteToSignContext);
-  var _a = context.state,
-    loading = _a.loading,
-    openBananasignIframe = _a.openBananasignIframe;
-  if (!loading || openBananasignIframe) {
-    return null;
-  }
-  return _jsx(
-    'div',
-    __assign(
-      {className: 'Loading__container'},
-      {
-        children: _jsx(Lottie, {
-          loop: true,
-          animationData: Lotties.bananasign_loading,
-          play: true,
-          style: {width: 209, height: 209},
-          rendererSettings: {preserveAspectRatio: 'xMidYMid slice'},
-        }),
-      },
-    ),
-  );
+  var loading = context.state.loading;
+  return !loading
+    ? null
+    : _jsx(
+        'div',
+        __assign(
+          {className: 'Loading__container'},
+          {
+            children: _jsx(Lottie, {
+              loop: true,
+              animationData: Lotties.bananasign_loading,
+              play: true,
+              style: {width: 209, height: 209},
+              rendererSettings: {preserveAspectRatio: 'xMidYMid slice'},
+            }),
+          },
+        ),
+      );
 };
 export default Loading;
 //# sourceMappingURL=Loading.js.map
