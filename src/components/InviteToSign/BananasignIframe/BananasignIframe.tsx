@@ -19,6 +19,7 @@ const BananasignIframe: React.FC = () => {
     if (e.origin === bananasignUrl) {
       switch (e.data.type) {
         case CLOSE_TASK_BANANA_SIGN_MSG:
+          dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(false));
           onClose();
           break;
         case BACK_STEP_BANANA_SIGN_MSG:
