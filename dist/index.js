@@ -1669,7 +1669,7 @@ var Fn,
   },
   Pn = e.memo(Nn);
 n(
-  ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.BananasignIframe__container {\n  position: absolute;\n  top: 0;\n  z-index: 101;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  background: var(--color-soft-white);\n}',
+  ':root {\n  --font-primary: "MarkPro", arial, sans-serif;\n  --font-primary-regular: "MarkPro-Regular", arial, sans-serif;\n  --font-primary-bold: "MarkPro-Bold", arial, sans-serif;\n  --color-blue: #3180f1;\n  --color-blue-120: #bdd8ff;\n  --color-blue-160: #1f67cf;\n  --color-blue-170: #1051ad;\n  --color-red: #f04a4a;\n  --color-neutral-0: #fff;\n  --color-neutral-40: #d2d6d9;\n  --color-neutral-70: rgba(12, 57, 91, 0.7);\n  --color-neutral-100: #0c395b;\n  --color-other-1: #50677a;\n  --color-other-11: #8e979f;\n  --color-soft-white: #f7f6ec;\n  --color-warning-40: #fae200;\n  --color-yellow: #fae200;\n  --color-yellow-10: #fff8b7;\n  --color-yellow-60: #e6d000;\n  --color-yellow-70: #d0bd07;\n  --color-primary-160: #eaf3ff;\n  --color-primary-220: #f4f4f4;\n  --color-primary-230: #e1e1e1;\n  --color-primary-240: #c6c8c9;\n  --color-primary-260: #8e979f;\n  --color-primary-350: #f7f6ec;\n  --color-secondary: #8093a7;\n  --color-secondary-50: #f2385a;\n  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),\n    0 3px 14px 2px rgba(128, 147, 167, 0.12),\n    0 8px 10px 1px rgba(128, 147, 167, 0.14);\n}\n\n@font-face {\n  font-family: "MarkPro";\n  src: url("//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c.ttf") format("truetype");\n  font-weight: "normal";\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Regular";\n  src: url("//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9.ttf") format("truetype");\n  font-weight: 300;\n  font-style: normal;\n  font-display: swap;\n}\n@font-face {\n  font-family: "MarkPro-Bold";\n  src: url("//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07.ttf") format("truetype");\n  font-weight: 600;\n  font-style: normal;\n  font-display: swap;\n}\n.BananasignIframe__container {\n  position: absolute;\n  top: 0;\n  z-index: 99;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  background: var(--color-soft-white);\n}',
 );
 var Rn = function () {
     var n = e.useContext(L),
@@ -2066,32 +2066,32 @@ var zn = function () {
                       title: 'Next',
                       onClick: function () {
                         return y(void 0, void 0, void 0, function () {
-                          var n, o, r;
-                          return g(this, function (e) {
-                            switch (e.label) {
+                          var n, o;
+                          return g(this, function (r) {
+                            switch (r.label) {
                               case 0:
                                 if (f) return [2];
-                                d(K(!0)), (e.label = 1);
+                                d(K(!0)), (r.label = 1);
                               case 1:
                                 return (
-                                  e.trys.push([1, 3, 4, 5]),
+                                  r.trys.push([1, 3, , 4]),
                                   [4, s({signers: t, viewers: a})]
                                 );
                               case 2:
                                 return (
-                                  (n = e.sent()),
+                                  (n = r.sent()),
                                   (o = n.identify) && (d(yn(o)), d(un(!0))),
-                                  [3, 5]
+                                  [3, 4]
                                 );
                               case 3:
                                 return (
-                                  (r = e.sent()),
-                                  console.log({error: r}),
-                                  [3, 5]
+                                  r.sent(),
+                                  console.warn(
+                                    'Cannot load bananasign service',
+                                  ),
+                                  [3, 4]
                                 );
                               case 4:
-                                return d(K(!1)), [7];
-                              case 5:
                                 return [2];
                             }
                           });
@@ -2113,12 +2113,8 @@ n(
 );
 var Wn,
   Yn = function () {
-    var n = e.useContext(L).state,
-      r = n.loading,
-      t = n.openBananasignIframe;
-    return !r || t
-      ? null
-      : o.jsx(
+    return e.useContext(L).state.loading
+      ? o.jsx(
           'div',
           m(
             {className: 'Loading__container'},
@@ -2132,7 +2128,8 @@ var Wn,
               }),
             },
           ),
-        );
+        )
+      : null;
   },
   qn = e.memo(Yn);
 n(
