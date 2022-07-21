@@ -32,7 +32,7 @@ var InviteToSign = function (props) {
     onClose = props.onClose,
     signers = props.signers,
     viewers = props.viewers,
-    onPutDocumentInfo = props.onPutDocumentInfo,
+    saveDocumentInfo = props.saveDocumentInfo,
     bananasignUrl = props.bananasignUrl;
   return _jsx(
     InviteToSignProvider,
@@ -41,7 +41,7 @@ var InviteToSign = function (props) {
         onClose: onClose,
         signers: signers,
         viewers: viewers,
-        onPutDocumentInfo: onPutDocumentInfo,
+        saveDocumentInfo: saveDocumentInfo,
         bananasignUrl: bananasignUrl,
       },
       {

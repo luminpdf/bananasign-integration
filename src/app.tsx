@@ -23,7 +23,7 @@ ReactDom.render(
         onClose={() => console.log('onClose')}
         signers={signers}
         viewers={viewers}
-        onPutDocumentInfo={async ({viewers, signers}) => {
+        saveDocumentInfo={async ({viewers, signers}) => {
           console.log({viewers, signers});
           // TODO: service put contract temporary
           return {identify: ''};

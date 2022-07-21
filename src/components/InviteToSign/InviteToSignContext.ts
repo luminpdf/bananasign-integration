@@ -23,7 +23,7 @@ export const initialState = {
     type: '',
   },
   onClose: () => undefined,
-  onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) =>
+  saveDocumentInfo: (_payload: PayloadPutDocumentInfo) =>
     Promise.resolve({identify: ''}),
   identify: '',
   bananasignUrl: '',

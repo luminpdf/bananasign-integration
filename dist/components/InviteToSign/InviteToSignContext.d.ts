@@ -20,7 +20,7 @@ export declare const initialState: {
         type: string;
     };
     onClose: () => undefined;
-    onPutDocumentInfo: (_payload: PayloadPutDocumentInfo) => Promise<{
+    saveDocumentInfo: (_payload: PayloadPutDocumentInfo) => Promise<{
         identify: string;
     }>;
     identify: string;

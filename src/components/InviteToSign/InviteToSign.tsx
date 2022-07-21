@@ -14,14 +14,14 @@ import Loading from './Loading';
 import WarningModal from './WarningModal';
 
 const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
-  const {isOpen, onClose, signers, viewers, onPutDocumentInfo, bananasignUrl} =
+  const {isOpen, onClose, signers, viewers, saveDocumentInfo, bananasignUrl} =
     props;
   return (
     <InviteToSignProvider
       onClose={onClose}
       signers={signers}
       viewers={viewers}
-      onPutDocumentInfo={onPutDocumentInfo}
+      saveDocumentInfo={saveDocumentInfo}
       bananasignUrl={bananasignUrl}
     >
       <div

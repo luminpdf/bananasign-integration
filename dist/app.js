@@ -177,7 +177,7 @@ ReactDom.render(
             },
             signers: signers,
             viewers: viewers,
-            onPutDocumentInfo: function (_a) {
+            saveDocumentInfo: function (_a) {
               var viewers = _a.viewers,
                 signers = _a.signers;
               return __awaiter(void 0, void 0, void 0, function () {

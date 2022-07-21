@@ -180,7 +180,7 @@ var InviteUser = function () {
     viewers = _a.viewers,
     isOpenAddAssignerModal = _a.isOpenAddAssignerModal,
     cancelAddAssigners = _a.cancelAddAssigners,
-    onPutDocumentInfo = _a.onPutDocumentInfo,
+    saveDocumentInfo = _a.saveDocumentInfo,
     loading = _a.loading,
     dispatch = context.dispatch;
   var _b = useState([]),
@@ -244,7 +244,7 @@ var InviteUser = function () {
             _a.trys.push([1, 3, 4, 5]);
             return [
               4 /*yield*/,
-              onPutDocumentInfo({
+              saveDocumentInfo({
                 signers: signers,
                 viewers: viewers,
               }),

@@ -17,7 +17,7 @@ export var initialState = {
   onClose: function () {
     return undefined;
   },
-  onPutDocumentInfo: function (_payload) {
+  saveDocumentInfo: function (_payload) {
     return Promise.resolve({identify: ''});
   },
   identify: '',

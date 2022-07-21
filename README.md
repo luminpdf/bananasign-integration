@@ -14,14 +14,14 @@ To install, you can use [npm](https://npmjs.org/):
 
 ## Props
 
-| Props             | Type     | Required           | Description                                                                                     |
-| :---------------- | :------- | :----------------- | :---------------------------------------------------------------------------------------------- |
-| isOpen            | boolean  | :white_check_mark: | show/hide bananasign widget                                                                     |
-| onClose           | function | :white_check_mark: | Function that will be run when the widget is requested to be closed, prior to actually closing. |
-| signers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
-| viewers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
-| onPutDocumentInfo | function | :white_check_mark: | Function that put document info                                                                 |
-| bananasignUrl     | string   |                    | Base url to open bananasign service by iframe. Default: app.bananasign.co                       |
+| Props            | Type     | Required           | Description                                                                                     |
+| :--------------- | :------- | :----------------- | :---------------------------------------------------------------------------------------------- |
+| isOpen           | boolean  | :white_check_mark: | show/hide bananasign widget                                                                     |
+| onClose          | function | :white_check_mark: | Function that will be run when the widget is requested to be closed, prior to actually closing. |
+| signers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
+| viewers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
+| saveDocumentInfo | function | :white_check_mark: | Save document info that will be applied by default on signing flow                              |
+| bananasignUrl    | string   |                    | Base url to open bananasign service by iframe. Default: app.bananasign.co                       |
 
 ## Examples
 
@@ -62,10 +62,10 @@ function App() {
         onClose={closeWidget}
         signers={signers}
         viewers={viewers}
-        onPutDocumentInfo={async ({viewers, signers}) => {
+        saveDocumentInfo={async ({viewers, signers}) => {
           // TODO: service put contract temporary
 
-          const { identify } = await axios.post('/put-contract-temporary', {
+          const { identify } = await axios.post('/save-document-temporary', {
             viewers,
             signers,
             integrationId, // received since init integration with bananasign

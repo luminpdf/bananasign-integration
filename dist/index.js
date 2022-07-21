@@ -730,7 +730,7 @@ var R = {
     openBananasignIframe: !1,
     modalWarningData: {type: ''},
     onClose: function () {},
-    onPutDocumentInfo: function (n) {
+    saveDocumentInfo: function (n) {
       return Promise.resolve({identify: ''});
     },
     identify: '',
@@ -1883,7 +1883,7 @@ var On = [
       t = n.onClose,
       a = n.signers,
       l = n.viewers,
-      i = n.onPutDocumentInfo,
+      i = n.saveDocumentInfo,
       s = n.bananasignUrl,
       c = vn(a, M),
       f = vn(l, I),
@@ -1893,7 +1893,7 @@ var On = [
           signers: c,
           viewers: f,
           onClose: t,
-          onPutDocumentInfo: i,
+          saveDocumentInfo: i,
           bananasignUrl: s || 'https://app.bananasign.co',
         }),
       ),
@@ -1915,7 +1915,7 @@ var zn = function () {
       a = r.viewers,
       l = r.isOpenAddAssignerModal,
       i = r.cancelAddAssigners,
-      s = r.onPutDocumentInfo,
+      s = r.saveDocumentInfo,
       f = r.loading,
       d = n.dispatch,
       p = e.useState([]),
@@ -2216,7 +2216,7 @@ module.exports = function (n) {
     e = n.onClose,
     t = n.signers,
     a = n.viewers,
-    l = n.onPutDocumentInfo,
+    l = n.saveDocumentInfo,
     i = n.bananasignUrl;
   return o.jsx(
     Zn,
@@ -2225,7 +2225,7 @@ module.exports = function (n) {
         onClose: e,
         signers: t,
         viewers: a,
-        onPutDocumentInfo: l,
+        saveDocumentInfo: l,
         bananasignUrl: i,
       },
       {

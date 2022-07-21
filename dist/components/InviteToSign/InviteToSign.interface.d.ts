@@ -7,7 +7,7 @@ export interface IInviteToSignProps {
     onClose: () => void;
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
-    onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
     bananasignUrl?: string;
 }
 export interface IGetIdentify {
@@ -37,7 +37,7 @@ export interface IState {
     openBananasignIframe: boolean;
     modalWarningData: ModalWarning;
     onClose: () => void;
-    onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
     identify: string;
     bananasignUrl: string;
 }

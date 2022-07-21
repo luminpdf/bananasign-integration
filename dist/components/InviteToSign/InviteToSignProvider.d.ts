@@ -5,7 +5,7 @@ interface IInviteToSignProviderProps {
     onClose: () => void;
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
-    onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
     bananasignUrl?: string;
 }
 declare const InviteToSignProvider: React.FC<IInviteToSignProviderProps>;

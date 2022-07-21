@@ -12,7 +12,7 @@ export interface IInviteToSignProps {
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
   /* Function that put document info */
-  onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   /* Flow id integration with bananasign service */
   integrationId: string;
 }
@@ -46,7 +46,7 @@ export interface IState {
   openBananasignIframe: boolean;
   modalWarningData: ModalWarning;
   onClose: () => void;
-  onPutDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   integrationId: string;
 }
 
