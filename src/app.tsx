@@ -23,11 +23,9 @@ ReactDom.render(
         onClose={() => console.log('onClose')}
         signers={signers}
         viewers={viewers}
-        saveDocumentInfo={async ({viewers, signers}) => {
-          console.log({viewers, signers});
-          // TODO: service put contract temporary
-          return {identify: ''};
-        }}
+        fileName="document name"
+        bananasignUrl="http://localhost:5000"
+        bananasignBaseUrl="http://localhost:3000"
       />
     </Suspense>
   </>,

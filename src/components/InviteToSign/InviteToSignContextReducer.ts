@@ -111,6 +111,12 @@ export const InviteToSignContextReducer = (state: any, action: any) => {
         identify: action.payload,
       };
 
+    case INVITE_TO_SIGN_ACTION_TYPES.SET_DOCUMENT_SIGNING:
+      return {
+        ...state,
+        ...action.payload,
+      };
+
     default:
       return;
   }

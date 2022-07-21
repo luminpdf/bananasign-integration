@@ -19,12 +19,12 @@
     .Avatar__wrapper .AssignerItem__wrapper-avatar {
       width: 32px;
       height: 32px;
-      border: 1.6px solid var(--color-primary-350);
+      border: 1.6px solid var(--bananasign-color-primary-350);
     }
 
     &-name {
-      font-family: var(--font-primary);
-      color: var(--color-neutral-100);
+      font-family: var(--bananasign-font-primary);
+      color: var(--bananasign-color-neutral-100);
       font-style: normal;
       font-weight: 700;
       font-size: 14px;
@@ -40,7 +40,7 @@
         font-weight: 500;
         font-size: 12px;
         line-height: 18px;
-        color: var(--color-other-1);
+        color: var(--bananasign-color-other-1);
       }
     }
   }
@@ -56,29 +56,29 @@
 
     &:hover {
       cursor: pointer;
-      background: var(--color-primary-350);
+      background: var(--bananasign-color-primary-350);
     }
 
     .AssignerItem__tooltip {
       padding: 2px 8px;
       border-radius: 4px;
-      background: var(--color-neutral-100);
+      background: var(--bananasign-color-neutral-100);
       font-size: 14px;
       line-height: 20px;
       font-style: normal;
       font-weight: 500;
-      font-family: var(--font-primary);
+      font-family: var(--bananasign-font-primary);
       color: white;
       border: none;
     }
   }
 
   &__user-info-text--added {
-    font-family: var(--font-primary);
+    font-family: var(--bananasign-font-primary);
     font-size: 14px;
     line-height: 20px;
     font-style: normal;
     font-weight: 500;
-    color: var(--color-secondary-50);
+    color: var(--bananasign-color-secondary-50);
   }
 }

@@ -1,4 +1,8 @@
-import {IAssignerProps, ModalWarning} from './InviteToSign.interface';
+import {
+  IAssignerProps,
+  IWidgetInit,
+  ModalWarning,
+} from './InviteToSign.interface';
 import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 
 export const InviteToSignContextActions = {
@@ -96,6 +100,12 @@ export const InviteToSignContextActions = {
     return {
       type: INVITE_TO_SIGN_ACTION_TYPES.SET_IDENTIFY,
       payload: identify,
+    };
+  },
+  SET_DOCUMENT_SIGNING: (documentSigning: IWidgetInit) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_DOCUMENT_SIGNING,
+      payload: documentSigning,
     };
   },
 };

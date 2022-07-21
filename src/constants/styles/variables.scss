@@ -1,38 +1,38 @@
 :root {
   // fonts
-  --font-primary: 'MarkPro', arial, sans-serif;
-  --font-primary-regular: 'MarkPro-Regular', arial, sans-serif;
-  --font-primary-bold: 'MarkPro-Bold', arial, sans-serif;
+  --bananasign-font-primary: 'MarkPro', arial, sans-serif;
+  --bananasign-font-primary-regular: 'MarkPro-Regular', arial, sans-serif;
+  --bananasign-font-primary-bold: 'MarkPro-Bold', arial, sans-serif;
 
   // color
-  --color-blue: #3180f1;
-  --color-blue-120: #bdd8ff;
-  --color-blue-160: #1f67cf;
-  --color-blue-170: #1051ad;
-  --color-red: #f04a4a;
-  --color-neutral-0: #fff;
-  --color-neutral-40: #d2d6d9;
-  --color-neutral-70: rgba(12, 57, 91, 0.7);
-  --color-neutral-100: #0c395b;
-  --color-other-1: #50677a;
-  --color-other-11: #8e979f;
-  --color-soft-white: #f7f6ec;
-  --color-warning-40: #fae200;
-  --color-yellow: #fae200;
-  --color-yellow-10: #fff8b7;
-  --color-yellow-60: #e6d000;
-  --color-yellow-70: #d0bd07;
-  --color-primary-160: #eaf3ff;
-  --color-primary-220: #f4f4f4;
-  --color-primary-230: #e1e1e1;
-  --color-primary-240: #c6c8c9;
-  --color-primary-260: #8e979f;
-  --color-primary-350: #f7f6ec;
-  --color-secondary: #8093a7;
-  --color-secondary-50: #f2385a;
+  --bananasign-color-blue: #3180f1;
+  --bananasign-color-blue-120: #bdd8ff;
+  --bananasign-color-blue-160: #1f67cf;
+  --bananasign-color-blue-170: #1051ad;
+  --bananasign-color-red: #f04a4a;
+  --bananasign-color-neutral-0: #fff;
+  --bananasign-color-neutral-40: #d2d6d9;
+  --bananasign-color-neutral-70: rgba(12, 57, 91, 0.7);
+  --bananasign-color-neutral-100: #0c395b;
+  --bananasign-color-other-1: #50677a;
+  --bananasign-color-other-11: #8e979f;
+  --bananasign-color-soft-white: #f7f6ec;
+  --bananasign-color-warning-40: #fae200;
+  --bananasign-color-yellow: #fae200;
+  --bananasign-color-yellow-10: #fff8b7;
+  --bananasign-color-yellow-60: #e6d000;
+  --bananasign-color-yellow-70: #d0bd07;
+  --bananasign-color-primary-160: #eaf3ff;
+  --bananasign-color-primary-220: #f4f4f4;
+  --bananasign-color-primary-230: #e1e1e1;
+  --bananasign-color-primary-240: #c6c8c9;
+  --bananasign-color-primary-260: #8e979f;
+  --bananasign-color-primary-350: #f7f6ec;
+  --bananasign-color-secondary: #8093a7;
+  --bananasign-color-secondary-50: #f2385a;
 
   // Shadow
-  --container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),
+  --bananasign-container-shadow: 0 5px 5px -3px rgba(128, 147, 167, 0.2),
     0 3px 14px 2px rgba(128, 147, 167, 0.12),
     0 8px 10px 1px rgba(128, 147, 167, 0.14);
 }

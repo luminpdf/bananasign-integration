@@ -18,7 +18,7 @@
   text-align: center;
   opacity: 0;
   transition: opacity 500ms ease-in-out;
-  background: var(--color-neutral-70);
+  background: var(--bananasign-color-neutral-70);
 
   &:after {
     width: 0;
@@ -42,7 +42,7 @@
   text-align: left;
   vertical-align: middle;
   background: white;
-    box-shadow: var(--container-shadow);
+    box-shadow: var(--bananasign-container-shadow);
   border-radius: 8px;
   padding: 24px 16px 24px 16px;
   max-width: 368px;
@@ -57,7 +57,7 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background: var(--color-soft-white);
+  background: var(--bananasign-color-soft-white);
   position: absolute;
   right: 16px;
   top: 16px;

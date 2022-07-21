@@ -8,7 +8,7 @@ import {REQUEST_TYPE} from '@src/constants/common';
 
 import Button from '@components/Button';
 
-import {IAssignerProps, IGetIdentify} from '../InviteToSign.interface';
+import {DocumentSigningInfo, IAssignerProps} from '../InviteToSign.interface';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
@@ -21,8 +21,9 @@ const InviteUser: React.FC = () => {
       viewers,
       isOpenAddAssignerModal,
       cancelAddAssigners,
-      saveDocumentInfo,
       loading,
+      flowId,
+      bananasignBaseUrl,
     },
     dispatch,
   } = context;
@@ -68,15 +69,24 @@ const InviteUser: React.FC = () => {
     }
     dispatch(InviteToSignContextActions.SET_LOADING(true));
     try {
-      const result: IGetIdentify = await saveDocumentInfo({
-        signers,
-        viewers,
-      });
-      const {identify} = result;
-      if (identify) {
-        dispatch(InviteToSignContextActions.SET_IDENTIFY(identify));
-        dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
-      }
+      const requestOptions = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          signers,
+          viewers,
+          flowId,
+        }),
+      };
+
+      fetch(`${bananasignBaseUrl}/v1/document-signing`, requestOptions)
+        .then((response) => response.json())
+        .then((data: DocumentSigningInfo) => {
+          const {identify} = data;
+          dispatch(InviteToSignContextActions.SET_IDENTIFY(identify));
+          dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
+        })
+        .catch((_) => console.log('Information cannot be saved'));
     } catch (error) {
       console.warn('Cannot load bananasign service');
     }
