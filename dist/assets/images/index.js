@@ -13,21 +13,5 @@ import icon_warning from './icon_warning.svg';
 import image_empty_contracts from './image_empty_contracts.svg';
 import image_empty_search_contact from './image_empty_search_contact.svg';
 import image_no_key_words from './image_no_key_words.svg';
-export {
-  image_empty_contracts,
-  image_no_key_words,
-  image_empty_search_contact,
-  icon_cancel_button,
-  icon_sign_logo,
-  icon_sign,
-  icon_show,
-  icon_bananasign_logo,
-  icon_person,
-  icon_trash,
-  icon_repeat,
-  icon_search,
-  icon_close,
-  icon_warning,
-  icon_info,
-};
+export { image_empty_contracts, image_no_key_words, image_empty_search_contact, icon_cancel_button, icon_sign_logo, icon_sign, icon_show, icon_bananasign_logo, icon_person, icon_trash, icon_repeat, icon_search, icon_close, icon_warning, icon_info, };
 //# sourceMappingURL=index.js.map
