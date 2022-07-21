@@ -10,13 +10,12 @@ declare const _default: {
         isOwner: boolean;
         id: string;
         requestType: string;
-        dueDateExpired: number;
+        dueTimeExpired: number;
         email: string;
         avatarRemoteId?: string | undefined;
         type?: string | undefined;
         userId?: string | undefined;
         newAssignUser?: boolean | undefined;
-        dueTimeExpired?: number | undefined;
     }[];
 };
 export default _default;

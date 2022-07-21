@@ -63,9 +63,10 @@ var serializeAssigners = function (assigners, requestType) {
         (assigner === null || assigner === void 0 ? void 0 : assigner.name) ||
         GUEST_USER,
       isOwner: requestType === REQUEST_TYPE.SIGNER && index === 0,
-      id: '',
+      id:
+        (assigner === null || assigner === void 0 ? void 0 : assigner.id) || '',
       requestType: requestType,
-      dueDateExpired: 0,
+      dueTimeExpired: 0,
     });
   });
   return serializeSigners;

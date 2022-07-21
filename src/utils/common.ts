@@ -52,9 +52,9 @@ const serializeAssigners = (
         ...assigner,
         name: assigner?.name || GUEST_USER,
         isOwner: requestType === REQUEST_TYPE.SIGNER && index === 0, // default the first signer is owner
-        id: '',
+        id: assigner?.id || '',
         requestType,
-        dueDateExpired: 0,
+        dueTimeExpired: 0,
       };
     },
   );

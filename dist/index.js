@@ -740,8 +740,8 @@ var R = {
   S = 'SET_LOADING',
   V = 'SET_OPEN_ADD_ASSIGNER_MODAL',
   O = 'SET_SIGNERS',
-  H = 'SET_VIEWERS',
-  T = 'REMOVE_SIGNER',
+  T = 'SET_VIEWERS',
+  H = 'REMOVE_SIGNER',
   U = 'REMOVE_VIEWER',
   Z = 'ADD_VIEWER',
   z = 'ADD_SIGNER',
@@ -760,7 +760,7 @@ var R = {
     return {type: V, payload: n};
   },
   on = function (n) {
-    return {type: T, payload: n};
+    return {type: H, payload: n};
   },
   rn = function (n) {
     return {type: U, payload: n};
@@ -787,7 +787,7 @@ var R = {
     return {type: O, payload: n};
   },
   dn = function (n) {
-    return {type: H, payload: n};
+    return {type: T, payload: n};
   },
   pn = function () {
     return {type: Q, payload: {}};
@@ -1050,9 +1050,9 @@ var hn = e.memo(gn),
       return m(m({}, n), {
         name: (null == n ? void 0 : n.name) || 'Guest User',
         isOwner: o === M && 0 === r,
-        id: '',
+        id: (null == n ? void 0 : n.id) || '',
         requestType: o,
-        dueDateExpired: 0,
+        dueTimeExpired: 0,
       });
     });
   };
@@ -1757,7 +1757,7 @@ var On = [
     {value: 'PREPARE', className: ''},
     {value: 'REVIEW', className: ''},
   ],
-  Hn = function () {
+  Tn = function () {
     var n = e.useContext(L),
       r = n.state.onClose,
       t = n.dispatch;
@@ -1821,14 +1821,14 @@ var On = [
       ),
     );
   },
-  Tn = e.memo(Hn),
+  Hn = e.memo(Tn),
   Un = function (n, o) {
     switch (o.type) {
       case S:
         return m(m({}, n), {loading: o.payload});
       case V:
         return m(m({}, n), {isOpenAddAssignerModal: o.payload});
-      case T:
+      case H:
         var r = h([], n.signers, !0).filter(function (n) {
           return n.email !== o.payload.email;
         });
@@ -1860,7 +1860,7 @@ var On = [
         return m(m({}, n), {cancelAddAssigners: o.payload});
       case O:
         return m(m({}, n), {signers: o.payload});
-      case H:
+      case T:
         return m(m({}, n), {viewers: o.payload});
       case Q:
         return m(m({}, n), {
@@ -2235,7 +2235,7 @@ module.exports = function (n) {
             {className: c.default('InviteToSign__container', {open: r})},
             {
               children: [
-                o.jsx(Tn, {}),
+                o.jsx(Hn, {}),
                 o.jsx(Gn, {}),
                 o.jsx(Vn, {}),
                 o.jsx(Pn, {}),
