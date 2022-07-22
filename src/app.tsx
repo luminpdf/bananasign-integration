@@ -1,35 +1,57 @@
 // import {InviteToSign} from 'banana-widget';
-import {Suspense} from 'react';
-import ReactDom from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import BananasignWidget from '@src/components/InviteToSign';
+import BananasignWidget from '.';
 
-const signers = [
-  {email: 'example1@gmail.com', name: 'example 1'},
-  {email: 'example2@gmail.com', name: 'example 2'},
-  {email: 'example3@gmail.com', name: 'example 3'},
-];
-const viewers = [
-  {email: 'example4@gmail.com', name: 'example 4'},
-  {email: 'example5@gmail.com', name: 'example 5'},
-  {email: 'example6@gmail.com', name: 'example 6'},
-];
+function App() {
+  const [isOpenWidget, setIsOpenWidget] = React.useState(false);
 
-ReactDom.render(
-  <>
-    <Suspense fallback={<div>Loading...</div>}>
+  function openWidget() {
+    setIsOpenWidget(true);
+  }
+
+  function closeWidget() {
+    setIsOpenWidget(false);
+  }
+
+  const signers = [
+    {email: 'example1@gmail.com', name: 'example 1'},
+    {email: 'example2@gmail.com', name: 'example 2'},
+    {email: 'example3@gmail.com', name: 'example 3'},
+  ];
+  const viewers = [
+    {email: 'example4@gmail.com', name: 'example 4'},
+    {email: 'example5@gmail.com', name: 'example 5'},
+    {email: 'example6@gmail.com', name: 'example 6'},
+  ];
+
+  return (
+    <div>
+      <button onClick={openWidget}>Open Widget</button>
       <BananasignWidget
-        isOpen={true}
-        onClose={() => console.log('onClose')}
-        signers={signers}
+        isOpen={isOpenWidget}
+        onClose={closeWidget}
+        // signers={signers}
+        signers={[
+          {
+            id: '62cd383adfae8a3bc209b224',
+            name: 'Tung Pham',
+            email: 'tungp+0402@dgroup.co',
+            requestType: 'SIGNER',
+            dueTimeExpired: 0,
+          },
+          ...signers,
+        ]}
         viewers={viewers}
-        saveDocumentInfo={async ({viewers, signers}) => {
-          console.log({viewers, signers});
-          // TODO: service put contract temporary
-          return {identify: ''};
+        fileName="document name"
+        bananasignUrl="http://localhost:5000"
+        bananasignBaseUrl="http://localhost:3000"
+        onUploadDocument={({uploadUrl: _}) => {
+          // TODO: Use url to upload document
         }}
       />
-    </Suspense>
-  </>,
-  document.getElementById('root'),
-);
+    </div>
+  );
+}
+ReactDOM.render(<App />, document.getElementById('root'));

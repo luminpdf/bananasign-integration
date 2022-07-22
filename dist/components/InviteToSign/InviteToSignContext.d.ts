@@ -1,5 +1,5 @@
 import React from 'react';
-import { IState, PayloadPutDocumentInfo } from './InviteToSign.interface';
+import { IState } from './InviteToSign.interface';
 interface ContextType {
     state: IState;
     dispatch: React.Dispatch<{
@@ -20,11 +20,10 @@ export declare const initialState: {
         type: string;
     };
     onClose: () => undefined;
-    saveDocumentInfo: (_payload: PayloadPutDocumentInfo) => Promise<{
-        identify: string;
-    }>;
-    identify: string;
     bananasignUrl: string;
+    bananasignBaseUrl: string;
+    flowId: string;
+    uploadDocumentUrl: string;
 };
 declare const InviteToSignContext: React.Context<ContextType>;
 export default InviteToSignContext;

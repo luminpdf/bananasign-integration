@@ -11,14 +11,14 @@ export interface IInviteToSignProps {
   /* List assigners */
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
-  /* Function that put document info */
-  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-  /* Flow id integration with bananasign service */
-  integrationId: string;
-}
 
-export interface IGetIdentify {
-  identify: string;
+  /* The name of the document used in the signing flow of Bananasign service */
+  fileName: string;
+
+  /* Bananasign service web url */
+  bananasignUrl?: string;
+  /* Bananasign service base url */
+  bananasignBaseUrl?: string;
 }
 
 export interface IAssignerProps {
@@ -46,11 +46,9 @@ export interface IState {
   openBananasignIframe: boolean;
   modalWarningData: ModalWarning;
   onClose: () => void;
-  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-  integrationId: string;
 }
 
-export interface PayloadPutDocumentInfo {
+export interface UploadDocumentDto {
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
   integrationId: string;

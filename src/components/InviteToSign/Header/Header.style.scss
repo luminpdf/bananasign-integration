@@ -34,12 +34,12 @@
       width: 25%;
       position: relative;
       text-align: center;
-      font-family: var(--font-primary);
+      font-family: var(--bananasign-font-primary);
       font-style: normal;
       font-weight: 700;
       font-size: 10px;
       line-height: 16px;
-      color: var(--color-other-11);
+      color: var(--bananasign-color-other-11);
 
       &::before {
         content: ' ';
@@ -50,7 +50,7 @@
         display: block;
         text-align: center;
         margin: 0 auto 10px;
-        background: var(--color-blue);
+        background: var(--bananasign-color-blue);
       }
 
       // 2 lines
@@ -59,7 +59,7 @@
         position: absolute;
         width: 100%;
         height: 4px;
-        background: var(--color-primary-160);
+        background: var(--bananasign-color-primary-160);
         top: 4px;
         left: -50%;
         z-index: -1;
@@ -71,7 +71,7 @@
 
       // active content
       &.active {
-        color: var(--color-neutral-100);
+        color: var(--bananasign-color-neutral-100);
 
         span {
           position: absolute;
@@ -91,17 +91,17 @@
 
       // active circle
       &.active::before {
-        border: 9px solid var(--color-blue);
-        background: var(--color-neutral-0);
+        border: 9px solid var(--bananasign-color-blue);
+        background: var(--bananasign-color-neutral-0);
         margin-top: -10px;
         transform: scale(1);
         animation: ani-bounce 2s infinite;
-        box-shadow: 0 0 0 0 var(--color-blue);
+        box-shadow: 0 0 0 0 var(--bananasign-color-blue);
         animation-delay: 0s, 1.5s;
       }
 
       &.active::after {
-        background: var(--color-primary-160);
+        background: var(--bananasign-color-primary-160);
       }
     }
   }

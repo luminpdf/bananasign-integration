@@ -21,6 +21,7 @@ import {jsx as _jsx} from 'react/jsx-runtime';
 
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
+
 var CLOSE_TASK_BANANA_SIGN_MSG = 'close_task';
 var BACK_STEP_BANANA_SIGN_MSG = 'back_step';
 var BananasignIframe = function () {
@@ -28,8 +29,8 @@ var BananasignIframe = function () {
   var _a = context.state,
     openBananasignIframe = _a.openBananasignIframe,
     onClose = _a.onClose,
-    identify = _a.identify,
     bananasignUrl = _a.bananasignUrl,
+    flowId = _a.flowId,
     dispatch = context.dispatch;
   var listenToBananaSign = function (e) {
     if (e.origin === bananasignUrl) {
@@ -52,7 +53,7 @@ var BananasignIframe = function () {
       window.removeEventListener('message', listenToBananaSign);
     };
   }, []);
-  if (!openBananasignIframe || !identify) {
+  if (!openBananasignIframe || !flowId) {
     return null;
   }
   return _jsx(
@@ -63,7 +64,7 @@ var BananasignIframe = function () {
         children: _jsx('iframe', {
           width: '100%',
           height: '100%',
-          src: ''.concat(bananasignUrl, '/embed/').concat(identify),
+          src: ''.concat(bananasignUrl, '/embed/').concat(flowId),
           title: 'Iframe Upload',
           frameBorder: '0',
           allow:

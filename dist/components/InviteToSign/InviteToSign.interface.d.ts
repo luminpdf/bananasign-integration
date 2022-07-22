@@ -7,11 +7,10 @@ export interface IInviteToSignProps {
     onClose: () => void;
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
-    saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
+    fileName: string;
     bananasignUrl?: string;
-}
-export interface IGetIdentify {
-    identify: string;
+    bananasignBaseUrl?: string;
+    onUploadDocument: (payload: UploadDocumentDto) => void;
 }
 export interface IAssignerProps {
     email: string;
@@ -37,16 +36,24 @@ export interface IState {
     openBananasignIframe: boolean;
     modalWarningData: ModalWarning;
     onClose: () => void;
-    saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-    identify: string;
     bananasignUrl: string;
+    bananasignBaseUrl: string;
+    flowId: string;
+    uploadDocumentUrl: string;
 }
-export interface PayloadPutDocumentInfo {
-    signers: IAssignerProps[];
-    viewers: IAssignerProps[];
+export interface UploadDocumentDto {
+    uploadUrl: string;
 }
 export declare type ModalWarning = {
     type: string;
     onConfirm?: () => void;
     onCancel?: () => void;
 };
+export interface IWidgetInit {
+    flowId: string;
+    uploadDocumentUrl: string;
+}
+export interface BasicResponse {
+    message: string;
+    statusCode: number;
+}

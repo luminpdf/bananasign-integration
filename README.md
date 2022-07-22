@@ -20,8 +20,8 @@ To install, you can use [npm](https://npmjs.org/):
 | onClose          | function | :white_check_mark: | Function that will be run when the widget is requested to be closed, prior to actually closing. |
 | signers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
 | viewers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
-| saveDocumentInfo | function | :white_check_mark: | Save document info that will be applied by default on signing flow                              |
-| bananasignUrl    | string   |                    | Base url to open bananasign service by iframe. Default: app.bananasign.co                       |
+| fileName         | string   | :white_check_mark: | Document name to display on upload doument steps                                                |
+| onUploadDocument | function | :white_check_mark: | Callback to obtain the upload URL in order to upload a file document to the Bananasign service  |
 
 ## Examples
 
@@ -62,21 +62,13 @@ function App() {
         onClose={closeWidget}
         signers={signers}
         viewers={viewers}
-        saveDocumentInfo={async ({viewers, signers}) => {
-          // TODO: service put contract temporary
-
-          const { identify } = await axios.post('/save-document-temporary', {
-            viewers,
-            signers,
-            integrationId, // received since init integration with bananasign
-          });
-
-          // param to open iframe bananasign
-          return { identify };
+        fileName="document name"
+        onUploadDocument={({ uploadUrl: _ }) => {
+          // TODO: Use url to upload document
         }}
       />
     </div>
   );
 }
-ReactDOM.render(<App />, appElement);
+ReactDOM.render(<App />, document.getElementById('root'));
 ```

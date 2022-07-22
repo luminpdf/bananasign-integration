@@ -23,4 +23,5 @@ export const MODAL_TYPES = {
   CANCEL_PROGRESS: 'CANCEL_PROGRESS',
 };
 
-export const BANANA_SIGN_WEB_URL = 'https://app.bananasign.co';
+export const BANANASIGN_WEB_URL = 'https://app.bananasign.co';
+export const BANANASIGN_BASE_URL = 'https://api.bananasign.co';

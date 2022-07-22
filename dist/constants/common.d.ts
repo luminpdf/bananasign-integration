@@ -18,4 +18,5 @@ export declare const MODAL_TYPES: {
     ONLY_ONE_SIGNER_IS_OWNER: string;
     CANCEL_PROGRESS: string;
 };
-export declare const BANANA_SIGN_WEB_URL = "https://app.bananasign.co";
+export declare const BANANASIGN_WEB_URL = "https://app.bananasign.co";
+export declare const BANANASIGN_BASE_URL = "https://api.bananasign.co";

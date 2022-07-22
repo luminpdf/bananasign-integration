@@ -14,15 +14,25 @@ import Loading from './Loading';
 import WarningModal from './WarningModal';
 
 const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
-  const {isOpen, onClose, signers, viewers, saveDocumentInfo, bananasignUrl} =
-    props;
+  const {
+    isOpen,
+    onClose,
+    signers,
+    viewers,
+    bananasignUrl,
+    bananasignBaseUrl,
+    fileName,
+    onUploadDocument,
+  } = props;
   return (
     <InviteToSignProvider
       onClose={onClose}
       signers={signers}
       viewers={viewers}
-      saveDocumentInfo={saveDocumentInfo}
       bananasignUrl={bananasignUrl}
+      bananasignBaseUrl={bananasignBaseUrl}
+      fileName={fileName}
+      onUploadDocument={onUploadDocument}
     >
       <div
         className={classNames('InviteToSign__container', {

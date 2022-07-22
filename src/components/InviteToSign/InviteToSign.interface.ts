@@ -11,14 +11,17 @@ export interface IInviteToSignProps {
   /* List assigners */
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
-  /* Function that put document info */
-  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-  /* Bananasign service url */
-  bananasignUrl?: string;
-}
 
-export interface IGetIdentify {
-  identify: string;
+  /* The name of the document used in the signing flow of Bananasign service */
+  fileName: string;
+
+  /* Bananasign service web url */
+  bananasignUrl?: string;
+  /* Bananasign service base url */
+  bananasignBaseUrl?: string;
+
+  /* Callback to obtain the upload URL in order to upload a file document to the Bananasign service. */
+  onUploadDocument: (payload: UploadDocumentDto) => void;
 }
 
 export interface IAssignerProps {
@@ -46,14 +49,14 @@ export interface IState {
   openBananasignIframe: boolean;
   modalWarningData: ModalWarning;
   onClose: () => void;
-  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
-  identify: string;
   bananasignUrl: string;
+  bananasignBaseUrl: string;
+  flowId: string;
+  uploadDocumentUrl: string;
 }
 
-export interface PayloadPutDocumentInfo {
-  signers: IAssignerProps[];
-  viewers: IAssignerProps[];
+export interface UploadDocumentDto {
+  uploadUrl: string;
 }
 
 export type ModalWarning = {
@@ -61,3 +64,13 @@ export type ModalWarning = {
   onConfirm?: () => void;
   onCancel?: () => void;
 };
+
+export interface IWidgetInit {
+  flowId: string;
+  uploadDocumentUrl: string;
+}
+
+export interface BasicResponse {
+  message: string;
+  statusCode: number;
+}

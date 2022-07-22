@@ -1,14 +1,19 @@
-import React, {ReactNode, useReducer} from 'react';
+import React, {ReactNode, useEffect, useReducer} from 'react';
 
-import {BANANA_SIGN_WEB_URL, REQUEST_TYPE} from '@src/constants/common';
+import {
+  BANANASIGN_BASE_URL,
+  BANANASIGN_WEB_URL,
+  REQUEST_TYPE,
+} from '@src/constants/common';
 import common from '@src/utils/common';
 
 import {
   IAssignerProps,
-  IGetIdentify,
-  PayloadPutDocumentInfo,
+  IWidgetInit,
+  UploadDocumentDto,
 } from './InviteToSign.interface';
 import InviteToSignContext, {initialState} from './InviteToSignContext';
+import {InviteToSignContextActions} from './InviteToSignContextActions';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
 
 interface IInviteToSignProviderProps {
@@ -16,8 +21,10 @@ interface IInviteToSignProviderProps {
   onClose: () => void;
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
-  saveDocumentInfo: (payload: PayloadPutDocumentInfo) => Promise<IGetIdentify>;
   bananasignUrl?: string;
+  bananasignBaseUrl?: string;
+  fileName: string;
+  onUploadDocument: (args: UploadDocumentDto) => void;
 }
 
 const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
@@ -25,19 +32,43 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   onClose,
   signers,
   viewers,
-  saveDocumentInfo,
-  bananasignUrl,
+  bananasignUrl = BANANASIGN_WEB_URL,
+  bananasignBaseUrl = BANANASIGN_BASE_URL,
+  fileName,
+  onUploadDocument,
 }) => {
-  const signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
-  const viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
+  const signersData: IAssignerProps[] = common.serializeAssigners(
+    signers,
+    REQUEST_TYPE.SIGNER,
+  );
+  const viewersData: IAssignerProps[] = common.serializeAssigners(
+    viewers,
+    REQUEST_TYPE.VIEWER,
+  );
   const [state, dispatch] = useReducer(InviteToSignContextReducer, {
     ...initialState,
     signers: signersData,
     viewers: viewersData,
     onClose,
-    saveDocumentInfo,
-    bananasignUrl: bananasignUrl || BANANA_SIGN_WEB_URL,
+    bananasignUrl,
+    bananasignBaseUrl,
+    fileName,
   });
+
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({fileName}),
+    };
+    fetch(`${bananasignBaseUrl}/v1/document-signing/init`, requestOptions)
+      .then((response) => response.json())
+      .then((data: IWidgetInit) => {
+        onUploadDocument({uploadUrl: data.uploadDocumentUrl});
+        dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <InviteToSignContext.Provider value={{state, dispatch}}>

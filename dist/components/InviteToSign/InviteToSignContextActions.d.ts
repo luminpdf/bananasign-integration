@@ -1,4 +1,4 @@
-import { IAssignerProps, ModalWarning } from './InviteToSign.interface';
+import { IAssignerProps, IWidgetInit, ModalWarning } from './InviteToSign.interface';
 export declare const InviteToSignContextActions: {
     SET_LOADING: (isLoading: boolean) => {
         type: string;
@@ -60,8 +60,8 @@ export declare const InviteToSignContextActions: {
         type: string;
         payload: ModalWarning;
     };
-    SET_IDENTIFY: (identify: string) => {
+    SET_DOCUMENT_SIGNING: (documentSigning: IWidgetInit) => {
         type: string;
-        payload: string;
+        payload: IWidgetInit;
     };
 };

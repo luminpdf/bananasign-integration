@@ -2,7 +2,7 @@ import React from 'react';
 
 import {REQUEST_TYPE} from '@src/constants/common';
 
-import {IState, PayloadPutDocumentInfo} from './InviteToSign.interface';
+import {IState} from './InviteToSign.interface';
 
 interface ContextType {
   state: IState;
@@ -23,10 +23,11 @@ export const initialState = {
     type: '',
   },
   onClose: () => undefined,
-  saveDocumentInfo: (_payload: PayloadPutDocumentInfo) =>
-    Promise.resolve({identify: ''}),
-  identify: '',
   bananasignUrl: '',
+  bananasignBaseUrl: '',
+  //
+  flowId: '',
+  uploadDocumentUrl: '',
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

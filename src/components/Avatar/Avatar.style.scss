@@ -2,11 +2,11 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-neutral-100);
+  background: var(--bananasign-color-neutral-100);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--color-primary-350);
+  border: 2px solid var(--bananasign-color-primary-350);
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
@@ -26,7 +26,7 @@
 .Avatar__name {
   font-size: 16px;
   line-height: 24px;
-  font-family: var(--font-primary);
+  font-family: var(--bananasign-font-primary);
   font-weight: bold;
   font-style: normal;
   color: white;
