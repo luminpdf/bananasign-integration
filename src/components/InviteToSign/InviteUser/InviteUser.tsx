@@ -8,7 +8,7 @@ import {REQUEST_TYPE} from '@src/constants/common';
 
 import Button from '@components/Button';
 
-import {DocumentSigningInfo, IAssignerProps} from '../InviteToSign.interface';
+import {BasicResponse, IAssignerProps} from '../InviteToSign.interface';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
@@ -81,9 +81,7 @@ const InviteUser: React.FC = () => {
 
       fetch(`${bananasignBaseUrl}/v1/document-signing`, requestOptions)
         .then((response) => response.json())
-        .then((data: DocumentSigningInfo) => {
-          const {identify} = data;
-          dispatch(InviteToSignContextActions.SET_IDENTIFY(identify));
+        .then((_: BasicResponse) => {
           dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
         })
         .catch((_) => console.log('Information cannot be saved'));

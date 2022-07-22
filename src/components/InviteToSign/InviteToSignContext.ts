@@ -23,7 +23,6 @@ export const initialState = {
     type: '',
   },
   onClose: () => undefined,
-  identify: '',
   bananasignUrl: '',
   bananasignBaseUrl: '',
   //

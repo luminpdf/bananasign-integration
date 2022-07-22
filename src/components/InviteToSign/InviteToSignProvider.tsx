@@ -7,7 +7,11 @@ import {
 } from '@src/constants/common';
 import common from '@src/utils/common';
 
-import {IAssignerProps, IWidgetInit} from './InviteToSign.interface';
+import {
+  IAssignerProps,
+  IWidgetInit,
+  UploadDocumentDto,
+} from './InviteToSign.interface';
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextActions} from './InviteToSignContextActions';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
@@ -20,6 +24,7 @@ interface IInviteToSignProviderProps {
   bananasignUrl?: string;
   bananasignBaseUrl?: string;
   fileName: string;
+  onUploadDocument: (args: UploadDocumentDto) => void;
 }
 
 const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
@@ -30,6 +35,7 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   bananasignUrl = BANANASIGN_WEB_URL,
   bananasignBaseUrl = BANANASIGN_BASE_URL,
   fileName,
+  onUploadDocument,
 }) => {
   const signersData: IAssignerProps[] = common.serializeAssigners(
     signers,
@@ -58,6 +64,7 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
     fetch(`${bananasignBaseUrl}/v1/document-signing/init`, requestOptions)
       .then((response) => response.json())
       .then((data: IWidgetInit) => {
+        onUploadDocument({uploadUrl: data.uploadDocumentUrl});
         dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
       })
       .catch((error) => console.log(error));

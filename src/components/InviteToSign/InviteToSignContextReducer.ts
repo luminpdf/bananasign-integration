@@ -105,12 +105,6 @@ export const InviteToSignContextReducer = (state: any, action: any) => {
         ...state,
         modalWarningData: action.payload,
       };
-    case INVITE_TO_SIGN_ACTION_TYPES.SET_IDENTIFY:
-      return {
-        ...state,
-        identify: action.payload,
-      };
-
     case INVITE_TO_SIGN_ACTION_TYPES.SET_DOCUMENT_SIGNING:
       return {
         ...state,

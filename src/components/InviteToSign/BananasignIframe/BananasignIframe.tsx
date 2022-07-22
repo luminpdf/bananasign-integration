@@ -11,7 +11,7 @@ const BACK_STEP_BANANA_SIGN_MSG = 'back_step';
 const BananasignIframe: React.FC = () => {
   const context = useContext(InviteToSignContext);
   const {
-    state: {openBananasignIframe, onClose, identify, bananasignUrl},
+    state: {openBananasignIframe, onClose, bananasignUrl, flowId},
     dispatch,
   } = context;
 
@@ -38,7 +38,7 @@ const BananasignIframe: React.FC = () => {
     };
   }, []);
 
-  if (!openBananasignIframe || !identify) {
+  if (!openBananasignIframe || !flowId) {
     return null;
   }
 
@@ -47,7 +47,7 @@ const BananasignIframe: React.FC = () => {
       <iframe
         width="100%"
         height="100%"
-        src={`${bananasignUrl}/embed/${identify}`}
+        src={`${bananasignUrl}/embed/${flowId}`}
         title="Iframe Upload"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

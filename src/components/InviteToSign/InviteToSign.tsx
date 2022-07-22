@@ -22,6 +22,7 @@ const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
     bananasignUrl,
     bananasignBaseUrl,
     fileName,
+    onUploadDocument,
   } = props;
   return (
     <InviteToSignProvider
@@ -31,6 +32,7 @@ const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
       bananasignUrl={bananasignUrl}
       bananasignBaseUrl={bananasignBaseUrl}
       fileName={fileName}
+      onUploadDocument={onUploadDocument}
     >
       <div
         className={classNames('InviteToSign__container', {
