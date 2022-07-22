@@ -30,7 +30,6 @@ import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import InputAssigner from './InputAssigner';
 // import RecentContacts from './RecentContacts';
 import SearchContact from './SearchContact';
-
 var REQUEST_TYPE_TO_STRING =
   ((_a = {}),
   (_a[REQUEST_TYPE.SIGNER] = 'Add Signer'),

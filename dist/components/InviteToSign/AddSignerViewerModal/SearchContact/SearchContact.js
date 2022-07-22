@@ -37,7 +37,6 @@ import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
 import InviteToSignContext from '../../InviteToSignContext';
 import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 import AssignerItem from '../../InviteUser/AssignerItem';
-
 // import EmptySearchContactResults from './EmptySearchContactResults';
 // import SearchContactEmptyKeyWords from './SearchContactEmptyKeyWords';
 var SearchContact = React.forwardRef(function (props, ref) {

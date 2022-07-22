@@ -173,7 +173,6 @@ import Button from '@components/Button';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
-
 var InviteUser = function () {
   var context = useContext(InviteToSignContext);
   var _a = context.state,

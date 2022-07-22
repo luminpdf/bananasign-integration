@@ -23,7 +23,6 @@ import {jsx as _jsx} from 'react/jsx-runtime';
 import {Lotties} from '@src/assets';
 
 import InviteToSignContext from '../InviteToSignContext';
-
 var Loading = function () {
   var context = useContext(InviteToSignContext);
   var loading = context.state.loading;

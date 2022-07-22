@@ -19,7 +19,6 @@ import './Footer.style.scss';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import {Images} from '@src/assets';
-
 var Footer = function () {
   return _jsxs(
     'div',

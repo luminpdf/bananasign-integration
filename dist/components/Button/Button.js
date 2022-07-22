@@ -20,7 +20,6 @@ import classNames from 'classnames';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import {useRippleButton} from '@src/hooks/useRippleButton';
-
 var Button = function (props) {
   var className = props.className,
     title = props.title,

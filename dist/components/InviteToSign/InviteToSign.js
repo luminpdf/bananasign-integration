@@ -27,7 +27,6 @@ import InviteToSignProvider from './InviteToSignProvider';
 import InviteUser from './InviteUser';
 import Loading from './Loading';
 import WarningModal from './WarningModal';
-
 var InviteToSign = function (props) {
   var isOpen = props.isOpen,
     onClose = props.onClose,

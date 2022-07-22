@@ -27,7 +27,6 @@ import common from '@src/utils/common';
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextActions} from './InviteToSignContextActions';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
-
 var InviteToSignProvider = function (_a) {
   var children = _a.children,
     onClose = _a.onClose,

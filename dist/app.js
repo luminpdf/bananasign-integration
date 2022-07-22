@@ -13,18 +13,6 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-var __spreadArray =
-  (this && this.__spreadArray) ||
-  function (to, from, pack) {
-    if (pack || arguments.length === 2)
-      for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-          if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-          ar[i] = from[i];
-        }
-      }
-    return to.concat(ar || Array.prototype.slice.call(from));
-  };
 
 // import {InviteToSign} from 'banana-widget';
 import React from 'react';
@@ -32,7 +20,6 @@ import ReactDOM from 'react-dom';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import BananasignWidget from '.';
-
 function App() {
   var _a = React.useState(false),
     isOpenWidget = _a[0],
@@ -62,20 +49,7 @@ function App() {
       _jsx(BananasignWidget, {
         isOpen: isOpenWidget,
         onClose: closeWidget,
-        // signers={signers}
-        signers: __spreadArray(
-          [
-            {
-              id: '62cd383adfae8a3bc209b224',
-              name: 'Tung Pham',
-              email: 'tungp+0402@dgroup.co',
-              requestType: 'SIGNER',
-              dueTimeExpired: 0,
-            },
-          ],
-          signers,
-          true,
-        ),
+        signers: signers,
         viewers: viewers,
         fileName: 'document name',
         bananasignUrl: 'http://localhost:5000',

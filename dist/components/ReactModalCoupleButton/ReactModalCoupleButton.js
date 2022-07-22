@@ -20,7 +20,6 @@ import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import Button from '@src/components/Button';
 import {BUTTON_TYPE} from '@src/constants/common';
-
 var ReactModalCoupleButton = function (props) {
   var onCancel = props.onCancel,
     onConfirm = props.onConfirm,

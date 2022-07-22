@@ -23,7 +23,6 @@ import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 import {Images} from '@src/assets';
 import Avatar from '@src/components/Avatar';
 import {GUEST_USER} from '@src/constants/common';
-
 var getTooltipContent = function (role) {
   return {
     signer: 'Change my role to viewer',

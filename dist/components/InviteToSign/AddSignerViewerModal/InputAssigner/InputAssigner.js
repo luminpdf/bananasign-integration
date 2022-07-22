@@ -32,7 +32,6 @@ import common from '@src/utils/common';
 import InviteToSignContext from '../../InviteToSignContext';
 import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 import AssignerListInput from './AssignerListInput/AssignerListInput';
-
 var InputAssigner = React.forwardRef(function (props, ref) {
   var _a = useContext(InviteToSignContext),
     _b = _a.state,

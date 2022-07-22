@@ -32,17 +32,7 @@ function App() {
       <BananasignWidget
         isOpen={isOpenWidget}
         onClose={closeWidget}
-        // signers={signers}
-        signers={[
-          {
-            id: '62cd383adfae8a3bc209b224',
-            name: 'Tung Pham',
-            email: 'tungp+0402@dgroup.co',
-            requestType: 'SIGNER',
-            dueTimeExpired: 0,
-          },
-          ...signers,
-        ]}
+        signers={signers}
         viewers={viewers}
         fileName="document name"
         bananasignUrl="http://localhost:5000"

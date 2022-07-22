@@ -21,7 +21,6 @@ import {jsx as _jsx} from 'react/jsx-runtime';
 
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
-
 var CLOSE_TASK_BANANA_SIGN_MSG = 'close_task';
 var BACK_STEP_BANANA_SIGN_MSG = 'back_step';
 var BananasignIframe = function () {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {REQUEST_TYPE} from '@src/constants/common';
-
 export var initialState = {
   loading: false,
   isOpenAddAssignerModal: false,

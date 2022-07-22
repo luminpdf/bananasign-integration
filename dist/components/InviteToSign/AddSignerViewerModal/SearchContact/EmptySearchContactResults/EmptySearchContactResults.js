@@ -19,7 +19,6 @@ import './EmptySearchContactResults.style.scss';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 
 import {Images} from '@src/assets';
-
 var EmptySearchContactResults = function (_a) {
   var keyWords = _a.keyWords;
   return _jsxs(
