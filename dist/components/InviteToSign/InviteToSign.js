@@ -47,6 +47,7 @@ var InviteToSign = function (props) {
         bananasignBaseUrl: bananasignBaseUrl,
         fileName: fileName,
         onUploadDocument: onUploadDocument,
+        isOpen: isOpen,
       },
       {
         children: _jsxs(

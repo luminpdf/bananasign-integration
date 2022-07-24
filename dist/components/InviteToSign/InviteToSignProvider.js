@@ -37,7 +37,8 @@ var InviteToSignProvider = function (_a) {
     _c = _a.bananasignBaseUrl,
     bananasignBaseUrl = _c === void 0 ? BANANASIGN_BASE_URL : _c,
     fileName = _a.fileName,
-    onUploadDocument = _a.onUploadDocument;
+    onUploadDocument = _a.onUploadDocument,
+    isOpen = _a.isOpen;
   var signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
   var viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
   var _d = useReducer(
@@ -53,27 +54,32 @@ var InviteToSignProvider = function (_a) {
     ),
     state = _d[0],
     dispatch = _d[1];
-  useEffect(function () {
-    var requestOptions = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({fileName: fileName}),
-    };
-    fetch(
-      ''.concat(bananasignBaseUrl, '/v1/document-signing/init'),
-      requestOptions,
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        onUploadDocument({uploadUrl: data.uploadDocumentUrl});
-        dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
-      })
-      .catch(function (error) {
-        return console.log(error);
-      });
-  }, []);
+  useEffect(
+    function () {
+      var requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({fileName: fileName}),
+      };
+      if (isOpen) {
+        fetch(
+          ''.concat(bananasignBaseUrl, '/v1/document-signing'),
+          requestOptions,
+        )
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            onUploadDocument({uploadUrl: data.uploadDocumentUrl});
+            dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
+          })
+          .catch(function (error) {
+            return console.log(error);
+          });
+      }
+    },
+    [isOpen],
+  );
   return _jsx(
     InviteToSignContext.Provider,
     __assign({value: {state: state, dispatch: dispatch}}, {children: children}),

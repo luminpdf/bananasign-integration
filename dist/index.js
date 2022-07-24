@@ -1888,40 +1888,45 @@ var Vn = [
       f = void 0 === c ? 'https://api.bananasign.co' : c,
       d = n.fileName,
       p = n.onUploadDocument,
-      g = vn(t, M),
-      b = vn(i, I),
-      m = r.useReducer(
+      g = n.isOpen,
+      b = vn(t, M),
+      m = vn(i, I),
+      y = r.useReducer(
         Un,
         u(u({}, R), {
-          signers: g,
-          viewers: b,
+          signers: b,
+          viewers: m,
           onClose: e,
           bananasignUrl: s,
           bananasignBaseUrl: f,
           fileName: d,
         }),
       ),
-      y = m[0],
-      h = m[1];
+      h = y[0],
+      x = y[1];
     return (
-      r.useEffect(function () {
-        var n = {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({fileName: d}),
-        };
-        fetch(''.concat(f, '/v1/document-signing/init'), n)
-          .then(function (n) {
-            return n.json();
-          })
-          .then(function (n) {
-            p({uploadUrl: n.uploadDocumentUrl}), h(bn(n));
-          })
-          .catch(function (n) {
-            return console.log(n);
-          });
-      }, []),
-      a.jsx(L.Provider, u({value: {state: y, dispatch: h}}, {children: o}))
+      r.useEffect(
+        function () {
+          var n = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({fileName: d}),
+          };
+          g &&
+            fetch(''.concat(f, '/v1/document-signing'), n)
+              .then(function (n) {
+                return n.json();
+              })
+              .then(function (n) {
+                p({uploadUrl: n.uploadDocumentUrl}), x(bn(n));
+              })
+              .catch(function (n) {
+                return console.log(n);
+              });
+        },
+        [g],
+      ),
+      a.jsx(L.Provider, u({value: {state: h, dispatch: x}}, {children: o}))
     );
   };
 (Zn.defaultProps = {children: null}),
@@ -2251,6 +2256,7 @@ module.exports = function (n) {
         bananasignBaseUrl: l,
         fileName: s,
         onUploadDocument: f,
+        isOpen: o,
       },
       {
         children: a.jsxs(

@@ -9,6 +9,7 @@ interface IInviteToSignProviderProps {
     bananasignBaseUrl?: string;
     fileName: string;
     onUploadDocument: (args: UploadDocumentDto) => void;
+    isOpen: boolean;
 }
 declare const InviteToSignProvider: React.FC<IInviteToSignProviderProps>;
 export default InviteToSignProvider;

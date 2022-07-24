@@ -25,6 +25,7 @@ interface IInviteToSignProviderProps {
   bananasignBaseUrl?: string;
   fileName: string;
   onUploadDocument: (args: UploadDocumentDto) => void;
+  isOpen: boolean;
 }
 
 const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
@@ -36,6 +37,7 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   bananasignBaseUrl = BANANASIGN_BASE_URL,
   fileName,
   onUploadDocument,
+  isOpen,
 }) => {
   const signersData: IAssignerProps[] = common.serializeAssigners(
     signers,
@@ -61,14 +63,16 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({fileName}),
     };
-    fetch(`${bananasignBaseUrl}/v1/document-signing/init`, requestOptions)
-      .then((response) => response.json())
-      .then((data: IWidgetInit) => {
-        onUploadDocument({uploadUrl: data.uploadDocumentUrl});
-        dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (isOpen) {
+      fetch(`${bananasignBaseUrl}/v1/document-signing`, requestOptions)
+        .then((response) => response.json())
+        .then((data: IWidgetInit) => {
+          onUploadDocument({uploadUrl: data.uploadDocumentUrl});
+          dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [isOpen]);
 
   return (
     <InviteToSignContext.Provider value={{state, dispatch}}>

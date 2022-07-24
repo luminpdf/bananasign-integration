@@ -33,6 +33,7 @@ const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
       bananasignBaseUrl={bananasignBaseUrl}
       fileName={fileName}
       onUploadDocument={onUploadDocument}
+      isOpen={isOpen}
     >
       <div
         className={classNames('InviteToSign__container', {

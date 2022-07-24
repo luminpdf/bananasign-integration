@@ -1,4 +1,3 @@
-// import {InviteToSign} from 'banana-widget';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -35,8 +34,6 @@ function App() {
         signers={signers}
         viewers={viewers}
         fileName="document name"
-        bananasignUrl="http://localhost:5000"
-        bananasignBaseUrl="http://localhost:3000"
         onUploadDocument={({uploadUrl: _}) => {
           // TODO: Use url to upload document
         }}
