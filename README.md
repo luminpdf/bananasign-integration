@@ -65,8 +65,11 @@ function App() {
         signers={signers}
         viewers={viewers}
         fileName="document name"
-        onUploadDocument={({ uploadUrl: _ }) => {
-          // TODO: Use url to upload document
+        onUploadDocument={({ uploadUrl }) => {
+          // @content: content of the file
+          const formData = new FormData();
+          formData.append('file', content)
+          fetch(uploadUrl, { method: 'PUT', body: formData });
         }}
       />
     </div>
