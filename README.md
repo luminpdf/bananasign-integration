@@ -17,7 +17,7 @@ To install, you can use [npm](https://npmjs.org/):
 | Props            | Type     | Required           | Description                                                                                     |
 | :--------------- | :------- | :----------------- | :---------------------------------------------------------------------------------------------- |
 | isOpen           | boolean  | :white_check_mark: | show/hide bananasign widget                                                                     |
-| onClose          | function | :white_check_mark: | Function that will be run when the widget is requested to be closed, prior to actually closing. |
+| onClose          | function |                    | Function that will be run when the widget is requested to be closed, prior to actually closing. |
 | signers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
 | viewers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
 | fileName         | string   | :white_check_mark: | Document name to display on upload doument steps                                                |
