@@ -14,14 +14,16 @@ To install, you can use [npm](https://npmjs.org/):
 
 ## Props
 
-| Props            | Type     | Required           | Description                                                                                     |
-| :--------------- | :------- | :----------------- | :---------------------------------------------------------------------------------------------- |
-| isOpen           | boolean  | :white_check_mark: | show/hide bananasign widget                                                                     |
-| onClose          | function |                    | Function that will be run when the widget is requested to be closed, prior to actually closing. |
-| signers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
-| viewers          | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                       |
-| fileName         | string   | :white_check_mark: | Document name to display on upload doument steps                                                |
-| onUploadDocument | function | :white_check_mark: | Callback to obtain the upload URL in order to upload a file document to the Bananasign service  |
+| Props             | Type     | Required           | Description                                                                                                                                                                    |
+| :---------------- | :------- | :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| isOpen            | boolean  | :white_check_mark: | show/hide bananasign widget                                                                                                                                                    |
+| onClose           | function |                    | Function that will be run when the widget is requested to be closed, prior to actually closing.                                                                                |
+| signers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                                                                                                      |
+| viewers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                                                                                                      |
+| fileName          | string   | :white_check_mark: | Document name to display on upload doument steps                                                                                                                               |
+| onUploadDocument  | function | :white_check_mark: | Callback to obtain the upload URL in order to upload a file document to the Bananasign service                                                                                 |
+| bananasignUrl     | string   |                    | The URL that is used to open Bananasign iframe. We only need to specify this for testing purpose only. For testing, we can use https://app-dev.bananasign.co                   |
+| bananasignBaseUrl | string   |                    | The URL that is used to call Bananasign server endpoints. We only need to specify this for testing purpose only. For testing, we can use https://app-dev.bananasign.co/api/web |
 
 ## Examples
 
