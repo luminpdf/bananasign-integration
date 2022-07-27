@@ -13,12 +13,9 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './BananasignIframe.style.scss';
-
-import {useContext, useEffect} from 'react';
 import {jsx as _jsx} from 'react/jsx-runtime';
-
+import './BananasignIframe.style.scss';
+import {useContext, useEffect} from 'react';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 var CLOSE_TASK_BANANA_SIGN_MSG = 'close_task';

@@ -30,13 +30,10 @@ var __rest =
       }
     return t;
   };
-
+import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 import './CustomInput.style.scss';
-
 import classNames from 'classnames';
 import React, {useImperativeHandle, useRef, useState} from 'react';
-import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
 import {Images} from '@src/assets';
 var CustomInput = React.forwardRef(function (props, ref) {
   var classWrapper = props.classWrapper,

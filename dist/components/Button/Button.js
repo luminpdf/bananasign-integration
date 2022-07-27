@@ -13,12 +13,9 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './Button.style.scss';
-
-import classNames from 'classnames';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
+import './Button.style.scss';
+import classNames from 'classnames';
 import {useRippleButton} from '@src/hooks/useRippleButton';
 var Button = function (props) {
   var className = props.className,

@@ -13,28 +13,29 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './Footer.style.scss';
-
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
+import './Footer.style.scss';
 import {Images} from '@src/assets';
+import common from '@src/utils/common';
 var Footer = function () {
-  return _jsxs(
-    'div',
-    __assign(
-      {className: 'Footer__container'},
-      {
-        children: [
-          _jsx('h6', {children: 'Powered by\u00A0'}),
-          _jsx('img', {
-            src: Images.icon_bananasign_logo,
-            alt: 'logo bananasign',
-          }),
-        ],
-      },
-    ),
-  );
+  var isMobile = common.isMobile();
+  return isMobile
+    ? null
+    : _jsxs(
+        'div',
+        __assign(
+          {className: 'Footer__container'},
+          {
+            children: [
+              _jsx('h6', {children: 'Powered by\u00A0'}),
+              _jsx('img', {
+                src: Images.icon_bananasign_logo,
+                alt: 'logo bananasign',
+              }),
+            ],
+          },
+        ),
+      );
 };
 export default Footer;
 //# sourceMappingURL=Footer.js.map

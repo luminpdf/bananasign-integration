@@ -13,6 +13,6 @@ export declare const INVITE_TO_SIGN_ACTION_TYPES: {
     CANCEL_ADD_ASSIGNERS: string;
     CLOSE_AND_RESET_MODAL_SEARCH: string;
     OPEN_BANANASIGN_IFRAME: string;
-    SET_MODAL_WARNING_TYPE: string;
     SET_DOCUMENT_SIGNING: string;
+    SET_OPENED_WIDGET: string;
 };

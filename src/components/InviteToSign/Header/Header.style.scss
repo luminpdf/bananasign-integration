@@ -1,3 +1,5 @@
+@import '../../constants/styles/mixin.scss';
+
 .Header {
   &__container {
     position: relative;
@@ -6,6 +8,10 @@
     align-items: center;
     height: 72px;
     background-color: white;
+
+    @include mobile {
+      justify-content: flex-start;
+    }
   }
 
   &__left {
@@ -104,6 +110,18 @@
         background: var(--bananasign-color-primary-160);
       }
     }
+  }
+
+  &__title-mobile {
+    font-family: var(--bananasign-font-primary);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--bananasign-color-neutral-100);
+
+    margin: 0;
+    margin-left: 16px;
   }
 }
 

@@ -3,15 +3,16 @@ import './InviteToSign.style.scss';
 import classNames from 'classnames';
 import React from 'react';
 
-import AddSignerViewerModal from './AddSignerViewerModal';
-import BananasignIframe from './BananasignIframe';
-import Footer from './Footer';
-import Header from './Header';
+import {PopupProvider} from '@src/components/CustomModal';
+import BananasignIframe from '@src/components/InviteToSign/BananasignIframe';
+import Footer from '@src/components/InviteToSign/Footer';
+import Header from '@src/components/InviteToSign/Header';
+import InviteUser from '@src/components/InviteToSign/InviteUser';
+import Loading from '@src/components/InviteToSign/Loading';
+import Modal from '@src/components/Modal';
+
 import {IInviteToSignProps} from './InviteToSign.interface';
 import InviteToSignProvider from './InviteToSignProvider';
-import InviteUser from './InviteUser';
-import Loading from './Loading';
-import WarningModal from './WarningModal';
 
 const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
   const {
@@ -35,19 +36,20 @@ const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
       onUploadDocument={onUploadDocument}
       isOpen={isOpen}
     >
-      <div
-        className={classNames('InviteToSign__container', {
-          open: isOpen,
-        })}
-      >
-        <Header />
-        <InviteUser />
-        <Footer />
-        <AddSignerViewerModal />
-        <Loading />
-        <BananasignIframe />
-        <WarningModal />
-      </div>
+      <PopupProvider>
+        <div
+          className={classNames('InviteToSign__container', {
+            open: isOpen,
+          })}
+        >
+          <Header />
+          <InviteUser />
+          <Footer />
+          <Loading />
+          <BananasignIframe />
+          <Modal />
+        </div>
+      </PopupProvider>
     </InviteToSignProvider>
   );
 };

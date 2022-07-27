@@ -25,15 +25,11 @@ var __spreadArray =
       }
     return to.concat(ar || Array.prototype.slice.call(from));
   };
-
+import {jsx as _jsx} from 'react/jsx-runtime';
 import './SearchContact.style.scss';
-
 import classNames from 'classnames';
 import React, {useCallback, useContext} from 'react';
-import {jsx as _jsx} from 'react/jsx-runtime';
-
 import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
-
 import InviteToSignContext from '../../InviteToSignContext';
 import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 import AssignerItem from '../../InviteUser/AssignerItem';

@@ -25,8 +25,6 @@ export default {
       rules.htmlRule,
       rules.imagesRule,
       rules.fontsRule,
-      rules.cssRule,
-      ...rules.lessRules,
       ...rules.sassRules,
       ...rules.svgRules,
     ]),

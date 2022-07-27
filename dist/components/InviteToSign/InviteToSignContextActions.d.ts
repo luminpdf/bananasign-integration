@@ -1,5 +1,9 @@
-import { IAssignerProps, IWidgetInit, ModalWarning } from './InviteToSign.interface';
+import { IAssignerProps, IWidgetInit } from './InviteToSign.interface';
 export declare const InviteToSignContextActions: {
+    SET_OPENED_WIDGET: (isOpen: boolean) => {
+        type: string;
+        payload: boolean;
+    };
     SET_LOADING: (isLoading: boolean) => {
         type: string;
         payload: boolean;
@@ -55,10 +59,6 @@ export declare const InviteToSignContextActions: {
     OPEN_BANANASIGN_IFRAME: (isOpen: boolean) => {
         type: string;
         payload: boolean;
-    };
-    SET_MODAL_WARNING_TYPE: (modalType: ModalWarning) => {
-        type: string;
-        payload: ModalWarning;
     };
     SET_DOCUMENT_SIGNING: (documentSigning: IWidgetInit) => {
         type: string;

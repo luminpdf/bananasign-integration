@@ -1,46 +1,94 @@
+@import '../../constants/styles/mixin.scss';
+
 .AssignModal {
-  max-width: 496px !important;
-  min-width: 496px !important;
+  &__custom-modal {
+    max-width: 496px;
+    min-width: 496px;
+  
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    background: white;
+    box-shadow: var(--bananasign-container-shadow);
+    border-radius: 8px;
+    padding: 24px 16px 24px 16px;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 16%;
+
+    @include mobile {
+      min-width: 296px;
+      width: 82.3%;
+      padding: 16px;
+      top: 5%;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-family: var(--bananasign-font-primary);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    color: var(--bananasign-color-neutral-100);
+  
+    margin: 0;
+    margin-bottom: 16px;
+  
+  
+    @include mobile {
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--bananasign-color-primary-230);
+    padding-top: 16px;
+    position: relative;
+  }
+  &__contact-list {
+    width: 100%;
+    max-height: 224px;
+    min-height: 224px;
+    height: 224px;
+    overflow: auto;
+    margin-top: 8px;
+  }
+  
+  &__contact-component {
+    display: none;
+    height: 100%;
+    width: 100%;
+    transform: translateY(100%);
+    overflow: overlay;
+  }
+
+  &__contact-component.active {
+    display: block;
+    transform: translateY(0);
+    animation: change-tab 0.4s cubic-bezier(0.17, 0.67, 0.5, 0.95);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 16px;
+  }
 }
 
-.AssignModal__header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.AssignModal__title {
-  margin: 0;
-  font-family: var(--bananasign-font-primary);
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 36px;
-  color: var(--bananasign-color-neutral-100);
-}
-.AssignModal__body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  border-bottom: 1px solid var(--bananasign-color-primary-230);
-  padding-top: 16px;
-  position: relative;
-}
-.AssignModal__contact-list {
-  width: 100%;
-  max-height: 224px;
-  min-height: 224px;
-  height: 224px;
-  overflow: auto;
-  margin-top: 8px;
-}
-
-.AssignModal__contact-component {
-  display: none;
-  height: 100%;
-  width: 100%;
-  transform: translateY(100%);
-  overflow: overlay;
-}
 
 @keyframes change-tab {
   0% {
@@ -51,12 +99,6 @@
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.AssignModal__contact-component.active {
-  display: block;
-  transform: translateY(0);
-  animation: change-tab 0.4s cubic-bezier(0.17, 0.67, 0.5, 0.95);
 }
 
 .ImportGoogleContact__container {
@@ -125,13 +167,4 @@
     color: var(--bananasign-color-blue);
     margin-top: 16px;
   }
-}
-
-.AssignModal__footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  margin-top: 16px;
 }

@@ -13,20 +13,17 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './InviteToSign.style.scss';
-
-import classNames from 'classnames';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
-import AddSignerViewerModal from './AddSignerViewerModal';
-import BananasignIframe from './BananasignIframe';
-import Footer from './Footer';
-import Header from './Header';
+import './InviteToSign.style.scss';
+import classNames from 'classnames';
+import {PopupProvider} from '@src/components/CustomModal';
+import BananasignIframe from '@src/components/InviteToSign/BananasignIframe';
+import Footer from '@src/components/InviteToSign/Footer';
+import Header from '@src/components/InviteToSign/Header';
+import InviteUser from '@src/components/InviteToSign/InviteUser';
+import Loading from '@src/components/InviteToSign/Loading';
+import Modal from '@src/components/Modal';
 import InviteToSignProvider from './InviteToSignProvider';
-import InviteUser from './InviteUser';
-import Loading from './Loading';
-import WarningModal from './WarningModal';
 var InviteToSign = function (props) {
   var isOpen = props.isOpen,
     onClose = props.onClose,
@@ -50,27 +47,28 @@ var InviteToSign = function (props) {
         isOpen: isOpen,
       },
       {
-        children: _jsxs(
-          'div',
-          __assign(
-            {
-              className: classNames('InviteToSign__container', {
-                open: isOpen,
-              }),
-            },
-            {
-              children: [
-                _jsx(Header, {}),
-                _jsx(InviteUser, {}),
-                _jsx(Footer, {}),
-                _jsx(AddSignerViewerModal, {}),
-                _jsx(Loading, {}),
-                _jsx(BananasignIframe, {}),
-                _jsx(WarningModal, {}),
-              ],
-            },
+        children: _jsx(PopupProvider, {
+          children: _jsxs(
+            'div',
+            __assign(
+              {
+                className: classNames('InviteToSign__container', {
+                  open: isOpen,
+                }),
+              },
+              {
+                children: [
+                  _jsx(Header, {}),
+                  _jsx(InviteUser, {}),
+                  _jsx(Footer, {}),
+                  _jsx(Loading, {}),
+                  _jsx(BananasignIframe, {}),
+                  _jsx(Modal, {}),
+                ],
+              },
+            ),
           ),
-        ),
+        }),
       },
     ),
   );

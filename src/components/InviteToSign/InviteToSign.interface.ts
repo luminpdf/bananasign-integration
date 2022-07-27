@@ -7,7 +7,7 @@ export interface IInviteToSignProps {
   /* default = false */
   isOpen: boolean;
   /* Function that will be run when the widget is requested to be closed, prior to actually closing. */
-  onClose: () => void;
+  onClose?: () => void;
   /* List assigners */
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
@@ -47,12 +47,12 @@ export interface IState {
   searchContacts: IAssignerProps[];
   cancelAddAssigners: boolean;
   openBananasignIframe: boolean;
-  modalWarningData: ModalWarning;
   onClose: () => void;
   bananasignUrl: string;
   bananasignBaseUrl: string;
   flowId: string;
   uploadDocumentUrl: string;
+  isOpen: boolean;
 }
 
 export interface UploadDocumentDto {

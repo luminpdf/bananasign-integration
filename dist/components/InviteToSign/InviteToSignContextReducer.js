@@ -25,11 +25,12 @@ var __spreadArray =
       }
     return to.concat(ar || Array.prototype.slice.call(from));
   };
-
 import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export var InviteToSignContextReducer = function (state, action) {
   switch (action.type) {
+    case INVITE_TO_SIGN_ACTION_TYPES.SET_OPENED_WIDGET:
+      return __assign(__assign({}, state), {isOpen: action.payload});
     case INVITE_TO_SIGN_ACTION_TYPES.SET_LOADING:
       return __assign(__assign({}, state), {loading: action.payload});
     case INVITE_TO_SIGN_ACTION_TYPES.SET_OPEN_ADD_ASSIGNER_MODAL:
@@ -102,8 +103,6 @@ export var InviteToSignContextReducer = function (state, action) {
       return __assign(__assign({}, state), {
         openBananasignIframe: action.payload,
       });
-    case INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE:
-      return __assign(__assign({}, state), {modalWarningData: action.payload});
     case INVITE_TO_SIGN_ACTION_TYPES.SET_DOCUMENT_SIGNING:
       return __assign(__assign({}, state), action.payload);
     default:

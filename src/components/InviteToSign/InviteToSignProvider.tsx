@@ -18,7 +18,7 @@ import {InviteToSignContextReducer} from './InviteToSignContextReducer';
 
 interface IInviteToSignProviderProps {
   children: ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
   bananasignUrl?: string;
@@ -47,14 +47,19 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
     viewers,
     REQUEST_TYPE.VIEWER,
   );
-  const [state, dispatch] = useReducer(InviteToSignContextReducer, {
-    ...initialState,
+  const context = {
     signers: signersData,
     viewers: viewersData,
     onClose,
     bananasignUrl,
     bananasignBaseUrl,
     fileName,
+    isOpen,
+  };
+
+  const [state, dispatch] = useReducer(InviteToSignContextReducer, {
+    ...initialState,
+    ...context,
   });
 
   useEffect(() => {
@@ -64,6 +69,8 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
       body: JSON.stringify({fileName}),
     };
     if (isOpen) {
+      dispatch(InviteToSignContextActions.SET_OPENED_WIDGET(isOpen));
+
       fetch(`${bananasignBaseUrl}/v1/document-signing`, requestOptions)
         .then((response) => response.json())
         .then((data: IWidgetInit) => {

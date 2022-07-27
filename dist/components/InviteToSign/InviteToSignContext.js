@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {REQUEST_TYPE} from '@src/constants/common';
 export var initialState = {
   loading: false,
@@ -11,9 +10,6 @@ export var initialState = {
   searchContacts: [],
   cancelAddAssigners: false,
   openBananasignIframe: false,
-  modalWarningData: {
-    type: '',
-  },
   onClose: function () {
     return undefined;
   },
@@ -22,6 +18,7 @@ export var initialState = {
   //
   flowId: '',
   uploadDocumentUrl: '',
+  isOpen: false,
 };
 var InviteToSignContext = React.createContext({
   state: initialState,

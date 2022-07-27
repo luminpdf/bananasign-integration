@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { IAssignerProps, UploadDocumentDto } from './InviteToSign.interface';
 interface IInviteToSignProviderProps {
     children: ReactNode;
-    onClose: () => void;
+    onClose?: () => void;
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
     bananasignUrl?: string;

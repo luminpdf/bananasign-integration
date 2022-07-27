@@ -13,11 +13,8 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './ReactModalCoupleButton.style.scss';
-
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
+import './ReactModalCoupleButton.style.scss';
 import Button from '@src/components/Button';
 import {BUTTON_TYPE} from '@src/constants/common';
 var ReactModalCoupleButton = function (props) {

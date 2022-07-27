@@ -2,10 +2,12 @@ import './AddSignerViewerModal.style.scss';
 
 import React, {useContext, useMemo, useRef, useState} from 'react';
 
-import CustomModal from '@src/components/CustomModal';
+import AnimatedModal from '@src/components/AnimatedModal';
+import {usePopup} from '@src/components/CustomModal';
 import ReactModalCoupleButton from '@src/components/ReactModalCoupleButton';
 import {REQUEST_TYPE} from '@src/constants/common';
 import useOnClickOutside from '@src/hooks/useOnClickOutside';
+import common from '@src/utils/common';
 
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
@@ -22,12 +24,19 @@ const REQUEST_TYPE_TO_STRING = {
 const AddSignerViewerModal: React.FC = () => {
   const context = useContext(InviteToSignContext);
   const {
-    state: {isOpenAddAssignerModal, type, signers, viewers},
+    state: {type, signers, viewers},
     dispatch,
   } = context;
+  const prevAssigners = useMemo(() => {
+    return {
+      SIGNER: signers,
+      VIEWER: viewers,
+    };
+  }, []);
   const [isFocusSearchView, setFocusSearchView] = useState(false);
   const searchRef = useRef(null);
   const inputRef = useRef<IInputAssignerRef>(null);
+  const [{hideModal}] = usePopup();
 
   useOnClickOutside(searchRef, () => {
     inputRef?.current?.unFocusInput();
@@ -41,10 +50,12 @@ const AddSignerViewerModal: React.FC = () => {
   const onCloseModal = () => {
     dispatch(InviteToSignContextActions.CANCEL_ADD_ASSIGNERS(true));
     dispatch(InviteToSignContextActions.CLOSE_AND_RESET_MODAL_SEARCH());
+    hideModal();
   };
 
   const onConfirm = () => {
     dispatch(InviteToSignContextActions.CLOSE_AND_RESET_MODAL_SEARCH());
+    hideModal();
   };
 
   const isEnableConfirmButton = useMemo(() => {
@@ -52,16 +63,16 @@ const AddSignerViewerModal: React.FC = () => {
       [REQUEST_TYPE.SIGNER]: signers,
       [REQUEST_TYPE.VIEWER]: viewers,
     };
-    return signersList[type].some((item) => item?.newAssignUser);
+    const isChanged = !common.compareArrayByElement(
+      signersList[type],
+      prevAssigners[type],
+      'email',
+    );
+    return isChanged;
   }, [type, signers, viewers]);
 
   return (
-    <CustomModal
-      isShowCloseButton={false}
-      isOpen={isOpenAddAssignerModal}
-      closeModal={onCloseModal}
-      className="AssignModal"
-    >
+    <AnimatedModal className="AssignModal AssignModal__custom-modal">
       <div className="AssignModal__container">
         <div className="AssignModal__header">
           <h4 className="AssignModal__title">{REQUEST_TYPE_TO_STRING[type]}</h4>
@@ -93,7 +104,7 @@ const AddSignerViewerModal: React.FC = () => {
           />
         </div>
       </div>
-    </CustomModal>
+    </AnimatedModal>
   );
 };
 

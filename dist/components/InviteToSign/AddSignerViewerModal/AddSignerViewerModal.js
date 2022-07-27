@@ -14,17 +14,15 @@ var __assign =
     return __assign.apply(this, arguments);
   };
 var _a;
-
-import './AddSignerViewerModal.style.scss';
-
-import {useContext, useMemo, useRef, useState} from 'react';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
-import CustomModal from '@src/components/CustomModal';
+import './AddSignerViewerModal.style.scss';
+import {useContext, useMemo, useRef, useState} from 'react';
+import AnimatedModal from '@src/components/AnimatedModal';
+import {usePopup} from '@src/components/CustomModal';
 import ReactModalCoupleButton from '@src/components/ReactModalCoupleButton';
 import {REQUEST_TYPE} from '@src/constants/common';
 import useOnClickOutside from '@src/hooks/useOnClickOutside';
-
+import common from '@src/utils/common';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import InputAssigner from './InputAssigner';
@@ -38,16 +36,22 @@ var REQUEST_TYPE_TO_STRING =
 var AddSignerViewerModal = function () {
   var context = useContext(InviteToSignContext);
   var _a = context.state,
-    isOpenAddAssignerModal = _a.isOpenAddAssignerModal,
     type = _a.type,
     signers = _a.signers,
     viewers = _a.viewers,
     dispatch = context.dispatch;
+  var prevAssigners = useMemo(function () {
+    return {
+      SIGNER: signers,
+      VIEWER: viewers,
+    };
+  }, []);
   var _b = useState(false),
     isFocusSearchView = _b[0],
     setFocusSearchView = _b[1];
   var searchRef = useRef(null);
   var inputRef = useRef(null);
+  var hideModal = usePopup()[0].hideModal;
   useOnClickOutside(searchRef, function () {
     var _a;
     (_a =
@@ -68,9 +72,11 @@ var AddSignerViewerModal = function () {
   var onCloseModal = function () {
     dispatch(InviteToSignContextActions.CANCEL_ADD_ASSIGNERS(true));
     dispatch(InviteToSignContextActions.CLOSE_AND_RESET_MODAL_SEARCH());
+    hideModal();
   };
   var onConfirm = function () {
     dispatch(InviteToSignContextActions.CLOSE_AND_RESET_MODAL_SEARCH());
+    hideModal();
   };
   var isEnableConfirmButton = useMemo(
     function () {
@@ -80,21 +86,19 @@ var AddSignerViewerModal = function () {
         (_a[REQUEST_TYPE.SIGNER] = signers),
         (_a[REQUEST_TYPE.VIEWER] = viewers),
         _a);
-      return signersList[type].some(function (item) {
-        return item === null || item === void 0 ? void 0 : item.newAssignUser;
-      });
+      var isChanged = !common.compareArrayByElement(
+        signersList[type],
+        prevAssigners[type],
+        'email',
+      );
+      return isChanged;
     },
     [type, signers, viewers],
   );
   return _jsx(
-    CustomModal,
+    AnimatedModal,
     __assign(
-      {
-        isShowCloseButton: false,
-        isOpen: isOpenAddAssignerModal,
-        closeModal: onCloseModal,
-        className: 'AssignModal',
-      },
+      {className: 'AssignModal AssignModal__custom-modal'},
       {
         children: _jsxs(
           'div',

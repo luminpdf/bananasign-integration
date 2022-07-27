@@ -13,15 +13,11 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
+import {jsx as _jsx} from 'react/jsx-runtime';
 import './Loading.style.scss';
-
 import {useContext} from 'react';
 import Lottie from 'react-lottie-player';
-import {jsx as _jsx} from 'react/jsx-runtime';
-
 import {Lotties} from '@src/assets';
-
 import InviteToSignContext from '../InviteToSignContext';
 var Loading = function () {
   var context = useContext(InviteToSignContext);

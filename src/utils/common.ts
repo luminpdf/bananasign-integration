@@ -1,6 +1,10 @@
 import {IAssignerProps} from '@src/components/InviteToSign/InviteToSign.interface';
 import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
 
+const isClientSide = typeof window !== 'undefined';
+
+const isMobile = () => isClientSide && window.innerWidth < 640;
+
 const getAvatarName = (name: string) => {
   let words = '';
   if (name && name.split(' ').length > 0) {
@@ -61,10 +65,33 @@ const serializeAssigners = (
   return serializeSigners;
 };
 
+function compareArrayByElement(
+  firstArray: IAssignerProps[],
+  secondArray: IAssignerProps[],
+  property: string,
+) {
+  if (firstArray.length !== secondArray.length) {
+    return false;
+  }
+  // check object by property
+  if (property) {
+    return firstArray.every(
+      (element: IAssignerProps) =>
+        secondArray.findIndex((assigner) => element.email === assigner.email) >
+        -1,
+    );
+  }
+
+  return firstArray.every((element, index) => element === secondArray[index]);
+}
+
 export default {
+  isClientSide,
+  isMobile,
   getAvatarName,
   capitalizeLetter,
   validateEmail,
   debounce,
   serializeAssigners,
+  compareArrayByElement,
 };

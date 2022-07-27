@@ -44,7 +44,6 @@ export interface IState {
   searchContacts: IAssignerProps[];
   cancelAddAssigners: boolean;
   openBananasignIframe: boolean;
-  modalWarningData: ModalWarning;
   onClose: () => void;
 }
 

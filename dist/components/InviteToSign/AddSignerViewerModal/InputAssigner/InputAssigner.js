@@ -13,22 +13,18 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './InputAssigner.style.scss';
-
-import classNames from 'classnames';
-import React, {useContext, useImperativeHandle, useRef, useState} from 'react';
 import {
-  Fragment as _Fragment,
   jsx as _jsx,
+  Fragment as _Fragment,
   jsxs as _jsxs,
 } from 'react/jsx-runtime';
-
+import './InputAssigner.style.scss';
+import classNames from 'classnames';
+import React, {useContext, useImperativeHandle, useRef, useState} from 'react';
 import {Images} from '@src/assets';
 import CustomInput from '@src/components/CustomInput';
 import {CONTACT_TYPE, GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
 import common from '@src/utils/common';
-
 import InviteToSignContext from '../../InviteToSignContext';
 import {InviteToSignContextActions} from '../../InviteToSignContextActions';
 import AssignerListInput from './AssignerListInput/AssignerListInput';

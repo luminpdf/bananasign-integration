@@ -4,7 +4,10 @@ import classNames from 'classnames';
 import React, {useContext, useEffect, useState} from 'react';
 
 import {Images} from '@src/assets';
+import {usePopup} from '@src/components/CustomModal';
+import {ModalName, ModalOptions} from '@src/components/CustomModal';
 import {REQUEST_TYPE} from '@src/constants/common';
+import common from '@src/utils/common';
 
 import Button from '@components/Button';
 
@@ -14,6 +17,7 @@ import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
 
 const InviteUser: React.FC = () => {
+  const isMobile = common.isMobile();
   const context = useContext(InviteToSignContext);
   const {
     state: {
@@ -30,6 +34,8 @@ const InviteUser: React.FC = () => {
   const [signersState, setSignersState] = useState<IAssignerProps[]>([]);
   const [viewersState, setViewersState] = useState<IAssignerProps[]>([]);
 
+  const [{showModal}] = usePopup();
+
   useEffect(() => {
     if (isOpenAddAssignerModal) {
       return;
@@ -45,6 +51,12 @@ const InviteUser: React.FC = () => {
   }, [isOpenAddAssignerModal, signers, viewers]);
 
   const handleOpenAddAssignerModal = (type: string) => {
+    //
+    const modalOptions: ModalOptions = {
+      modalName: ModalName.ADD_VIEWERS_SIGNERS,
+    };
+
+    showModal(modalOptions);
     dispatch(InviteToSignContextActions.SET_REQUEST_TYPE(type));
     dispatch(InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true));
   };
@@ -92,16 +104,19 @@ const InviteUser: React.FC = () => {
 
   return (
     <div className="InviteUser__container">
-      <h1 className="InviteUser__title">Invite people</h1>
+      {!isMobile && <h1 className="InviteUser__title">Invite people</h1>}
       <div className="InviteUser__wrapper">
         <h2 className="InviteUser__wrapper-title">
           Who needs to Sign?<span> *</span>
         </h2>
         <div className="InviteUser__wrapper-add-user">
           <div
-            className={classNames('InviteUser__wrapper-user-list', {
-              hide_border: !signersState.length,
-            })}
+            className={classNames(
+              'InviteUser__wrapper-user-list signers-list',
+              {
+                hide_border: !signersState.length,
+              },
+            )}
           >
             {signersState.map((signer: IAssignerProps, index: number) => (
               <AssignerItem
@@ -123,9 +138,12 @@ const InviteUser: React.FC = () => {
         <h2 className="InviteUser__wrapper-title">Who needs to View?</h2>
         <div className="InviteUser__wrapper-add-user">
           <div
-            className={classNames('InviteUser__wrapper-user-list', {
-              hide_border: !viewersState.length,
-            })}
+            className={classNames(
+              'InviteUser__wrapper-user-list viewers-list',
+              {
+                hide_border: !viewersState.length,
+              },
+            )}
           >
             {viewersState.map((viewer: IAssignerProps, index: number) => (
               <AssignerItem
