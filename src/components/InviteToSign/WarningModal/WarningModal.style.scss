@@ -1,3 +1,5 @@
+@import "../../../constants/styles/mixin.scss";
+
 .WarningModal {
   &__container {
     display: flex;
@@ -8,6 +10,10 @@
     max-width: 368px;
     min-width: 368px;
 
+    @include mobile {
+      min-width: 296px;
+    }
+    
     img {
       width: 64px;
     }
