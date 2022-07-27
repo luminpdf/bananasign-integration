@@ -1,5 +1,3 @@
-import path from 'path';
-
 import alias from '@rollup/plugin-alias';
 import {babel} from '@rollup/plugin-babel';
 // import sass from 'node-sass'

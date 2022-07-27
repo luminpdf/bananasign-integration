@@ -7,7 +7,7 @@ export interface IInviteToSignProps {
   /* default = false */
   isOpen: boolean;
   /* Function that will be run when the widget is requested to be closed, prior to actually closing. */
-  onClose: () => void;
+  onClose?: () => void;
   /* List assigners */
   signers: IAssignerProps[];
   viewers: IAssignerProps[];

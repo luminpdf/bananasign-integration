@@ -18,7 +18,7 @@ import {InviteToSignContextReducer} from './InviteToSignContextReducer';
 
 interface IInviteToSignProviderProps {
   children: ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
   bananasignUrl?: string;
