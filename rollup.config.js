@@ -50,7 +50,7 @@ export default [
       scss({
         insert: true,
         prefix: `@import "src/styles/styles.scss";`,
-        include: ['/**/*.css', '/**/*.scss', '/**/*.sass'],
+        include: ['**/**/*.scss', '/**/*.sass'],
         failOnError: true,
       }),
       typescript({
