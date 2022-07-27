@@ -19,15 +19,14 @@ export const initialState = {
   searchContacts: [],
   cancelAddAssigners: false,
   openBananasignIframe: false,
-  modalWarningData: {
-    type: '',
-  },
   onClose: () => undefined,
   bananasignUrl: '',
   bananasignBaseUrl: '',
   //
   flowId: '',
   uploadDocumentUrl: '',
+
+  isOpen: false,
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

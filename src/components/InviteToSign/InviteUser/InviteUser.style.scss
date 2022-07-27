@@ -1,3 +1,5 @@
+@import '@src/constants/styles/mixin.scss';
+
 .InviteUser {
   &__container {
     display: flex;
@@ -8,24 +10,45 @@
     padding: 40px 24px;
     margin: 0 auto;
 
-    .InviteUser__wrapper-add-button {
-      font-family: var(--bananasign-font-primary);
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 24px;
-      text-transform: none;
-      color: var(--bananasign-color-neutral-100);
-      border-radius: 8px;
-      border: 1.5px solid var(--bananasign-color-neutral-100);
-      background: var(--bananasign-color-neutral-0);
-      padding: 5px 30px;
+    @include tablet {
+      width: 91.7%;
+      min-height: 453px;
+      padding-bottom: 100px;
+      margin-top: 24px 0;
+      padding-left: 16px;
+    }
 
-      span {
-        margin-left: 8px;
-      }
+    @include mobile {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+      padding: 0;
     }
   }
+
+  &__container &__wrapper-add-button {
+    font-family: var(--bananasign-font-primary);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: none;
+    color: var(--bananasign-color-neutral-100);
+    border-radius: 8px;
+    border: 1.5px solid var(--bananasign-color-neutral-100);
+    background: var(--bananasign-color-neutral-0);
+    padding: 5px 30px;
+
+    span {
+      margin-left: 8px;
+    }
+
+    @include mobile {
+      width: calc(100% - 32px);
+      margin: 10px 16px;
+    }
+  }
+
 
   &__title {
     font-family: var(--bananasign-font-primary);
@@ -47,6 +70,23 @@
     padding: 24px 24px 24px 80px;
     margin-top: 16px;
     animation: zoom-out 0.5s ease;
+
+    @include tablet {
+      padding: 24px 24px 24px 53px;
+    }
+
+    @include mobile {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      border-radius: unset;
+      gap: unset;
+      padding-bottom: 48px;
+    }
+
     @keyframes zoom-out {
       0% {
         transform: scale(0, 0);
@@ -69,14 +109,29 @@
       span {
         color: red;
       }
+
+      @include mobile {
+        padding: 4px 16px;
+
+        background-color: var(--bananasign-color-soft-white);
+        font-size: 16px;
+      }
     }
 
     &-add-user {
       width: 80%;
+
+      @include tablet {
+        width: 100%;
+      }
+
+      @include mobile {
+        width: 100%;
+      }
     }
 
     &-user-list {
-      overflow: scroll;
+      overflow: overlay;
       max-height: 250px;
       border-bottom: solid 1px var(--bananasign-color-primary-230);
       margin-bottom: 12px;
@@ -105,6 +160,19 @@
     &:hover {
       background: var(--bananasign-color-warning-40);
       opacity: 0.8;
+    }
+  }
+
+  &__container &__next-button {
+    @include mobile {
+      width: calc(100% - 32px);
+      left: 16px;
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: auto;
+      margin-left: 0;
+      min-height: 44px;
+      margin-bottom: 24px;
     }
   }
 }

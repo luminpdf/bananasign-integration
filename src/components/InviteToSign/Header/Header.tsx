@@ -3,10 +3,15 @@ import './Header.style.scss';
 import React, {useContext} from 'react';
 
 import {Images} from '@src/assets';
-import {MODAL_TYPES} from '@src/constants/common';
+import {usePopup} from '@src/components/CustomModal';
+import {
+  ModalName,
+  ModalOptions,
+  ModalSettingType,
+} from '@src/components/CustomModal/CustomModal';
+import common from '@src/utils/common';
 
 import InviteToSignContext from '../InviteToSignContext';
-import {InviteToSignContextActions} from '../InviteToSignContextActions';
 
 const PROGRESS_BAR_LIST_ITEM = [
   {value: 'INVITE TO SIGN', className: 'active'},
@@ -17,21 +22,29 @@ const PROGRESS_BAR_LIST_ITEM = [
 
 const Header: React.FC = () => {
   const context = useContext(InviteToSignContext);
+  const isMobile = common.isMobile();
   const {
     state: {onClose},
-    dispatch,
   } = context;
-  const renderProgressBar = () => (
-    <div className="Header__progressBar-container">
-      <ul className="Header__progressBar-list">
-        {PROGRESS_BAR_LIST_ITEM.map((item) => (
-          <li className={`${item.className}`} key={item.value}>
-            <span>{item.value}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+
+  const [{showModal}] = usePopup();
+
+  const renderProgressBar = () => {
+    if (isMobile) {
+      return null;
+    }
+    return (
+      <div className="Header__progressBar-container">
+        <ul className="Header__progressBar-list">
+          {PROGRESS_BAR_LIST_ITEM.map((item) => (
+            <li className={`${item.className}`} key={item.value}>
+              <span>{item.value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
   const renderCancelButton = () => {
     return (
@@ -42,6 +55,9 @@ const Header: React.FC = () => {
   };
 
   const renderRightLogo = () => {
+    if (isMobile) {
+      return null;
+    }
     return (
       <div className="Header__right">
         <img src={Images.icon_sign_logo} />
@@ -49,17 +65,20 @@ const Header: React.FC = () => {
     );
   };
   const handleClose = () => {
-    dispatch(
-      InviteToSignContextActions.SET_MODAL_WARNING_TYPE({
-        type: MODAL_TYPES.CANCEL_PROGRESS,
+    const modalOptions: ModalOptions = {
+      modalName: ModalName.WARNING,
+      settings: {
+        type: ModalSettingType.CANCEL_PROGRESS,
         onConfirm: onClose,
-      }),
-    );
+      },
+    };
+    showModal(modalOptions);
   };
 
   return (
     <div onClick={handleClose} className="Header__container">
       {renderCancelButton()}
+      {isMobile && <h2 className="Header__title-mobile">Invite to sign</h2>}
       {renderProgressBar()}
       {renderRightLogo()}
     </div>

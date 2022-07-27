@@ -1,11 +1,13 @@
-import {
-  IAssignerProps,
-  IWidgetInit,
-  ModalWarning,
-} from './InviteToSign.interface';
+import {IAssignerProps, IWidgetInit} from './InviteToSign.interface';
 import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 
 export const InviteToSignContextActions = {
+  SET_OPENED_WIDGET: (isOpen: boolean) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_OPENED_WIDGET,
+      payload: isOpen,
+    };
+  },
   SET_LOADING: (isLoading: boolean) => {
     return {
       type: INVITE_TO_SIGN_ACTION_TYPES.SET_LOADING,
@@ -88,12 +90,6 @@ export const InviteToSignContextActions = {
     return {
       type: INVITE_TO_SIGN_ACTION_TYPES.OPEN_BANANASIGN_IFRAME,
       payload: isOpen,
-    };
-  },
-  SET_MODAL_WARNING_TYPE: (modalType: ModalWarning) => {
-    return {
-      type: INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE,
-      payload: modalType,
     };
   },
   SET_DOCUMENT_SIGNING: (documentSigning: IWidgetInit) => {

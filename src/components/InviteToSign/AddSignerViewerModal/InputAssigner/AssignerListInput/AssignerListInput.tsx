@@ -3,7 +3,6 @@ import './AssignerListInput.style.scss';
 import classNames from 'classnames';
 import React from 'react';
 import {useContext, useEffect, useRef} from 'react';
-import {animated, useTransition} from 'react-spring';
 
 import {Images} from '@src/assets';
 import {IAssignerProps} from '@src/components/InviteToSign/InviteToSign.interface';
@@ -21,11 +20,6 @@ const AssignerListInput: React.FC = () => {
   } = context;
   const assignUsers = type === REQUEST_TYPE.SIGNER ? signers : viewers;
   const assignUsersAdded = assignUsers.filter((user) => !user.isOwner);
-  const transition = useTransition(assignUsersAdded, {
-    from: {x: 0, opacity: 0},
-    enter: {opacity: 1, x: 0},
-    leave: {opacity: 0, x: 0, width: 0},
-  });
 
   useEffect(() => {
     if (divRef.current) {
@@ -48,15 +42,17 @@ const AssignerListInput: React.FC = () => {
     onRemoveAssigner(assigner);
   };
 
-  const assignedEmailItems = transition((style, item, _, index) => {
+  const assignedEmailItem = ({
+    item,
+    index,
+  }: {
+    item: IAssignerProps;
+    index: number;
+  }) => {
     const isDisable = item?.isOwner;
 
     return (
-      <animated.div
-        className="AssignerListInput__row-email"
-        style={style}
-        key={index}
-      >
+      <div className="AssignerListInput__row-email" key={index}>
         <span
           className={classNames('AssignerListInput__email', {
             disabled: isDisable,
@@ -72,13 +68,13 @@ const AssignerListInput: React.FC = () => {
         >
           <img src={Images.icon_close} alt="icon remove" />
         </div>
-      </animated.div>
+      </div>
     );
-  });
+  };
 
   return (
     <div className="AssignerListInput__container">
-      {assignedEmailItems}
+      {assignUsersAdded.map((item, index) => assignedEmailItem({item, index}))}
       <div ref={divRef} />
     </div>
   );

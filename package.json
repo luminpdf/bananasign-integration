@@ -33,10 +33,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "react-lottie-player": "^1.4.3",
-    "react-modal": "^3.15.1",
-    "react-spring": "^9.5.0",
-    "react-tooltip": "^4.2.21"
+    "react-lottie-player": "^1.4.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.6",

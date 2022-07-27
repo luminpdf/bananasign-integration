@@ -4,6 +4,11 @@ import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const InviteToSignContextReducer = (state: any, action: any) => {
   switch (action.type) {
+    case INVITE_TO_SIGN_ACTION_TYPES.SET_OPENED_WIDGET:
+      return {
+        ...state,
+        isOpen: action.payload,
+      };
     case INVITE_TO_SIGN_ACTION_TYPES.SET_LOADING:
       return {
         ...state,
@@ -99,11 +104,6 @@ export const InviteToSignContextReducer = (state: any, action: any) => {
       return {
         ...state,
         openBananasignIframe: action.payload,
-      };
-    case INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE:
-      return {
-        ...state,
-        modalWarningData: action.payload,
       };
     case INVITE_TO_SIGN_ACTION_TYPES.SET_DOCUMENT_SIGNING:
       return {

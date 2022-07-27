@@ -1,73 +1,91 @@
+@import '@src/constants/styles/mixin.scss';
 
-.ReactModal__Body--open {
-  overflow: hidden;
+.animate__animated{
+  animation:opt-animation 0.4s ;
+  -moz-animation-fill-mode: initial;
+  -webkit-animation-fill-mode: initial;
+  animation-fill-mode: initial;
 }
 
-.ReactModal__Overlay--custom {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  position: fixed;
-  z-index: 9999;
+@-webkit-keyframes opt-animation {
+  0%   { transform: scale(0.99);}
+  100% { transform: scale(1);}
+}
+@-moz-keyframes opt-animation {
+  0%   { transform: scale(0.99);}
+  100% { transform: scale(1);}
+}
+@-o-keyframes opt-animation{
+  0%   { transform: scale(0.99);}
+  100% { transform: scale(1);}
+}
+@keyframes opt-animation {
+  0%   { transform: scale(0.99);}
+  100% { transform: scale(1);}
+}
+
+.ModalBackdrop__container {
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 500ms ease-in-out;
-  background: var(--bananasign-color-neutral-70);
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  position: fixed;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
 
-  &:after {
-    width: 0;
-    height: 100%;
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
+  animation: opt-animation-backdrop 1s ;
+  -moz-animation-fill-mode: initial;
+  -webkit-animation-fill-mode: initial;
+  animation-fill-mode: initial;
+}
+
+@-webkit-keyframes opt-animation-backdrop {
+  0%   { opacity: 0.75;}
+  100% { opacity: 1;}
+}
+@-moz-keyframes opt-animation-backdrop {
+  0%   { opacity: 0.75;}
+  100% { opacity: 1;}
+}
+@-o-keyframes opt-animation-backdrop{
+  0%   { opacity: 0.75;}
+  100% { opacity: 1;}
+}
+@keyframes opt-animation-backdrop {
+  0%   { opacity: 0.75;}
+  100% { opacity: 1;}
+}
+
+.ModalWrapper__container {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  overflow: auto;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border: 5px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
   }
 }
 
-.ReactModal__Overlay--after-open {
-  opacity: 1;
-}
 
-.ReactModal__Overlay--before-close {
-  opacity: 0;
-}
 
-.ReactModal__Content--custom {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-  background: white;
-    box-shadow: var(--bananasign-container-shadow);
-  border-radius: 8px;
-  padding: 24px 16px 24px 16px;
-  max-width: 368px;
-  min-width: 368px;
-  border: none;
-  outline: none;
-  position: absolute;
-  top: 16%;
-}
-
-.ReactModal__ButtonClose {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background: var(--bananasign-color-soft-white);
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.ReactModal__Content--min-height {
-  min-height: 394px;
-}

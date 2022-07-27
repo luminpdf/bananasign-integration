@@ -1,14 +1,12 @@
 import './WarningModal.style.scss';
 
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {Images} from '@src/assets';
-import CustomModal from '@src/components/CustomModal';
+import AnimatedModal from '@src/components/AnimatedModal';
+import {usePopup} from '@src/components/CustomModal';
 import ReactModalCoupleButton from '@src/components/ReactModalCoupleButton';
 import {MODAL_TYPES} from '@src/constants/common';
-
-import InviteToSignContext from '../InviteToSignContext';
-import {InviteToSignContextActions} from '../InviteToSignContextActions';
 
 const MODAL_WARNING_TYPES = {
   [MODAL_TYPES.ONLY_ONE_SIGNER_IS_OWNER]: {
@@ -29,58 +27,37 @@ const MODAL_WARNING_TYPES = {
 };
 
 const WarningModal: React.FC = () => {
-  const context = useContext(InviteToSignContext);
-  const {
-    state: {modalWarningData},
-    dispatch,
-  } = context;
+  const [{hideModal, componentProps}] = usePopup();
+  const warningType = componentProps?.settings?.type;
 
   const onCloseModal = () => {
-    dispatch(InviteToSignContextActions.SET_MODAL_WARNING_TYPE({type: ''}));
-    if (
-      modalWarningData.onCancel &&
-      typeof modalWarningData.onCancel === 'function'
-    ) {
-      modalWarningData.onCancel();
-    }
+    hideModal();
+    componentProps?.settings?.onCancel?.();
   };
 
   const onConfirm = () => {
-    dispatch(InviteToSignContextActions.SET_MODAL_WARNING_TYPE({type: ''}));
-    if (
-      modalWarningData.onConfirm &&
-      typeof modalWarningData.onConfirm === 'function'
-    ) {
-      modalWarningData.onConfirm();
-    }
+    hideModal();
+    componentProps?.settings?.onConfirm?.();
   };
 
-  if (!modalWarningData.type) {
+  if (!warningType) {
     return null;
   }
 
-  const modalContent = MODAL_WARNING_TYPES[modalWarningData.type];
+  const modalContent = MODAL_WARNING_TYPES[warningType];
 
   return (
-    <CustomModal
-      isShowCloseButton={false}
-      isOpen={true}
-      closeModal={onCloseModal}
-    >
-      <div className="WarningModal__container">
-        <img src={modalContent.ICON} alt="icon modal" />
-        <p className="WarningModal__container-title">{modalContent.TITLE}</p>
-        <p className="WarningModal__container-content">
-          {modalContent.CONTENT}
-        </p>
-        <ReactModalCoupleButton
-          onCancel={onCloseModal}
-          onConfirm={onConfirm}
-          secondaryTitle={modalContent.FIRST_BTN}
-          primaryTitle={modalContent.SECOND_BTN}
-        />
-      </div>
-    </CustomModal>
+    <AnimatedModal className="WarningModal__container AssignModal__custom-modal">
+      <img src={modalContent.ICON} alt="icon modal" />
+      <p className="WarningModal__container-title">{modalContent.TITLE}</p>
+      <p className="WarningModal__container-content">{modalContent.CONTENT}</p>
+      <ReactModalCoupleButton
+        onCancel={onCloseModal}
+        onConfirm={onConfirm}
+        secondaryTitle={modalContent.FIRST_BTN}
+        primaryTitle={modalContent.SECOND_BTN}
+      />
+    </AnimatedModal>
   );
 };
 
