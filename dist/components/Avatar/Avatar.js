@@ -13,13 +13,10 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
+import {jsx as _jsx} from 'react/jsx-runtime';
 import './Avatar.style.scss';
-
 import classNames from 'classnames';
 import {useMemo} from 'react';
-import {jsx as _jsx} from 'react/jsx-runtime';
-
 import {Images} from '@src/assets';
 import common from '@src/utils/common';
 var GUEST_USER = 'Guest User';

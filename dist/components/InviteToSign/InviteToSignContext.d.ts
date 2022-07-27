@@ -16,14 +16,12 @@ export declare const initialState: {
     searchContacts: never[];
     cancelAddAssigners: boolean;
     openBananasignIframe: boolean;
-    modalWarningData: {
-        type: string;
-    };
     onClose: () => undefined;
     bananasignUrl: string;
     bananasignBaseUrl: string;
     flowId: string;
     uploadDocumentUrl: string;
+    isOpen: boolean;
 };
 declare const InviteToSignContext: React.Context<ContextType>;
 export default InviteToSignContext;

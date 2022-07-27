@@ -1,5 +1,11 @@
 import {INVITE_TO_SIGN_ACTION_TYPES} from './InviteToSignContextTypes';
 export var InviteToSignContextActions = {
+  SET_OPENED_WIDGET: function (isOpen) {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_OPENED_WIDGET,
+      payload: isOpen,
+    };
+  },
   SET_LOADING: function (isLoading) {
     return {
       type: INVITE_TO_SIGN_ACTION_TYPES.SET_LOADING,
@@ -82,12 +88,6 @@ export var InviteToSignContextActions = {
     return {
       type: INVITE_TO_SIGN_ACTION_TYPES.OPEN_BANANASIGN_IFRAME,
       payload: isOpen,
-    };
-  },
-  SET_MODAL_WARNING_TYPE: function (modalType) {
-    return {
-      type: INVITE_TO_SIGN_ACTION_TYPES.SET_MODAL_WARNING_TYPE,
-      payload: modalType,
     };
   },
   SET_DOCUMENT_SIGNING: function (documentSigning) {

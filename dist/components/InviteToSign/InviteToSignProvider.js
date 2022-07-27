@@ -13,17 +13,14 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import {useEffect, useReducer} from 'react';
 import {jsx as _jsx} from 'react/jsx-runtime';
-
+import {useEffect, useReducer} from 'react';
 import {
   BANANASIGN_BASE_URL,
   BANANASIGN_WEB_URL,
   REQUEST_TYPE,
 } from '@src/constants/common';
 import common from '@src/utils/common';
-
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextActions} from './InviteToSignContextActions';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
@@ -41,16 +38,18 @@ var InviteToSignProvider = function (_a) {
     isOpen = _a.isOpen;
   var signersData = common.serializeAssigners(signers, REQUEST_TYPE.SIGNER);
   var viewersData = common.serializeAssigners(viewers, REQUEST_TYPE.VIEWER);
+  var context = {
+    signers: signersData,
+    viewers: viewersData,
+    onClose: onClose,
+    bananasignUrl: bananasignUrl,
+    bananasignBaseUrl: bananasignBaseUrl,
+    fileName: fileName,
+    isOpen: isOpen,
+  };
   var _d = useReducer(
       InviteToSignContextReducer,
-      __assign(__assign({}, initialState), {
-        signers: signersData,
-        viewers: viewersData,
-        onClose: onClose,
-        bananasignUrl: bananasignUrl,
-        bananasignBaseUrl: bananasignBaseUrl,
-        fileName: fileName,
-      }),
+      __assign(__assign({}, initialState), context),
     ),
     state = _d[0],
     dispatch = _d[1];
@@ -62,6 +61,7 @@ var InviteToSignProvider = function (_a) {
         body: JSON.stringify({fileName: fileName}),
       };
       if (isOpen) {
+        dispatch(InviteToSignContextActions.SET_OPENED_WIDGET(isOpen));
         fetch(
           ''.concat(bananasignBaseUrl, '/v1/document-signing'),
           requestOptions,

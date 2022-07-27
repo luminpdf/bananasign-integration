@@ -14,19 +14,13 @@ var __assign =
     return __assign.apply(this, arguments);
   };
 var _a;
-
-import './WarningModal.style.scss';
-
-import {useContext} from 'react';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
+import './WarningModal.style.scss';
 import {Images} from '@src/assets';
-import CustomModal from '@src/components/CustomModal';
+import AnimatedModal from '@src/components/AnimatedModal';
+import {usePopup} from '@src/components/CustomModal';
 import ReactModalCoupleButton from '@src/components/ReactModalCoupleButton';
 import {MODAL_TYPES} from '@src/constants/common';
-
-import InviteToSignContext from '../InviteToSignContext';
-import {InviteToSignContextActions} from '../InviteToSignContextActions';
 var MODAL_WARNING_TYPES =
   ((_a = {}),
   (_a[MODAL_TYPES.ONLY_ONE_SIGNER_IS_OWNER] = {
@@ -46,67 +40,75 @@ var MODAL_WARNING_TYPES =
   }),
   _a);
 var WarningModal = function () {
-  var context = useContext(InviteToSignContext);
-  var modalWarningData = context.state.modalWarningData,
-    dispatch = context.dispatch;
+  var _a;
+  var _b = usePopup()[0],
+    hideModal = _b.hideModal,
+    componentProps = _b.componentProps;
+  var warningType =
+    (_a =
+      componentProps === null || componentProps === void 0
+        ? void 0
+        : componentProps.settings) === null || _a === void 0
+      ? void 0
+      : _a.type;
   var onCloseModal = function () {
-    dispatch(InviteToSignContextActions.SET_MODAL_WARNING_TYPE({type: ''}));
-    if (
-      modalWarningData.onCancel &&
-      typeof modalWarningData.onCancel === 'function'
-    ) {
-      modalWarningData.onCancel();
-    }
+    var _a, _b;
+    hideModal();
+    (_b =
+      (_a =
+        componentProps === null || componentProps === void 0
+          ? void 0
+          : componentProps.settings) === null || _a === void 0
+        ? void 0
+        : _a.onCancel) === null || _b === void 0
+      ? void 0
+      : _b.call(_a);
   };
   var onConfirm = function () {
-    dispatch(InviteToSignContextActions.SET_MODAL_WARNING_TYPE({type: ''}));
-    if (
-      modalWarningData.onConfirm &&
-      typeof modalWarningData.onConfirm === 'function'
-    ) {
-      modalWarningData.onConfirm();
-    }
+    var _a, _b;
+    hideModal();
+    (_b =
+      (_a =
+        componentProps === null || componentProps === void 0
+          ? void 0
+          : componentProps.settings) === null || _a === void 0
+        ? void 0
+        : _a.onConfirm) === null || _b === void 0
+      ? void 0
+      : _b.call(_a);
   };
-  if (!modalWarningData.type) {
+  if (!warningType) {
     return null;
   }
-  var modalContent = MODAL_WARNING_TYPES[modalWarningData.type];
-  return _jsx(
-    CustomModal,
+  var modalContent = MODAL_WARNING_TYPES[warningType];
+  return _jsxs(
+    AnimatedModal,
     __assign(
-      {isShowCloseButton: false, isOpen: true, closeModal: onCloseModal},
+      {className: 'WarningModal__container AssignModal__custom-modal'},
       {
-        children: _jsxs(
-          'div',
-          __assign(
-            {className: 'WarningModal__container'},
-            {
-              children: [
-                _jsx('img', {src: modalContent.ICON, alt: 'icon modal'}),
-                _jsx(
-                  'p',
-                  __assign(
-                    {className: 'WarningModal__container-title'},
-                    {children: modalContent.TITLE},
-                  ),
-                ),
-                _jsx(
-                  'p',
-                  __assign(
-                    {className: 'WarningModal__container-content'},
-                    {children: modalContent.CONTENT},
-                  ),
-                ),
-                _jsx(ReactModalCoupleButton, {
-                  onCancel: onCloseModal,
-                  onConfirm: onConfirm,
-                  secondaryTitle: modalContent.FIRST_BTN,
-                  primaryTitle: modalContent.SECOND_BTN,
-                }),
-              ],
-            },
+        children: [
+          _jsx('img', {src: modalContent.ICON, alt: 'icon modal'}),
+          _jsx(
+            'p',
+            __assign(
+              {className: 'WarningModal__container-title'},
+              {children: modalContent.TITLE},
+            ),
           ),
-        ),
+          _jsx(
+            'p',
+            __assign(
+              {className: 'WarningModal__container-content'},
+              {children: modalContent.CONTENT},
+            ),
+          ),
+          _jsx(ReactModalCoupleButton, {
+            onCancel: onCloseModal,
+            onConfirm: onConfirm,
+            secondaryTitle: modalContent.FIRST_BTN,
+            primaryTitle: modalContent.SECOND_BTN,
+          }),
+        ],
       },
     ),
   );

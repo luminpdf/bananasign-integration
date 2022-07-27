@@ -13,14 +13,10 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
+import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 import './AssignerListInput.style.scss';
-
 import classNames from 'classnames';
 import {useContext, useEffect, useRef} from 'react';
-import {animated, useTransition} from 'react-spring';
-import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
 import {Images} from '@src/assets';
 import InviteToSignContext from '@src/components/InviteToSign/InviteToSignContext';
 import {InviteToSignContextActions} from '@src/components/InviteToSign/InviteToSignContextActions';
@@ -37,11 +33,6 @@ var AssignerListInput = function () {
   var assignUsers = type === REQUEST_TYPE.SIGNER ? signers : viewers;
   var assignUsersAdded = assignUsers.filter(function (user) {
     return !user.isOwner;
-  });
-  var transition = useTransition(assignUsersAdded, {
-    from: {x: 0, opacity: 0},
-    enter: {opacity: 1, x: 0},
-    leave: {opacity: 0, x: 0, width: 0},
   });
   useEffect(
     function () {
@@ -64,12 +55,14 @@ var AssignerListInput = function () {
   var handleRemoveClick = function (assigner) {
     onRemoveAssigner(assigner);
   };
-  var assignedEmailItems = transition(function (style, item, _, index) {
+  var assignedEmailItem = function (_a) {
+    var item = _a.item,
+      index = _a.index;
     var isDisable = item === null || item === void 0 ? void 0 : item.isOwner;
     return _jsxs(
-      animated.div,
+      'div',
       __assign(
-        {className: 'AssignerListInput__row-email', style: style},
+        {className: 'AssignerListInput__row-email'},
         {
           children: [
             _jsx(
@@ -107,12 +100,19 @@ var AssignerListInput = function () {
       ),
       index,
     );
-  });
+  };
   return _jsxs(
     'div',
     __assign(
       {className: 'AssignerListInput__container'},
-      {children: [assignedEmailItems, _jsx('div', {ref: divRef})]},
+      {
+        children: [
+          assignUsersAdded.map(function (item, index) {
+            return assignedEmailItem({item: item, index: index});
+          }),
+          _jsx('div', {ref: divRef}),
+        ],
+      },
     ),
   );
 };

@@ -13,15 +13,12 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './RecentContact.style.scss';
-
 import {
-  Fragment as _Fragment,
   jsx as _jsx,
   jsxs as _jsxs,
+  Fragment as _Fragment,
 } from 'react/jsx-runtime';
-
+import './RecentContact.style.scss';
 import {Images} from '@src/assets';
 // import AssignerItem from '../../InviteUser/AssignerItem';
 var EmptyContacts = function () {

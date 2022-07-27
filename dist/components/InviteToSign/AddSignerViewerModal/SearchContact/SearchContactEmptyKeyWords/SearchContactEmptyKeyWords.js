@@ -13,11 +13,8 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './SearchContactEmptyKeyWords.style.scss';
-
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
+import './SearchContactEmptyKeyWords.style.scss';
 import {Images} from '@src/assets';
 var SearchContactEmptyKeyWords = function () {
   return _jsxs(

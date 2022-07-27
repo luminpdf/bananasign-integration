@@ -4,7 +4,7 @@ export interface Assigners {
 }
 export interface IInviteToSignProps {
     isOpen: boolean;
-    onClose: () => void;
+    onClose?: () => void;
     signers: IAssignerProps[];
     viewers: IAssignerProps[];
     fileName: string;
@@ -34,12 +34,12 @@ export interface IState {
     searchContacts: IAssignerProps[];
     cancelAddAssigners: boolean;
     openBananasignIframe: boolean;
-    modalWarningData: ModalWarning;
     onClose: () => void;
     bananasignUrl: string;
     bananasignBaseUrl: string;
     flowId: string;
     uploadDocumentUrl: string;
+    isOpen: boolean;
 }
 export interface UploadDocumentDto {
     uploadUrl: string;

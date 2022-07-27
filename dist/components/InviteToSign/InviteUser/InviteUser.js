@@ -158,22 +158,21 @@ var __spreadArray =
       }
     return to.concat(ar || Array.prototype.slice.call(from));
   };
-
+import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 import './InviteUser.style.scss';
-
 import classNames from 'classnames';
 import {useContext, useEffect, useState} from 'react';
-import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
 import {Images} from '@src/assets';
+import {usePopup} from '@src/components/CustomModal';
+import {ModalName} from '@src/components/CustomModal';
 import {REQUEST_TYPE} from '@src/constants/common';
-
+import common from '@src/utils/common';
 import Button from '@components/Button';
-
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
 var InviteUser = function () {
+  var isMobile = common.isMobile();
   var context = useContext(InviteToSignContext);
   var _a = context.state,
     signers = _a.signers,
@@ -190,6 +189,7 @@ var InviteUser = function () {
   var _c = useState([]),
     viewersState = _c[0],
     setViewersState = _c[1];
+  var showModal = usePopup()[0].showModal;
   useEffect(
     function () {
       if (isOpenAddAssignerModal) {
@@ -207,6 +207,11 @@ var InviteUser = function () {
     [isOpenAddAssignerModal, signers, viewers],
   );
   var handleOpenAddAssignerModal = function (type) {
+    //
+    var modalOptions = {
+      modalName: ModalName.ADD_VIEWERS_SIGNERS,
+    };
+    showModal(modalOptions);
     dispatch(InviteToSignContextActions.SET_REQUEST_TYPE(type));
     dispatch(InviteToSignContextActions.SET_OPEN_ADD_ASSIGNER_MODAL(true));
   };
@@ -274,13 +279,14 @@ var InviteUser = function () {
       {className: 'InviteUser__container'},
       {
         children: [
-          _jsx(
-            'h1',
-            __assign(
-              {className: 'InviteUser__title'},
-              {children: 'Invite people'},
+          !isMobile &&
+            _jsx(
+              'h1',
+              __assign(
+                {className: 'InviteUser__title'},
+                {children: 'Invite people'},
+              ),
             ),
-          ),
           _jsxs(
             'div',
             __assign(
@@ -310,7 +316,7 @@ var InviteUser = function () {
                             __assign(
                               {
                                 className: classNames(
-                                  'InviteUser__wrapper-user-list',
+                                  'InviteUser__wrapper-user-list signers-list',
                                   {
                                     hide_border: !signersState.length,
                                   },
@@ -371,7 +377,7 @@ var InviteUser = function () {
                             __assign(
                               {
                                 className: classNames(
-                                  'InviteUser__wrapper-user-list',
+                                  'InviteUser__wrapper-user-list viewers-list',
                                   {
                                     hide_border: !viewersState.length,
                                   },

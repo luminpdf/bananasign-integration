@@ -13,11 +13,9 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
+import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
 import BananasignWidget from '.';
 function App() {
   var _a = React.useState(false),
@@ -51,6 +49,8 @@ function App() {
         signers: signers,
         viewers: viewers,
         fileName: 'document name',
+        bananasignUrl: 'http://localhost:5000',
+        bananasignBaseUrl: 'http://localhost:3000',
         onUploadDocument: function (_a) {
           var _ = _a.uploadUrl;
           // TODO: Use url to upload document

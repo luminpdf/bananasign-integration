@@ -13,8 +13,11 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
 import {GUEST_USER, REQUEST_TYPE} from '@src/constants/common';
+var isClientSide = typeof window !== 'undefined';
+var isMobile = function () {
+  return isClientSide && window.innerWidth < 640;
+};
 var getAvatarName = function (name) {
   var words = '';
   if (name && name.split(' ').length > 0) {
@@ -71,11 +74,32 @@ var serializeAssigners = function (assigners, requestType) {
   });
   return serializeSigners;
 };
+function compareArrayByElement(firstArray, secondArray, property) {
+  if (firstArray.length !== secondArray.length) {
+    return false;
+  }
+  // check object by property
+  if (property) {
+    return firstArray.every(function (element) {
+      return (
+        secondArray.findIndex(function (assigner) {
+          return element.email === assigner.email;
+        }) > -1
+      );
+    });
+  }
+  return firstArray.every(function (element, index) {
+    return element === secondArray[index];
+  });
+}
 export default {
+  isClientSide: isClientSide,
+  isMobile: isMobile,
   getAvatarName: getAvatarName,
   capitalizeLetter: capitalizeLetter,
   validateEmail: validateEmail,
   debounce: debounce,
   serializeAssigners: serializeAssigners,
+  compareArrayByElement: compareArrayByElement,
 };
 //# sourceMappingURL=common.js.map

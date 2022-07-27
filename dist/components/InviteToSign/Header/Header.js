@@ -13,17 +13,17 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-
-import './Header.style.scss';
-
-import {useContext} from 'react';
 import {jsx as _jsx, jsxs as _jsxs} from 'react/jsx-runtime';
-
+import './Header.style.scss';
+import {useContext} from 'react';
 import {Images} from '@src/assets';
-import {MODAL_TYPES} from '@src/constants/common';
-
+import {usePopup} from '@src/components/CustomModal';
+import {
+  ModalName,
+  ModalSettingType,
+} from '@src/components/CustomModal/CustomModal';
+import common from '@src/utils/common';
 import InviteToSignContext from '../InviteToSignContext';
-import {InviteToSignContextActions} from '../InviteToSignContextActions';
 var PROGRESS_BAR_LIST_ITEM = [
   {value: 'INVITE TO SIGN', className: 'active'},
   {value: 'ADD DUE DATE', className: ''},
@@ -32,9 +32,13 @@ var PROGRESS_BAR_LIST_ITEM = [
 ];
 var Header = function () {
   var context = useContext(InviteToSignContext);
-  var onClose = context.state.onClose,
-    dispatch = context.dispatch;
+  var isMobile = common.isMobile();
+  var onClose = context.state.onClose;
+  var showModal = usePopup()[0].showModal;
   var renderProgressBar = function () {
+    if (isMobile) {
+      return null;
+    }
     return _jsx(
       'div',
       __assign(
@@ -72,6 +76,9 @@ var Header = function () {
     );
   };
   var renderRightLogo = function () {
+    if (isMobile) {
+      return null;
+    }
     return _jsx(
       'div',
       __assign(
@@ -81,12 +88,14 @@ var Header = function () {
     );
   };
   var handleClose = function () {
-    dispatch(
-      InviteToSignContextActions.SET_MODAL_WARNING_TYPE({
-        type: MODAL_TYPES.CANCEL_PROGRESS,
+    var modalOptions = {
+      modalName: ModalName.WARNING,
+      settings: {
+        type: ModalSettingType.CANCEL_PROGRESS,
         onConfirm: onClose,
-      }),
-    );
+      },
+    };
+    showModal(modalOptions);
   };
   return _jsxs(
     'div',
@@ -95,6 +104,14 @@ var Header = function () {
       {
         children: [
           renderCancelButton(),
+          isMobile &&
+            _jsx(
+              'h2',
+              __assign(
+                {className: 'Header__title-mobile'},
+                {children: 'Invite to sign'},
+              ),
+            ),
           renderProgressBar(),
           renderRightLogo(),
         ],
