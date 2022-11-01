@@ -15,7 +15,7 @@ function App() {
   }
 
   const signers = [
-    {email: 'example1@gmail.com', name: 'example 1'},
+    {email: 'max@gmail.com', name: 'Max Feguson'},
     {email: 'example2@gmail.com', name: 'example 2'},
     {email: 'example3@gmail.com', name: 'example 3'},
   ];

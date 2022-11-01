@@ -1,17 +1,16 @@
 @import '../constants/styles/variables.scss';
 
-@mixin ttffont($font-family, $font-weight, $font-file) {
+@mixin otffont($font-family, $font-weight, $font-file) {
   @font-face {
     font-family: $font-family;
-    src: url($font-file + '.ttf') format('truetype');
+    src: url($font-file + ".otf") format("opentype");
     font-weight: $font-weight;
     font-style: normal;
     font-display: swap;
   }
 }
 
-
-@include ttffont('MarkPro', 'normal', '//db.onlinewebfonts.com/t/9d18fe9288338af4d47207a94320a88c');
-@include ttffont('MarkPro-Regular',300,'//db.onlinewebfonts.com/t/c7e919b8358daafbec26cde70a5237f9');
-@include ttffont('MarkPro-Bold', 600, '//db.onlinewebfonts.com/t/a9f560eff7544c341f8c6f520fda2d07');
+@include otffont("MarkPro", "normal", "../assets/fonts/MarkPro/MarkPro");
+@include otffont("MarkPro", 300, "../assets/fonts/MarkPro/MarkPro-Medium");
+@include otffont("MarkPro", 700, "../assets/fonts/MarkPro/MarkPro-Bold");
 

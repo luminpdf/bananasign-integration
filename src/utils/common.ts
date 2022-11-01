@@ -6,14 +6,14 @@ const isClientSide = typeof window !== 'undefined';
 const isMobile = () => isClientSide && window.innerWidth < 640;
 
 const getAvatarName = (name: string) => {
-  let words = '';
-  if (name && name.split(' ').length > 0) {
-    name.split(' ').length = 2;
-    const arrName = name.split(' ');
-    words = arrName[0].charAt(0);
-    words = words.toUpperCase();
+  if (!name) return null;
+  const nameArray = name.split(' ');
+  if (nameArray.length > 1) {
+    const firstCharacter = nameArray[0].charAt(0);
+    const lastCharacter = nameArray[nameArray.length - 1].charAt(0);
+    return firstCharacter + lastCharacter;
   }
-  return words;
+  return name.slice(0, 1);
 };
 
 const capitalizeLetter = (string: string) =>
