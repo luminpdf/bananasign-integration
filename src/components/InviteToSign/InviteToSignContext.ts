@@ -27,6 +27,8 @@ export const initialState = {
   uploadDocumentUrl: '',
 
   isOpen: false,
+  accessToken: '',
+  search: undefined,
 };
 
 const InviteToSignContext = React.createContext<ContextType>({

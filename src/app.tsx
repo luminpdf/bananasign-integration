@@ -39,6 +39,7 @@ function App() {
         onUploadDocument={({uploadUrl: _}) => {
           // TODO: Use url to upload document
         }}
+        accessToken="nhuttm"
       />
     </div>
   );

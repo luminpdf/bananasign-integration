@@ -25,3 +25,7 @@ export const MODAL_TYPES = {
 
 export const BANANASIGN_WEB_URL = 'https://app.bananasign.co';
 export const BANANASIGN_BASE_URL = 'https://api.bananasign.co';
+
+export const API_VERSION = 'v1';
+
+export const API_HANDLER = 'document-signing';

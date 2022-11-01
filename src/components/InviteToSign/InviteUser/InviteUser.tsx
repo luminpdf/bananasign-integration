@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import './InviteUser.style.scss';
 
 import classNames from 'classnames';
@@ -6,12 +8,12 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Images} from '@src/assets';
 import {usePopup} from '@src/components/CustomModal';
 import {ModalName, ModalOptions} from '@src/components/CustomModal';
-import {REQUEST_TYPE} from '@src/constants/common';
+import {REQUEST_TYPE, API_VERSION, API_HANDLER} from '@src/constants/common';
 import common from '@src/utils/common';
 
 import Button from '@components/Button';
 
-import {BasicResponse, IAssignerProps} from '../InviteToSign.interface';
+import {IAssignerProps} from '../InviteToSign.interface';
 import InviteToSignContext from '../InviteToSignContext';
 import {InviteToSignContextActions} from '../InviteToSignContextActions';
 import AssignerItem from './AssignerItem';
@@ -28,6 +30,7 @@ const InviteUser: React.FC = () => {
       loading,
       flowId,
       bananasignBaseUrl,
+      accessToken,
     },
     dispatch,
   } = context;
@@ -81,19 +84,22 @@ const InviteUser: React.FC = () => {
     }
     dispatch(InviteToSignContextActions.SET_LOADING(true));
     try {
-      const requestOptions = {
-        method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
+      const endPoint = `${bananasignBaseUrl}/${API_VERSION}/${API_HANDLER}`;
+
+      axios({
+        method: 'POST',
+        url: `${endPoint}/create-document-temporary`,
+        data: {
           signers,
           viewers,
           flowId,
-        }),
-      };
-
-      fetch(`${bananasignBaseUrl}/v1/document-signing`, requestOptions)
-        .then((response) => response.json())
-        .then((_: BasicResponse) => {
+        },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((_) => {
           dispatch(InviteToSignContextActions.OPEN_BANANASIGN_IFRAME(true));
         })
         .catch((_) => console.log('Information cannot be saved'));

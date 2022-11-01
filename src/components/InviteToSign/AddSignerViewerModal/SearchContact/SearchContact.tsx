@@ -18,7 +18,7 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
   (props, ref) => {
     const {active, resetInput} = props;
     const {
-      state: {searchContacts, signers, viewers, type},
+      state: {searchContacts, signers, viewers, type, search},
       dispatch,
     } = useContext(InviteToSignContext);
 
@@ -68,16 +68,11 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
     };
 
     const renderContent = () => {
-      // if (!keyWordSearchContact) {
-      //   return <SearchContactEmptyKeyWords />;
-      // }
-      // if (Boolean(keyWordSearchContact) && searchContacts.length === 0) {
-      //   return <EmptySearchContactResults keyWords={keyWordSearchContact} />;
-      // }
-      if (searchContacts.length > 0) {
+      const contacts = search?.searchData || searchContacts;
+      if (contacts.length > 0) {
         return (
           <div className="SearchContact__list">
-            {searchContacts.map((contact: IAssignerProps, index: number) => {
+            {contacts.map((contact: IAssignerProps, index: number) => {
               return (
                 <AssignerItem
                   onClick={addContactAssignUser}

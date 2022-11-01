@@ -15,31 +15,12 @@ import {IInviteToSignProps} from './InviteToSign.interface';
 import InviteToSignProvider from './InviteToSignProvider';
 
 const InviteToSign: React.FC<IInviteToSignProps> = (props) => {
-  const {
-    isOpen,
-    onClose,
-    signers,
-    viewers,
-    bananasignUrl,
-    bananasignBaseUrl,
-    fileName,
-    onUploadDocument,
-  } = props;
   return (
-    <InviteToSignProvider
-      onClose={onClose}
-      signers={signers}
-      viewers={viewers}
-      bananasignUrl={bananasignUrl}
-      bananasignBaseUrl={bananasignBaseUrl}
-      fileName={fileName}
-      onUploadDocument={onUploadDocument}
-      isOpen={isOpen}
-    >
+    <InviteToSignProvider {...props}>
       <PopupProvider>
         <div
           className={classNames('InviteToSign__container', {
-            open: isOpen,
+            open: props.isOpen,
           })}
         >
           <Header />

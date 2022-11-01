@@ -20,7 +20,7 @@ import {
 const InputAssigner = React.forwardRef<IInputAssignerRef, IInputAssignerProps>(
   (props, ref) => {
     const {
-      state: {searchContacts, signers, viewers, type},
+      state: {searchContacts, signers, viewers, type, search},
       dispatch,
     } = useContext(InviteToSignContext);
     const {onFocus, onBlur, isOpenSearch} = props;
@@ -40,21 +40,28 @@ const InputAssigner = React.forwardRef<IInputAssignerRef, IInputAssignerProps>(
     }));
 
     const handleSearchContactByEmail = common.debounce((keyWords: string) => {
-      if (!common.validateEmail(keyWords)) {
-        return false;
+      if (search?.onSearchChange) {
+        search.onSearchChange({
+          value: keyWords,
+          context: type,
+        });
+      } else {
+        if (!common.validateEmail(keyWords)) {
+          return false;
+        }
+
+        const contactList = [
+          {
+            name: GUEST_USER,
+            avatarRemoteId: '',
+            email: keyWords,
+            type: CONTACT_TYPE.GUEST,
+            userId: '',
+          },
+        ];
+
+        dispatch(InviteToSignContextActions.SET_SEARCH_CONTACTS(contactList));
       }
-
-      const contactList = [
-        {
-          name: GUEST_USER,
-          avatarRemoteId: '',
-          email: keyWords,
-          type: CONTACT_TYPE.GUEST,
-          userId: '',
-        },
-      ];
-
-      dispatch(InviteToSignContextActions.SET_SEARCH_CONTACTS(contactList));
       dispatch(InviteToSignContextActions.SET_WORD_SEARCH_CONTACT(keyWords));
       return true;
     }, 300);

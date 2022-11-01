@@ -22,6 +22,12 @@ export interface IInviteToSignProps {
 
   /* Callback to obtain the upload URL in order to upload a file document to the Bananasign service. */
   onUploadDocument: (payload: UploadDocumentDto) => void;
+
+  /* Bananasign oauth2 access token */
+  accessToken: string;
+
+  /*  Custom signer/viewer search */
+  search?: ISearchContact;
 }
 
 export interface IAssignerProps {
@@ -53,6 +59,8 @@ export interface IState {
   flowId: string;
   uploadDocumentUrl: string;
   isOpen: boolean;
+  accessToken: string;
+  search?: ISearchContact;
 }
 
 export interface UploadDocumentDto {
@@ -73,4 +81,14 @@ export interface IWidgetInit {
 export interface BasicResponse {
   message: string;
   statusCode: number;
+}
+
+export interface ISearchChange {
+  value: string;
+  context: string;
+}
+
+export interface ISearchContact {
+  onSearchChange?: (data: ISearchChange) => void;
+  searchData: IAssignerProps[];
 }
