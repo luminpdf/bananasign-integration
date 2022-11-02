@@ -3,6 +3,29 @@ import ReactDOM from 'react-dom';
 
 import BananasignWidget from '.';
 
+const byteCharacters = atob(
+  'JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwog' +
+    'IC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAv' +
+    'TWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0K' +
+    'Pj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAg' +
+    'L1Jlc291cmNlcyA8PAogICAgL0ZvbnQgPDwKICAgICAgL0YxIDQgMCBSIAogICAgPj4KICA+' +
+    'PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9u' +
+    'dAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvVGltZXMtUm9tYW4KPj4KZW5kb2Jq' +
+    'Cgo1IDAgb2JqICAlIHBhZ2UgY29udGVudAo8PAogIC9MZW5ndGggNDQKPj4Kc3RyZWFtCkJU' +
+    'CjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVu' +
+    'ZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4g' +
+    'CjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAw' +
+    'MDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v' +
+    'dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G',
+);
+
+const byteNumbers = new Array(byteCharacters.length);
+for (let i = 0; i < byteCharacters.length; i++) {
+  byteNumbers[i] = byteCharacters.charCodeAt(i);
+}
+
+const byteArray = new Uint8Array(byteNumbers);
+
 function App() {
   const [isOpenWidget, setIsOpenWidget] = React.useState(false);
 
@@ -14,16 +37,8 @@ function App() {
     setIsOpenWidget(false);
   }
 
-  const signers = [
-    {email: 'max@gmail.com', name: 'Max Feguson'},
-    {email: 'example2@gmail.com', name: 'example 2'},
-    {email: 'example3@gmail.com', name: 'example 3'},
-  ];
-  const viewers = [
-    {email: 'example4@gmail.com', name: 'example 4'},
-    {email: 'example5@gmail.com', name: 'example 5'},
-    {email: 'example6@gmail.com', name: 'example 6'},
-  ];
+  const signers = [{email: 'nhuttm@luminpdf.com', name: 'Nhut Tran'}];
+  const viewers = [{email: 'example4@gmail.com', name: 'example 4'}];
 
   return (
     <div>
@@ -36,9 +51,7 @@ function App() {
         fileName="document name"
         bananasignUrl="http://localhost:5000"
         bananasignBaseUrl="http://localhost:3000"
-        onUploadDocument={({uploadUrl: _}) => {
-          // TODO: Use url to upload document
-        }}
+        fileData={new Blob([byteArray], {type: 'application/pdf'})}
         accessToken="nhuttm"
       />
     </div>

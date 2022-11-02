@@ -87,11 +87,17 @@ const InviteUser: React.FC = () => {
       const endPoint = `${bananasignBaseUrl}/${API_VERSION}/${API_HANDLER}`;
 
       axios({
-        method: 'POST',
+        method: 'PUT',
         url: `${endPoint}/create-document-temporary`,
         data: {
-          signers,
-          viewers,
+          signers: signers.map((signer) => ({
+            email: signer.email,
+            name: signer.name,
+          })),
+          viewers: viewers.map((viewer) => ({
+            email: viewer.email,
+            name: viewer.name,
+          })),
           flowId,
         },
         headers: {

@@ -25,13 +25,8 @@ export interface IAssignerProps {
   email: string;
   name?: string;
   avatarRemoteId?: string;
-  type?: string;
-  userId?: string;
   isOwner?: boolean;
-  newAssignUser?: boolean;
-  id?: string;
   requestType?: string;
-  dueTimeExpired?: number;
 }
 
 export interface IState {
@@ -45,12 +40,6 @@ export interface IState {
   cancelAddAssigners: boolean;
   openBananasignIframe: boolean;
   onClose: () => void;
-}
-
-export interface UploadDocumentDto {
-  signers: IAssignerProps[];
-  viewers: IAssignerProps[];
-  integrationId: string;
 }
 
 export type ModalWarning = {

@@ -20,8 +20,8 @@ export interface IInviteToSignProps {
   /* Bananasign service base url */
   bananasignBaseUrl?: string;
 
-  /* Callback to obtain the upload URL in order to upload a file document to the Bananasign service. */
-  onUploadDocument: (payload: UploadDocumentDto) => void;
+  /* File for upload to s3 */
+  fileData: ArrayBuffer | Blob | File;
 
   /* Bananasign oauth2 access token */
   accessToken: string;
@@ -34,13 +34,8 @@ export interface IAssignerProps {
   email: string;
   name?: string;
   avatarRemoteId?: string;
-  type?: string;
-  userId?: string;
   isOwner?: boolean;
-  newAssignUser?: boolean;
-  id?: string;
   requestType?: string;
-  dueTimeExpired?: number;
 }
 
 export interface IState {
@@ -63,10 +58,6 @@ export interface IState {
   search?: ISearchContact;
 }
 
-export interface UploadDocumentDto {
-  uploadUrl: string;
-}
-
 export type ModalWarning = {
   type: string;
   onConfirm?: () => void;
@@ -75,7 +66,7 @@ export type ModalWarning = {
 
 export interface IWidgetInit {
   flowId: string;
-  uploadDocumentUrl: string;
+  preSignedUrl: string;
 }
 
 export interface BasicResponse {

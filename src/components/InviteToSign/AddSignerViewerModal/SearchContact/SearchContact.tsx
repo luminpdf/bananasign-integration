@@ -44,9 +44,7 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
             ...assignUser,
             ...newAssignUser,
             name: assignUser?.name || GUEST_USER,
-            id: '',
             requestType: 'VIEWER',
-            dueTimeExpired: 0,
           }),
         );
       } else if (type === REQUEST_TYPE.SIGNER) {
@@ -55,9 +53,7 @@ const SearchContact = React.forwardRef<HTMLDivElement, ISearchContractProps>(
             ...assignUser,
             ...newAssignUser,
             name: assignUser?.name || GUEST_USER,
-            id: '',
             requestType: 'SIGNER',
-            dueTimeExpired: 0,
           }),
         );
       }

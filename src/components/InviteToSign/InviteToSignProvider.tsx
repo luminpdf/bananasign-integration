@@ -13,7 +13,6 @@ import common from '@src/utils/common';
 import {
   IAssignerProps,
   IWidgetInit,
-  UploadDocumentDto,
   ISearchContact,
 } from './InviteToSign.interface';
 import InviteToSignContext, {initialState} from './InviteToSignContext';
@@ -28,7 +27,7 @@ interface IInviteToSignProviderProps {
   bananasignUrl?: string;
   bananasignBaseUrl?: string;
   fileName: string;
-  onUploadDocument: (args: UploadDocumentDto) => void;
+  fileData: ArrayBuffer | Blob | File;
   isOpen: boolean;
   accessToken: string;
   search?: ISearchContact;
@@ -42,7 +41,7 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   bananasignUrl = BANANASIGN_WEB_URL,
   bananasignBaseUrl = BANANASIGN_BASE_URL,
   fileName,
-  onUploadDocument,
+  fileData,
   isOpen,
   accessToken,
   search,
@@ -89,9 +88,13 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
           'Content-Type': 'application/json',
         },
       })
-        .then((response) => {
+        .then(async (response) => {
           const data: IWidgetInit = response.data;
-          onUploadDocument({uploadUrl: data.uploadDocumentUrl});
+          await axios.put(data.preSignedUrl, fileData, {
+            headers: {
+              'Content-Type': 'application/pdf',
+            },
+          });
           dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
         })
         .catch((error) => console.log(error));
