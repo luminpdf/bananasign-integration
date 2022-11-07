@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import './InviteUser.style.scss';
 
 import classNames from 'classnames';
@@ -86,10 +84,9 @@ const InviteUser: React.FC = () => {
     try {
       const endPoint = `${bananasignBaseUrl}/${API_VERSION}/${API_HANDLER}`;
 
-      axios({
+      fetch(`${endPoint}/create-document-temporary`, {
         method: 'PUT',
-        url: `${endPoint}/create-document-temporary`,
-        data: {
+        body: JSON.stringify({
           signers: signers.map((signer) => ({
             email: signer.email,
             name: signer.name,
@@ -99,7 +96,7 @@ const InviteUser: React.FC = () => {
             name: viewer.name,
           })),
           flowId,
-        },
+        }),
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',

@@ -1,16 +1,2 @@
 @import '../constants/styles/variables.scss';
 
-@mixin otffont($font-family, $font-weight, $font-file) {
-  @font-face {
-    font-family: $font-family;
-    src: url($font-file + ".otf") format("opentype");
-    font-weight: $font-weight;
-    font-style: normal;
-    font-display: swap;
-  }
-}
-
-@include otffont("MarkPro", "normal", "../assets/fonts/MarkPro/MarkPro");
-@include otffont("MarkPro", 300, "../assets/fonts/MarkPro/MarkPro-Medium");
-@include otffont("MarkPro", 700, "../assets/fonts/MarkPro/MarkPro-Bold");
-

@@ -7,7 +7,7 @@ export interface IInviteToSignProps {
   /* default = false */
   isOpen: boolean;
   /* Function that will be run when the widget is requested to be closed, prior to actually closing. */
-  onClose: () => void;
+  onClose?: () => void;
   /* List assigners */
   signers: IAssignerProps[];
   viewers: IAssignerProps[];
@@ -19,6 +19,15 @@ export interface IInviteToSignProps {
   bananasignUrl?: string;
   /* Bananasign service base url */
   bananasignBaseUrl?: string;
+
+  /* File for upload to s3 */
+  fileData: Blob | File;
+
+  /* Bananasign oauth2 access token */
+  accessToken: string;
+
+  /*  Custom signer/viewer search */
+  search?: ISearchContact;
 }
 
 export interface IAssignerProps {
@@ -40,6 +49,13 @@ export interface IState {
   cancelAddAssigners: boolean;
   openBananasignIframe: boolean;
   onClose: () => void;
+  bananasignUrl: string;
+  bananasignBaseUrl: string;
+  flowId: string;
+  uploadDocumentUrl: string;
+  isOpen: boolean;
+  accessToken: string;
+  search?: ISearchContact;
 }
 
 export type ModalWarning = {
@@ -47,3 +63,23 @@ export type ModalWarning = {
   onConfirm?: () => void;
   onCancel?: () => void;
 };
+
+export interface IWidgetInit {
+  flowId: string;
+  preSignedUrl: string;
+}
+
+export interface BasicResponse {
+  message: string;
+  statusCode: number;
+}
+
+export interface ISearchChange {
+  value: string;
+  context: string;
+}
+
+export interface ISearchContact {
+  onSearchChange?: (data: ISearchChange) => void;
+  searchData: IAssignerProps[];
+}

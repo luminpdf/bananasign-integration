@@ -1,5 +1,4 @@
 import React, {ReactNode, useEffect, useReducer} from 'react';
-import axios from 'axios';
 
 import {
   BANANASIGN_BASE_URL,
@@ -27,7 +26,7 @@ interface IInviteToSignProviderProps {
   bananasignUrl?: string;
   bananasignBaseUrl?: string;
   fileName: string;
-  fileData: ArrayBuffer | Blob | File;
+  fileData: Blob | File;
   isOpen: boolean;
   accessToken: string;
   search?: ISearchContact;
@@ -77,24 +76,25 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
     if (isOpen) {
       dispatch(InviteToSignContextActions.SET_OPENED_WIDGET(isOpen));
 
-      axios({
+      fetch(`${endPoint}/init`, {
         method: 'POST',
-        url: `${endPoint}/init`,
-        data: {
+        body: JSON.stringify({
           fileName,
-        },
+        }),
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
       })
         .then(async (response) => {
-          const data: IWidgetInit = response.data;
-          await axios.put(data.preSignedUrl, fileData, {
+          const data: IWidgetInit = await response.json();
+          await fetch(data.preSignedUrl, {
+            method: 'PUT',
+            body: fileData,
             headers: {
               'Content-Type': 'application/pdf',
             },
-          });
+          })
           dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
         })
         .catch((error) => console.log(error));

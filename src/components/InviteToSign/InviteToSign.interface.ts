@@ -21,7 +21,7 @@ export interface IInviteToSignProps {
   bananasignBaseUrl?: string;
 
   /* File for upload to s3 */
-  fileData: ArrayBuffer | Blob | File;
+  fileData: Blob | File;
 
   /* Bananasign oauth2 access token */
   accessToken: string;
