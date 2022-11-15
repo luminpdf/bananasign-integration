@@ -67,6 +67,7 @@ export type ModalWarning = {
 export interface IWidgetInit {
   flowId: string;
   preSignedUrl: string;
+  owner: { email: string; name: string }
 }
 
 export interface BasicResponse {

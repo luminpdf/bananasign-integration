@@ -1,4 +1,9 @@
-import React, {ReactNode, useEffect, useReducer} from 'react';
+import React, {
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 
 import {
   BANANASIGN_BASE_URL,
@@ -17,6 +22,7 @@ import {
 import InviteToSignContext, {initialState} from './InviteToSignContext';
 import {InviteToSignContextActions} from './InviteToSignContextActions';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
+import Loading from './Loading';
 
 interface IInviteToSignProviderProps {
   children: ReactNode;
@@ -45,6 +51,7 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   accessToken,
   search,
 }) => {
+  const [prepare, setPrepare] = useState(true);
   const signersData: IAssignerProps[] = common.serializeAssigners(
     signers,
     REQUEST_TYPE.SIGNER,
@@ -74,8 +81,6 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      dispatch(InviteToSignContextActions.SET_OPENED_WIDGET(isOpen));
-
       fetch(`${endPoint}/init`, {
         method: 'POST',
         body: JSON.stringify({
@@ -95,13 +100,22 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
               'Content-Type': 'application/pdf',
             },
           })
+          dispatch(InviteToSignContextActions.SET_SIGNERS([
+            {
+              email: data.owner.email,
+              name:  data.owner.name,
+            },
+            ...signers,
+          ]));
           dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
+          dispatch(InviteToSignContextActions.SET_OPENED_WIDGET(isOpen));
+          setPrepare(false);
         })
         .catch((error) => console.log(error));
     }
   }, [isOpen]);
 
-  return (
+  return prepare ? <Loading /> : (
     <InviteToSignContext.Provider value={{state, dispatch}}>
       {children}
     </InviteToSignContext.Provider>
