@@ -19,7 +19,7 @@ import {
   IWidgetInit,
   ISearchContact,
 } from './InviteToSign.interface';
-import InviteToSignContext, {initialState} from './InviteToSignContext';
+import InviteToSignContext, { initialState } from './InviteToSignContext';
 import {InviteToSignContextActions} from './InviteToSignContextActions';
 import {InviteToSignContextReducer} from './InviteToSignContextReducer';
 import Loading from './Loading';
@@ -62,7 +62,9 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
   );
 
   const endPoint = `${bananasignBaseUrl}/${API_VERSION}/${API_HANDLER}`;
-  const context = {
+
+  const defaultState = {
+    ...initialState,
     signers: signersData,
     viewers: viewersData,
     onClose,
@@ -74,10 +76,8 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
     search,
   };
 
-  const [state, dispatch] = useReducer(InviteToSignContextReducer, {
-    ...initialState,
-    ...context,
-  });
+
+  const [state, dispatch] = useReducer(InviteToSignContextReducer, defaultState);
 
   useEffect(() => {
     if (isOpen) {
@@ -100,15 +100,18 @@ const InviteToSignProvider: React.FC<IInviteToSignProviderProps> = ({
               'Content-Type': 'application/pdf',
             },
           })
-          dispatch(InviteToSignContextActions.SET_SIGNERS([
-            {
-              email: data.owner.email,
-              name:  data.owner.name,
-            },
-            ...signers,
-          ]));
-          dispatch(InviteToSignContextActions.SET_DOCUMENT_SIGNING(data));
-          dispatch(InviteToSignContextActions.SET_OPENED_WIDGET(isOpen));
+          dispatch(InviteToSignContextActions.SET_UP({
+            ...defaultState,
+            ...data,
+            isOpen,
+            signers: [
+              {
+                email: data.owner.email,
+                name:  data.owner.name,
+              },
+              ...signers,
+            ]
+          }))
           setPrepare(false);
         })
         .catch((error) => console.log(error));

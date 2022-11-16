@@ -98,4 +98,10 @@ export const InviteToSignContextActions = {
       payload: documentSigning,
     };
   },
+  SET_UP: (payload: any) => {
+    return {
+      type: INVITE_TO_SIGN_ACTION_TYPES.SET_UP,
+      payload,
+    };
+  },
 };
