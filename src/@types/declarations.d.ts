@@ -9,6 +9,9 @@ declare module "*.less" {
 }
 
 declare module "*.svg"
+
+declare module "*.gif"
+
 // declare module "*.svg" {
 //   import React = require("react");
 //   const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;

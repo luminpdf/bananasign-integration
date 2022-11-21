@@ -1,6 +1,5 @@
 import alias from '@rollup/plugin-alias';
 import {babel} from '@rollup/plugin-babel';
-import json from '@rollup/plugin-json';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
@@ -11,6 +10,7 @@ import scss from 'rollup-plugin-scss';
 import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import dts from "rollup-plugin-dts";
+import image from '@rollup/plugin-image';
 
 export default [
   {
@@ -30,7 +30,9 @@ export default [
         include: ['**/*.svg'],
       }),
       svgr(),
-      json(),
+      image({
+        include: '**/*.gif'
+      }),
       scss({
         insert: true,
         include: ['**/**/*.scss', '/**/*.sass'],
