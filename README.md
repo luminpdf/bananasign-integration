@@ -17,13 +17,14 @@ To install, you can use [npm](https://npmjs.org/):
 | Props             | Type     | Required           | Description                                                                                                                                                                    |
 | :---------------- | :------- | :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | isOpen            | boolean  | :white_check_mark: | show/hide bananasign widget                                                                                                                                                    |
+| fileData            | File, Blob  | :white_check_mark: | Document will be sent to Bananasign                                                                                                                                                    |
+| accessToken            | boolean  | :white_check_mark: | OAuth2.0 access token for calling api to Bananasign                                                                                                                                                    |
 | onClose           | function |                    | Function that will be run when the widget is requested to be closed, prior to actually closing.                                                                                |
 | signers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                                                                                                      |
 | viewers           | array    | :white_check_mark: | List assigner<br/>ex: [\{ email: 'example@gmail.com', name: 'example' \}]                                                                                                      |
 | fileName          | string   | :white_check_mark: | Document name to display on upload doument steps                                                                                                                               |
-| onUploadDocument  | function | :white_check_mark: | Callback to obtain the upload URL in order to upload a file document to the Bananasign service                                                                                 |
-| bananasignUrl     | string   |                    | The URL that is used to open Bananasign iframe. We only need to specify this for testing purpose only. For testing, we can use https://app-dev.bananasign.co                   |
-| bananasignBaseUrl | string   |                    | The URL that is used to call Bananasign server endpoints. We only need to specify this for testing purpose only. For testing, we can use https://app-dev.bananasign.co/api/web |
+| bananasignUrl (development only)     | string   |                    | The URL that is used to open Bananasign iframe. We only need to specify this for testing purpose only. For testing, we can use https://app-dev.bananasign.co                   |
+| bananasignBaseUrl (development only) | string   |                    | The URL that is used to call Bananasign server endpoints. We only need to specify this for testing purpose only. For testing, we can use https://app-dev.bananasign.co/api/web |
 
 ## Examples
 
@@ -64,13 +65,9 @@ function App() {
         onClose={closeWidget}
         signers={signers}
         viewers={viewers}
-        fileName="document name"
-        onUploadDocument={({ uploadUrl }) => {
-          // @content: content of the file
-          const formData = new FormData();
-          formData.append('file', content)
-          fetch(uploadUrl, { method: 'PUT', body: formData });
-        }}
+        fileName={file.name}
+        fileData={file}
+        accessToken={token}
       />
     </div>
   );
